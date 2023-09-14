@@ -1,0 +1,72 @@
+parse_config:
+  raw_binding_map:
+    # Custom behavior
+    '&smart_lshift': '$$tabler:arrow-big-up$$'
+    '&smart_rshift': '$$tabler:arrow-big-up$$'
+    '&symbols': 'Symbols'
+    '&nav': 'Navigation'
+  zmk_keycode_map:
+    EXCLAMATION: '!'
+    EXCL: '!'
+    AT_SIGN: '"' # UK layout
+    AT: '"' # UK layout
+    HASH: '£' # UK layout
+    POUND: '£' # UK layout
+    DOLLAR: $
+    DLLR: $
+    PERCENT: '%'
+    PRCNT: '%'
+    CARET: ^
+    AMPERSAND: '&'
+    AMPS: '&'
+    ASTERISK: '*'
+    ASTRK: '*'
+    STAR: '*'
+    LEFT_PARENTHESIS: (
+    LPAR: (
+    RIGHT_PARENTHESIS: )
+    RPAR: )
+    EQUAL: '='
+    PLUS: +
+    MINUS: '-'
+    UNDERSCORE: _
+    UNDER: _
+    SLASH: /
+    FSLH: /
+    QUESTION: '?'
+    QMARK: '?'
+    BACKSLASH: '#' # UK layout
+    BSLH: '#' # UK layout
+    PIPE: '~' # UK layout
+    NON_US_BACKSLASH: \
+    PIPE2: '|'
+    NON_US_BSLH: '|'
+    SEMICOLON: ;
+    SEMI: ;
+    COLON: ':'
+    SINGLE_QUOTE: ''''
+    SQT: ''''
+    APOSTROPHE: <
+    APOS: .
+    DOUBLE_QUOTES: '@' # UK layout
+    DQT: '@' # UK layout
+    COMMA: ','
+    LESS_THAN: <
+    LT: <
+    PERIOD: .
+    DOT: .
+    GREATER_THAN: '>'
+    GT: '>'
+    LEFT_BRACKET: '['
+    LBKT: '['
+    LEFT_BRACE: '{'
+    LBRC: '{'
+    RIGHT_BRACKET: ']'
+    RBKT: ']'
+    RIGHT_BRACE: '}'
+    RBRC: '}'
+    GRAVE: '`'
+    TILDE: '¬' # UK layout
+    NON_US_HASH: '#'
+    NUHS: '#'
+    TILDE2: '~'
