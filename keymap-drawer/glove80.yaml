@@ -66,7 +66,7 @@ layers:
   - {t: '?', s: '!'}
   - ''
   - Gaming
-  - {t: '&rgb_ug_status_macro', h: Magic}
+  - $$tabler:star$$
   - ''
   - ''
   - ''
@@ -268,21 +268,21 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - +
-  - KP 7
-  - KP 8
-  - KP 9
+  - '7'
+  - '8'
+  - '9'
   - '*'
   - F11
-  - LC(LEFT)
+  - $$tabler:arrow-move-left$$
   - $$tabler:arrow-narrow-up$$
-  - LC(RIGHT)
+  - $$tabler:arrow-move-right$$
   - F12
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - £
-  - KP 4
-  - KP 5
-  - KP 6
+  - '4'
+  - '5'
+  - '6'
   - $
   - Home
   - $$tabler:arrow-narrow-left$$
@@ -292,9 +292,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '-'
-  - KP 1
-  - KP 2
-  - KP 3
+  - '1'
+  - '2'
+  - '3'
   - /
   - NumLock
   - ''
@@ -302,16 +302,16 @@ layers:
   - $$tabler:wheel$$
   - ''
   - {t: ▽, type: trans}
-  - MUTE
+  - $$tabler:volume-3$$
   - PgUp
   - Print
   - PgDown
-  - VOL UP
+  - $$tabler:volume$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - KP 0
-  - KP 0
+  - '0'
+  - '0'
   - .
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -319,10 +319,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - PREV
-  - PP
-  - NEXT
-  - VOL DN
+  - $$tabler:player-skip-back$$
+  - $$tabler:player-play$$
+  - $$tabler:player-skip-forward$$
+  - $$tabler:volume-2$$
   - {t: ▽, type: trans}
   Gaming:
   - {t: ▽, type: trans}
@@ -360,7 +360,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
-  - LSHFT
+  - $$tabler:arrow-big-up$$
   - A
   - S
   - D
@@ -405,84 +405,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  Magic:
-  - BT CLR
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - BT CLR ALL
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - RGB SPI
-  - RGB SAI
-  - RGB HUI
-  - RGB BRI
-  - RGB TOG
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '&bootloader'
-  - RGB SPD
-  - RGB SAD
-  - RGB HUD
-  - RGB BRD
-  - RGB EFF
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '&bootloader'
-  - '&reset'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '&bt_2'
-  - '&bt_3'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '&reset'
-  - ''
-  - {type: held}
-  - ''
-  - ''
-  - ''
-  - '&bt_0'
-  - '&bt_1'
-  - OUT USB
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  Magic: ['$$tabler:bluetooth-x$$', '', '', '', '', '', '', '', '', '$$tabler:bluetooth-x$$ All', '', '', '', '', '', '', '', '', '', '', '', '', '', RGB SPI, RGB
+      SAI, RGB HUI, RGB BRI, RGB TOG, '', '', '', '', '', '', Bootldr, RGB SPD, RGB SAD, RGB HUD, RGB BRD, RGB EFF, '', '', '', '', '', Bootldr, Reset, '', '', '',
+    '', '', '$$tabler:bluetooth$$ 2', '$$tabler:bluetooth$$ 3', '', '', '', '', '', '', '', '', '', Reset, '', '', '', '', '', '$$tabler:bluetooth$$ 0', '$$tabler:bluetooth$$
+      1', USB, '', '', '', '', '', '', '', '']
