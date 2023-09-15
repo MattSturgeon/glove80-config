@@ -53,12 +53,12 @@ layers:
   - C
   - D
   - V
-  - $$tabler:arrow-big-up$$
-  - $$tabler:math-symbols$$
+  - $$tabler:123$$
+  - $$tabler:code-plus$$
   - $$tabler:wheel$$
   - $$tabler:wheel$$
-  - $$tabler:math-symbols$$
-  - $$tabler:arrow-big-up$$
+  - $$tabler:code-plus$$
+  - $$tabler:123$$
   - K
   - H
   - {t: ',', s: ;}
@@ -70,9 +70,9 @@ layers:
   - ''
   - ''
   - ''
-  - BSPC
-  - {t: ESC, h: Ctrl}
-  - $$tabler:brand-windows$$
+  - $$tabler:backspace$$
+  - {t: Esc, h: Ctrl}
+  - $$tabler:location$$
   - Alt
   - {t: '$$tabler:arrow-back$$', h: Ctrl}
   - $$tabler:space$$
@@ -216,10 +216,10 @@ layers:
   - '|'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - $$tabler:math-symbols$$
+  - $$tabler:code-plus$$
   - ''
   - ''
-  - $$tabler:math-symbols$$
+  - $$tabler:code-plus$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - $
@@ -296,16 +296,16 @@ layers:
   - '2'
   - '3'
   - /
-  - NumLock
+  - Num Lock
   - ''
   - $$tabler:wheel$$
   - $$tabler:wheel$$
   - ''
   - {t: ▽, type: trans}
   - $$tabler:volume-3$$
-  - PgUp
+  - Pg Up
   - Print
-  - PgDown
+  - Pg Down
   - $$tabler:volume$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -395,7 +395,7 @@ layers:
   - ''
   - ''
   - $$tabler:space$$
-  - ESC
+  - Esc
   - '`'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -405,7 +405,6 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  Magic: ['$$tabler:bluetooth-x$$', '', '', '', '', '', '', '', '', '$$tabler:bluetooth-x$$ All', '', '', '', '', '', '', '', '', '', '', '', '', '', RGB SPI, RGB
-      SAI, RGB HUI, RGB BRI, RGB TOG, '', '', '', '', '', '', Bootldr, RGB SPD, RGB SAD, RGB HUD, RGB BRD, RGB EFF, '', '', '', '', '', Bootldr, Reset, '', '', '',
-    '', '', '$$tabler:bluetooth$$ 2', '$$tabler:bluetooth$$ 3', '', '', '', '', '', '', '', '', '', Reset, '', '', '', '', '', '$$tabler:bluetooth$$ 0', '$$tabler:bluetooth$$
-      1', USB, '', '', '', '', '', '', '', '']
+  Magic: [BT Clr, '', '', '', '', '', '', '', '', BT Clr All, '', '', '', '', '', '', '', '', '', '', '', '', '', RGB SPI, RGB SAI, RGB HUI, RGB BRI, RGB TOG, '',
+    '', '', '', '', '', Boot, RGB SPD, RGB SAD, RGB HUD, RGB BRD, RGB EFF, '', '', '', '', '', Boot, Reset, '', '', '', '', '', BT 2, BT 3, '', '', '', '', '', '',
+    '', '', '', Reset, '', '', '', '', '', BT 0, BT 1, USB, '', '', '', '', '', '', '', '']

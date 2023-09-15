@@ -1,5 +1,16 @@
 <svg width="1068" height="3130" viewBox="0 0 1068 3130" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>/* start glyphs */
+<svg id="tabler:123">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-123" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 10l2 -2v8" />
+  <path d="M9 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" />
+  <path d="M17 8h2.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-1.5h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-2.5" />
+</svg>
+
+
+
+</svg>
 <svg id="tabler:arrow-back">
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -96,49 +107,32 @@
 
 
 </svg>
-<svg id="tabler:bluetooth">
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bluetooth" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<svg id="tabler:backspace">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-backspace" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M7 8l10 8l-5 4l0 -16l5 4l-10 8" />
+  <path d="M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-11l-5 -5a1.5 1.5 0 0 1 0 -2l5 -5z" />
+  <path d="M12 10l4 4m0 -4l-4 4" />
 </svg>
 
 
 
 </svg>
-<svg id="tabler:bluetooth-x">
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bluetooth-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<svg id="tabler:code-plus">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code-plus" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M7 8l10 8l-5 4v-16l1 .802m0 6.396l-6 4.802" />
-  <path d="M16 6l4 4" />
-  <path d="M20 6l-4 4" />
+  <path d="M9 12h6" />
+  <path d="M12 9v6" />
+  <path d="M6 19a2 2 0 0 1 -2 -2v-4l-1 -1l1 -1v-4a2 2 0 0 1 2 -2" />
+  <path d="M18 19a2 2 0 0 0 2 -2v-4l1 -1l-1 -1v-4a2 2 0 0 0 -2 -2" />
 </svg>
 
 
 
 </svg>
-<svg id="tabler:brand-windows">
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-windows" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<svg id="tabler:location">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-location" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M17.8 20l-12 -1.5c-1 -.1 -1.8 -.9 -1.8 -1.9v-9.2c0 -1 .8 -1.8 1.8 -1.9l12 -1.5c1.2 -.1 2.2 .8 2.2 1.9v12.1c0 1.2 -1.1 2.1 -2.2 1.9z" />
-  <path d="M12 5l0 14" />
-  <path d="M4 12l16 0" />
-</svg>
-
-
-
-</svg>
-<svg id="tabler:math-symbols">
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-math-symbols" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M3 12l18 0" />
-  <path d="M12 3l0 18" />
-  <path d="M16.5 4.5l3 3" />
-  <path d="M19.5 4.5l-3 3" />
-  <path d="M6 4l0 4" />
-  <path d="M4 6l4 0" />
-  <path d="M18 16l.01 0" />
-  <path d="M18 20l.01 0" />
-  <path d="M4 18l4 0" />
+  <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
 </svg>
 
 
@@ -552,11 +546,11 @@ path.combo {
 </g>
 <g transform="translate(367, 306) rotate(20.0)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:arrow-big-up" xlink:href="#tabler:arrow-big-up" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:arrow-big-up"/>
+<use href="#tabler:123" xlink:href="#tabler:123" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:123"/>
 </g>
 <g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:math-symbols" xlink:href="#tabler:math-symbols" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:math-symbols"/>
+<use href="#tabler:code-plus" xlink:href="#tabler:code-plus" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:code-plus"/>
 </g>
 <g transform="translate(466, 365) rotate(45.0)" class="key keypos-54">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -568,11 +562,11 @@ path.combo {
 </g>
 <g transform="translate(594, 327) rotate(-30.0)" class="key keypos-56">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:math-symbols" xlink:href="#tabler:math-symbols" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:math-symbols"/>
+<use href="#tabler:code-plus" xlink:href="#tabler:code-plus" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:code-plus"/>
 </g>
 <g transform="translate(646, 304) rotate(-20.0)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:arrow-big-up" xlink:href="#tabler:arrow-big-up" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:arrow-big-up"/>
+<use href="#tabler:123" xlink:href="#tabler:123" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:123"/>
 </g>
 <g transform="translate(700, 252)" class="key keypos-58">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -619,16 +613,16 @@ path.combo {
 </g>
 <g transform="translate(314, 356) rotate(15.0)" class="key keypos-69">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">BSPC</text>
+<use href="#tabler:backspace" xlink:href="#tabler:backspace" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:backspace"/>
 </g>
 <g transform="translate(370, 379) rotate(25.0)" class="key keypos-70">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">ESC</text>
+<text x="0" y="0" class="key tap">Esc</text>
 <text x="0" y="24" class="key hold">Ctrl</text>
 </g>
 <g transform="translate(422, 417) rotate(45.0)" class="key keypos-71">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:brand-windows" xlink:href="#tabler:brand-windows" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:brand-windows"/>
+<use href="#tabler:location" xlink:href="#tabler:location" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:location"/>
 </g>
 <g transform="translate(586, 417) rotate(-45.0)" class="key keypos-72">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1204,7 +1198,7 @@ path.combo {
 </g>
 <g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:math-symbols" xlink:href="#tabler:math-symbols" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:math-symbols"/>
+<use href="#tabler:code-plus" xlink:href="#tabler:code-plus" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:code-plus"/>
 </g>
 <g transform="translate(466, 365) rotate(45.0)" class="key keypos-54">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1214,7 +1208,7 @@ path.combo {
 </g>
 <g transform="translate(594, 327) rotate(-30.0)" class="key keypos-56">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:math-symbols" xlink:href="#tabler:math-symbols" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:math-symbols"/>
+<use href="#tabler:code-plus" xlink:href="#tabler:code-plus" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:code-plus"/>
 </g>
 <g transform="translate(646, 304) rotate(-20.0)" class="key trans keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -1523,7 +1517,9 @@ path.combo {
 </g>
 <g transform="translate(367, 306) rotate(20.0)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">NumLock</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Num</tspan><tspan x="0" dy="1.2em">Lock</tspan>
+</text>
 </g>
 <g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1549,7 +1545,9 @@ path.combo {
 </g>
 <g transform="translate(756, 252)" class="key keypos-59">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">PgUp</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Pg</tspan><tspan x="0" dy="1.2em">Up</tspan>
+</text>
 </g>
 <g transform="translate(812, 252)" class="key keypos-60">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1557,7 +1555,9 @@ path.combo {
 </g>
 <g transform="translate(868, 252)" class="key keypos-61">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">PgDown</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Pg</tspan><tspan x="0" dy="1.2em">Down</tspan>
+</text>
 </g>
 <g transform="translate(924, 280)" class="key keypos-62">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1912,7 +1912,7 @@ path.combo {
 </g>
 <g transform="translate(370, 379) rotate(25.0)" class="key keypos-70">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">ESC</text>
+<text x="0" y="0" class="key tap">Esc</text>
 </g>
 <g transform="translate(422, 417) rotate(45.0)" class="key keypos-71">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1957,7 +1957,9 @@ path.combo {
 <g transform="translate(0, 56)">
 <g transform="translate(28, 56)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#tabler:bluetooth-x" xlink:href="#tabler:bluetooth-x" x="-7" y="-7" height="14" width="14.0" class="key tap glyph tabler:bluetooth-x"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">Clr</tspan>
+</text>
 </g>
 <g transform="translate(84, 56)" class="key keypos-1">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1986,7 +1988,8 @@ path.combo {
 <g transform="translate(980, 56)" class="key keypos-9">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 60%">$$tabler:bluetooth-x$$</tspan><tspan x="0" dy="1.2em" style="font-size: 60%">All</tspan>
+<tspan x="0" dy="-1.2em">BT</tspan><tspan x="0" dy="1.2em">Clr</tspan>
+<tspan x="0" dy="1.2em">All</tspan>
 </text>
 </g>
 <g transform="translate(28, 112)" class="key keypos-10">
@@ -2078,7 +2081,7 @@ path.combo {
 </g>
 <g transform="translate(28, 224)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Bootldr</text>
+<text x="0" y="0" class="key tap">Boot</text>
 </g>
 <g transform="translate(84, 224)" class="key keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -2127,7 +2130,7 @@ path.combo {
 </g>
 <g transform="translate(980, 224)" class="key keypos-45">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Bootldr</text>
+<text x="0" y="0" class="key tap">Boot</text>
 </g>
 <g transform="translate(28, 280)" class="key keypos-46">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -2151,13 +2154,13 @@ path.combo {
 <g transform="translate(367, 306) rotate(20.0)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 60%">$$tabler:bluetooth$$</tspan><tspan x="0" dy="1.2em" style="font-size: 60%">2</tspan>
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">2</tspan>
 </text>
 </g>
 <g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 60%">$$tabler:bluetooth$$</tspan><tspan x="0" dy="1.2em" style="font-size: 60%">3</tspan>
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">3</tspan>
 </text>
 </g>
 <g transform="translate(466, 365) rotate(45.0)" class="key keypos-54">
@@ -2209,13 +2212,13 @@ path.combo {
 <g transform="translate(314, 356) rotate(15.0)" class="key keypos-69">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 60%">$$tabler:bluetooth$$</tspan><tspan x="0" dy="1.2em" style="font-size: 60%">0</tspan>
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">0</tspan>
 </text>
 </g>
 <g transform="translate(370, 379) rotate(25.0)" class="key keypos-70">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em" style="font-size: 60%">$$tabler:bluetooth$$</tspan><tspan x="0" dy="1.2em" style="font-size: 60%">1</tspan>
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">1</tspan>
 </text>
 </g>
 <g transform="translate(422, 417) rotate(45.0)" class="key keypos-71">
