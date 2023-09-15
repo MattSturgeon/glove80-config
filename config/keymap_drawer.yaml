@@ -1,26 +1,30 @@
 parse_config:
   raw_binding_map:
     # Custom behavior
-    '&smart_lshift': '$$tabler:arrow-big-up$$'
-    '&smart_rshift': '$$tabler:arrow-big-up$$'
-    '&symbols': '$$tabler:math-symbols$$'
-    '&tog 2': '$$tabler:math-symbols$$'
+    '&smart_lshift': '$$tabler:123$$'
+    '&smart_rshift': '$$tabler:123$$'
+    '&symbols': '$$tabler:code-plus$$'
+    '&tog 2': '$$tabler:code-plus$$'
     '&nav': '$$tabler:wheel$$'
     '&tog 3': '$$tabler:wheel$$'
+
+    # Moergo behavior
     '&magic 5 0': '$$tabler:star$$'
-    '&bt_0': '$$tabler:bluetooth$$ 0'
-    '&bt_1': '$$tabler:bluetooth$$ 1'
-    '&bt_2': '$$tabler:bluetooth$$ 2'
-    '&bt_3': '$$tabler:bluetooth$$ 3'
-    '&bt BT_CLR': '$$tabler:bluetooth-x$$'
-    '&bt BT_CLR_ALL': '$$tabler:bluetooth-x$$ All'
+    '&bt_0': 'BT 0'
+    '&bt_1': 'BT 1'
+    '&bt_2': 'BT 2'
+    '&bt_3': 'BT 3'
+    '&bt BT_CLR': 'BT Clr'
+    '&bt BT_CLR_ALL': 'BT Clr All'
     '&out OUT_USB': 'USB'
-    '&bootloader': 'Bootldr'
+    '&bootloader': 'Boot'
     '&reset': 'Reset'
     '&sys_reset': 'Reset'
 
   zmk_keycode_map:
     RET: '$$tabler:arrow-back$$'
+    RETURN: '$$tabler:arrow-back$$'
+    BSPC: '$$tabler:backspace$$'
     BACKSPACE: '$$tabler:backspace$$'
     SPACE: '$$tabler:space$$'
     LALT: 'Alt' # UK layout
@@ -29,8 +33,9 @@ parse_config:
     RCTRL: 'Ctrl'
     LSHFT: '$$tabler:arrow-big-up$$'
     RSHFT: '$$tabler:arrow-big-up$$'
-    LGUI: '$$tabler:brand-windows$$'
+    LGUI: '$$tabler:location$$'
     TAB: '$$tabler:arrows-left-right$$'
+    ESC: 'Esc'
     
     EXCLAMATION: '!'
     EXCL: '!'
@@ -97,7 +102,7 @@ parse_config:
     NUHS: '#'
     TILDE2: '~'
 
-    KP_NUM: 'NumLock'
+    KP_NUM: 'Num Lock'
     KP_MINUS: '-'
     KP_PLUS: '+'
     KP_SLASH: '/'
@@ -123,8 +128,8 @@ parse_config:
     UP: '$$tabler:arrow-narrow-up$$'
     DOWN_ARROW: '$$tabler:arrow-narrow-down$$'
     DOWN: '$$tabler:arrow-narrow-down$$'
-    PAGE_UP: 'PgUp'
-    PAGE_DOWN: 'PgDown'
+    PAGE_UP: 'Pg Up'
+    PAGE_DOWN: 'Pg Down'
     HOME: 'Home'
     END: 'End'
     PSCRN: 'Print'
