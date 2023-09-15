@@ -35,7 +35,7 @@ layers:
   - Y
   - {t: '''', s: '"'}
   - ''
-  - TAB
+  - $$tabler:arrows-left-right$$
   - A
   - R
   - S
@@ -54,10 +54,10 @@ layers:
   - D
   - V
   - $$tabler:arrow-big-up$$
-  - Symbols
-  - Navigation
-  - Navigation
-  - Symbols
+  - $$tabler:math-symbols$$
+  - $$tabler:wheel$$
+  - $$tabler:wheel$$
+  - $$tabler:math-symbols$$
   - $$tabler:arrow-big-up$$
   - K
   - H
@@ -71,15 +71,15 @@ layers:
   - ''
   - ''
   - BSPC
-  - {t: ESC, h: LCTRL}
-  - LGUI
-  - LALT
-  - {t: RET, h: RCTRL}
-  - SPACE
+  - {t: ESC, h: Ctrl}
+  - $$tabler:brand-windows$$
+  - Alt
+  - {t: '$$tabler:arrow-back$$', h: Ctrl}
+  - $$tabler:space$$
   - ''
   - ''
   - ''
-  - RALT
+  - AltGr
   - Qwerty
   Qwerty:
   - {t: ▽, type: trans}
@@ -199,9 +199,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '`'
-  - KP MINUS
-  - KP PLUS
-  - KP EQUAL
+  - '-'
+  - +
+  - '='
   - '#'
   - '?'
   - '!'
@@ -211,15 +211,15 @@ layers:
   - '~'
   - {t: ▽, type: trans}
   - '@'
-  - KP SLASH
-  - KP MULTIPLY
+  - /
+  - '*'
   - '|'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Symbols
+  - $$tabler:math-symbols$$
   - ''
   - ''
-  - Symbols
+  - $$tabler:math-symbols$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - $
@@ -267,14 +267,14 @@ layers:
   - F10
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - KP PLUS
+  - +
   - KP 7
   - KP 8
   - KP 9
-  - KP MULTIPLY
+  - '*'
   - F11
   - LC(LEFT)
-  - UP ARROW
+  - $$tabler:arrow-narrow-up$$
   - LC(RIGHT)
   - F12
   - {t: ▽, type: trans}
@@ -284,35 +284,35 @@ layers:
   - KP 5
   - KP 6
   - $
-  - HOME
-  - LEFT ARROW
-  - DOWN ARROW
-  - RIGHT ARROW
-  - END
+  - Home
+  - $$tabler:arrow-narrow-left$$
+  - $$tabler:arrow-narrow-down$$
+  - $$tabler:arrow-narrow-right$$
+  - End
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - KP MINUS
+  - '-'
   - KP 1
   - KP 2
   - KP 3
-  - KP SLASH
-  - KP NUM
+  - /
+  - NumLock
   - ''
-  - Navigation
-  - Navigation
+  - $$tabler:wheel$$
+  - $$tabler:wheel$$
   - ''
   - {t: ▽, type: trans}
   - MUTE
-  - PAGE UP
-  - PSCRN
-  - PAGE DOWN
+  - PgUp
+  - Print
+  - PgDown
   - VOL UP
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - KP 0
   - KP 0
-  - KP DOT
+  - .
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -348,7 +348,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
-  - TAB
+  - $$tabler:arrows-left-right$$
   - Q
   - W
   - E
@@ -372,7 +372,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
-  - LCTRL
+  - Ctrl
   - Z
   - X
   - C
@@ -390,11 +390,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gaming
-  - LALT
+  - Alt
   - ''
   - ''
   - ''
-  - SPACE
+  - $$tabler:space$$
   - ESC
   - '`'
   - {t: ▽, type: trans}
