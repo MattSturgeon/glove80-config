@@ -1,6 +1,15 @@
 name: Build
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:  # can be triggered manually
+  pull_request:
+  push:               # automatically run on changes to following paths
+    paths:
+      - "config/*.keymap"
+      - "config/glove80.conf"
+      - "config/info.json"
+      - "config/keymap.json"
+      - "config/default.nix"
 
 jobs:
   build:
