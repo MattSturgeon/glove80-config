@@ -1,41 +1,80 @@
+draw_config:
+  shrink_wide_legends: 5
+  append_colon_to_layer_header: false
+
 parse_config:
+  trans_legend:
+    tap: $$mdi:chevron-down$$
+    type: trans
+
   raw_binding_map:
     # Custom behavior
-    '&smart_lshift': '$$tabler:123$$'
-    '&smart_rshift': '$$tabler:123$$'
-    '&symbols': '$$tabler:code-plus$$'
-    '&tog 2': '$$tabler:code-plus$$'
-    '&nav': '$$tabler:wheel$$'
-    '&tog 3': '$$tabler:wheel$$'
+    '&smart_lshift': $$mdi:apple-keyboard-shift$$
+    '&smart_rshift': $$mdi:apple-keyboard-shift$$
+    '&symbols': $$mdi:symbol$$
+    '&tog 2': $$mdi:symbol$$
+    '&nav': $$mdi:ship-wheel$$
+    '&tog 3': $$mdi:ship-wheel$$
+    '&tog 4': $$mdi:controller$$
 
     # Moergo behavior
-    '&magic 5 0': '$$tabler:star$$'
-    '&bt_0': 'BT 0'
-    '&bt_1': 'BT 1'
-    '&bt_2': 'BT 2'
-    '&bt_3': 'BT 3'
-    '&bt BT_CLR': 'BT Clr'
-    '&bt BT_CLR_ALL': 'BT Clr All'
-    '&out OUT_USB': 'USB'
+    '&magic 5 0': $$mdi:creation-outline$$
+    '&bt_0':
+      shifted: $$mdi:bluetooth-connect$$
+      tap: ''
+      hold: 0
+    '&bt_1':
+      shifted: $$mdi:bluetooth-connect$$
+      tap: ''
+      hold: 1
+    '&bt_2':
+      shifted: $$mdi:bluetooth-connect$$
+      tap: ''
+      hold: 2
+    '&bt_3':
+      shifted: $$mdi:bluetooth-connect$$
+      tap: ''
+      hold: 3
+    '&bt BT_CLR': $$mdi:bluetooth-off$$
+    '&bt BT_CLR_ALL':
+      shifted: $$mdi:bluetooth-off$$
+      tap: ''
+      hold: All
+    '&out OUT_USB': $$mdi:usb$$
     '&bootloader': 'Boot'
     '&reset': 'Reset'
     '&sys_reset': 'Reset'
 
   zmk_keycode_map:
-    RET: '$$tabler:arrow-back$$'
-    RETURN: '$$tabler:arrow-back$$'
-    BSPC: '$$tabler:backspace$$'
-    BACKSPACE: '$$tabler:backspace$$'
-    SPACE: '$$tabler:space$$'
+    RET:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    RETURN:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    ENTER:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    ESC: $$mdi:keyboard-esc$$
+    TAB: $$mdi:keyboard-tab$$
+    LS(TAB): $$mdi:keyboard-tab-reverse$$
+    SPACE: $$mdi:keyboard-space$$
+    BACKSPACE:
+      type: backspace
+      tap: $$mdi:backspace$$
+    BSPC:
+      type: backspace
+      tap: $$mdi:backspace$$
+    DELETE: $$mdi:backspace-reverse-outline$$
+    DEL: $$mdi:backspace-reverse-outline$$
+
     LALT: 'Alt' # UK layout
     RALT: 'AltGr' # UK layout
     LCTRL: 'Ctrl'
     RCTRL: 'Ctrl'
-    LSHFT: '$$tabler:arrow-big-up$$'
-    RSHFT: '$$tabler:arrow-big-up$$'
-    LGUI: '$$tabler:location$$'
-    TAB: '$$tabler:arrows-left-right$$'
-    ESC: 'Esc'
+    LSHFT: $$mdi:apple-keyboard-shift$$
+    RSHFT: $$mdi:apple-keyboard-shift$$
+    LGUI: $$mdi:monitor-dashboard$$
     
     EXCLAMATION: '!'
     EXCL: '!'
@@ -102,6 +141,37 @@ parse_config:
     NUHS: '#'
     TILDE2: '~'
 
+    N1:
+      tap: 1
+      shifted: '!'
+    N2:
+      tap: 2
+      shifted: '"' # UK layout
+    N3:
+      tap: 3
+      shifted: '£' # UK layout
+    N4:
+      tap: 4
+      shifted: '$'
+    N5:
+      tap: 5
+      shifted: '%'
+    N6:
+      tap: 6
+      shifted: '^'
+    N7:
+      tap: 7
+      shifted: '&'
+    N8:
+      tap: 8
+      shifted: '*'
+    N9:
+      tap: 9
+      shifted: '('
+    N0:
+      tap: 0
+      shifted: ')'
+
     KP_NUM: 'Num Lock'
     KP_MINUS: '-'
     KP_PLUS: '+'
@@ -109,34 +179,32 @@ parse_config:
     KP_MULTIPLY: '*'
     KP_EQUAL: '='
     KP_DOT: '.'
-    KP_N1: '1'
-    KP_N2: '2'
-    KP_N3: '3'
-    KP_N4: '4'
-    KP_N5: '5'
-    KP_N6: '6'
-    KP_N7: '7'
-    KP_N8: '8'
-    KP_N9: '9'
-    KP_N0: '0'
+    KP_N1: 1
+    KP_N2: 2
+    KP_N3: 3
+    KP_N4: 4
+    KP_N5: 5
+    KP_N6: 6
+    KP_N7: 7
+    KP_N8: 8
+    KP_N9: 9
+    KP_N0: 0
 
-    LEFT_ARROW: '$$tabler:arrow-narrow-left$$'
-    RIGHT_ARROW: '$$tabler:arrow-narrow-right$$'
-    'LC(LEFT)': '$$tabler:arrow-move-left$$'
-    'LC(RIGHT)': '$$tabler:arrow-move-right$$'
-    UP_ARROW: '$$tabler:arrow-narrow-up$$'
-    UP: '$$tabler:arrow-narrow-up$$'
-    DOWN_ARROW: '$$tabler:arrow-narrow-down$$'
-    DOWN: '$$tabler:arrow-narrow-down$$'
+    'LC(LEFT)': $$mdi:chevron-double-left$$
+    'LC(RIGHT)': $$mdi:chevron-double-right$$
+    LEFT_ARROW: $$mdi:arrow-left-bold$$
+    RIGHT_ARROW: $$mdi:arrow-right-bold$$
+    UP_ARROW: $$mdi:arrow-up-bold$$
+    DOWN_ARROW: $$mdi:arrow-down-bold$$
     PAGE_UP: 'Pg Up'
     PAGE_DOWN: 'Pg Down'
     HOME: 'Home'
     END: 'End'
     PSCRN: 'Print'
 
-    C_PP: '$$tabler:player-play$$'
-    C_PREV: '$$tabler:player-skip-back$$'
-    C_NEXT: '$$tabler:player-skip-forward$$'
-    C_MUTE: '$$tabler:volume-3$$'
-    C_VOL_UP: '$$tabler:volume$$'
-    C_VOL_DN: '$$tabler:volume-2$$'
+    C_PP: $$mdi:play-pause$$
+    C_PREV: $$mdi:skip-previous$$
+    C_NEXT: $$mdi:skip-next$$
+    C_MUTE: $$mdi:volume-off$$
+    C_VOL_UP: $$mdi:volume-high$$
+    C_VOL_DN: $$mdi:volume-low$$
