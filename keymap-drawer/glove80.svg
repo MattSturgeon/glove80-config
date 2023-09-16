@@ -182,6 +182,26 @@ path.combo {
     visibility: hidden;
 }
 /* End Tabler Icons Cleanup */
+
+/* Traparent keys */
+.trans, .none, .ghost {
+  opacity: 0.4;
+}
+
+/* Tweak hold/shift styles */
+.shifted, .hold {
+  font-size: 18px;
+  text-anchor: middle;
+}
+.shifted {
+  translate: -25px 2px;
+  dominant-baseline: hanging;
+  fill: rgb(96, 125, 139);
+}
+.hold {
+  dominant-baseline: ideographic;
+  fill: rgb(96, 125, 139);
+}
 </style>
 <g transform="translate(30, 0)" class="layer-ColmakDH">
 <text x="0" y="28" class="label">ColmakDH</text>
