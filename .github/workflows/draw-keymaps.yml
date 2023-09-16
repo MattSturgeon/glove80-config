@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write  # allow workflow to commit to the repo
     with:
+      install_branch: "main" # `svg_extra_style` isn't in 0.11.0, so use `main` for now
       keymap_patterns: "config/*.keymap"        # path to the keymaps to parse
       config_path: "config/keymap_drawer.yaml"  # config file, ignored if not exists
       output_folder: "keymap-drawer"            # path to save produced SVG and keymap YAML files
