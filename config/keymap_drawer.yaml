@@ -1,6 +1,26 @@
 draw_config:
   shrink_wide_legends: 5
   append_colon_to_layer_header: false
+  svg_extra_style: |
+    /* Traparent keys */
+    .trans, .none, .ghost {
+      opacity: 0.4;
+    }
+
+    /* Tweak hold/shift styles */
+    .shifted, .hold {
+      font-size: 18px;
+      text-anchor: middle;
+    }
+    .shifted {
+      translate: -25px 2px;
+      dominant-baseline: hanging;
+      fill: rgb(96, 125, 139);
+    }
+    .hold {
+      dominant-baseline: ideographic;
+      fill: rgb(96, 125, 139);
+    }
 
 parse_config:
   trans_legend:
@@ -20,26 +40,23 @@ parse_config:
     # Moergo behavior
     '&magic 5 0': $$mdi:creation-outline$$
     '&bt_0':
-      shifted: $$mdi:bluetooth-connect$$
-      tap: ''
-      hold: 0
+      tap: $$mdi:bluetooth-connect$$
+      shifted: 0
     '&bt_1':
-      shifted: $$mdi:bluetooth-connect$$
-      tap: ''
-      hold: 1
+      tap: $$mdi:bluetooth-connect$$
+      shifted: 1
     '&bt_2':
-      shifted: $$mdi:bluetooth-connect$$
-      tap: ''
-      hold: 2
+      tap: $$mdi:bluetooth-connect$$
+      shifted: 2
     '&bt_3':
-      shifted: $$mdi:bluetooth-connect$$
-      tap: ''
-      hold: 3
-    '&bt BT_CLR': $$mdi:bluetooth-off$$
+      tap: $$mdi:bluetooth-connect$$
+      shifted: 3
+    '&bt BT_CLR':
+      tap: $$mdi:bluetooth-off$$
+      hold: Clear
     '&bt BT_CLR_ALL':
-      shifted: $$mdi:bluetooth-off$$
-      tap: ''
-      hold: All
+      tap: $$mdi:bluetooth-off$$
+      hold: Clr All
     '&out OUT_USB': $$mdi:usb$$
     '&bootloader': 'Boot'
     '&reset': 'Reset'
