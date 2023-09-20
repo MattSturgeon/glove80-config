@@ -5,17 +5,79 @@ on:
     paths:
       - "config/*.keymap"
       - "config/keymap_drawer.yaml"
+      - "config/info.json"
+env:
+  km_dr_version: main
+  km_dr_config: config/keymap_drawer.yaml
+  keyboard: glove80
+  output_folder: keymap-drawer
 
 jobs:
   draw:
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    runs-on: ubuntu-latest
+
     permissions:
-      contents: write  # allow workflow to commit to the repo
-    with:
-      install_branch: "main" # `svg_extra_style` isn't in 0.11.0, so use `main` for now
-      keymap_patterns: "config/*.keymap"        # path to the keymaps to parse
-      config_path: "config/keymap_drawer.yaml"  # config file, ignored if not exists
-      output_folder: "keymap-drawer"            # path to save produced SVG and keymap YAML files
-      parse_args: ""  # map of extra args to pass to `keymap parse`
-      draw_args: ""   # map of extra args to pass to `keymap draw`
-      commit_message: "[Draw] ${{ github.event.head_commit.message }}"
+      contents: write # Allow CI to write commits to the repo
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1 # Set to 2 if amending, or 1 if creating a new commit
+          submodules: recursive
+
+      - name: Install python dependencies
+        run: |
+          pip install "git+https://github.com/caksoylar/keymap-drawer.git@${{ env.km_dr_version }}"
+          pip install pyyaml
+
+      # TODO get keyboads & configs dynamically
+      - name: Parse keymap
+        run: |
+          # TODO set generic vars in one place globally
+          KEYMAP="config/${{ env.keyboard }}.keymap"
+          CONFIG="${{ env.km_dr_config }}"
+          OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
+
+          echo "Parsing keymap for ${{ env.keyboard }}"
+          keymap -c "$CONFIG" parse -z "$KEYMAP" > "$OUTPUT"
+
+      - name: Draw keymap for all layers
+        run: |
+          KEYMAP="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
+          CONFIG="${{ env.km_dr_config }}"
+          OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}.svg"
+
+          echo "Drawing all layers"
+          keymap -c "$CONFIG" draw "$KEYMAP" > "$OUTPUT"
+
+      - name: Draw seperate layer keymaps
+        run: |
+          # Ensure errors propagate when piping stdout
+          set -o pipefail
+
+          export KEYMAP="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
+          export CONFIG="${{ env.km_dr_config }}"
+
+          # Function to draw the given layer's keymap
+          draw() {
+            LAYER="$1"
+            OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}_${LAYER}.svg"
+
+            echo "Drawing $LAYER layer"
+            keymap -c "$CONFIG" draw "$KEYMAP" -s "$LAYER" > "$OUTPUT"
+          }
+          export -f draw # Ensure the draw function can be called by `parallel`'s subprocess
+
+          # Run `draw()` for each layer in the keymap. Up to 4 layers at a time...
+          echo "Drawing layers in parallel"
+          python3 .github/workflows/layers.py "$KEYMAP" \
+          | parallel --jobs 4 draw
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[Draw] ${{ github.event.head_commit.message || '(Manually triggered)' }}"
+          file_pattern: ${{ env.output_folder }}/*.svg ${{ env.output_folder }}/*.yaml
+
