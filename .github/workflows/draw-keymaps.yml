@@ -10,7 +10,7 @@ env:
   km_dr_version: main
   km_dr_config: config/keymap_drawer.yaml
   keymap_path: config/*.keymap
-  output_folder: keymap-drawer
+  output_folder: img
 
 jobs:
   draw:
