@@ -9,7 +9,7 @@ on:
 env:
   km_dr_version: main
   km_dr_config: config/keymap_drawer.yaml
-  keyboard: glove80
+  keymap_path: config/*.keymap
   output_folder: keymap-drawer
 
 jobs:
@@ -36,44 +36,57 @@ jobs:
       - name: Parse keymap
         run: |
           # TODO set generic vars in one place globally
-          KEYMAP="config/${{ env.keyboard }}.keymap"
           CONFIG="${{ env.km_dr_config }}"
-          OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
 
-          echo "Parsing keymap for ${{ env.keyboard }}"
-          keymap -c "$CONFIG" parse -z "$KEYMAP" > "$OUTPUT"
+          for KEYMAP in ${{ env.keymap_path }}; do
+            KEYBOARD=$(basename -s .keymap "$KEYMAP")
+            OUTPUT="${{ env.output_folder }}/${KEYBOARD}.yaml"
+
+            # TODO consider running through `parallel`?
+            echo "Parsing keymap for $KEYBOARD"
+            keymap -c "$CONFIG" parse -z "$KEYMAP" > "$OUTPUT"
+          done
 
       - name: Draw keymap for all layers
         run: |
-          KEYMAP="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
           CONFIG="${{ env.km_dr_config }}"
-          OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}.svg"
 
-          echo "Drawing all layers"
-          keymap -c "$CONFIG" draw "$KEYMAP" > "$OUTPUT"
+          # FIXME can glob false positeves, e.g. previous keymaps
+          for KEYMAP in ${{ env.output_folder }}/*.yaml; do
+            KEYBOARD=$(basename -s .yaml "$KEYMAP")
+            OUTPUT="${{ env.output_folder }}/${KEYBOARD}.svg"
+
+            echo "Drawing all layers for $KEYBOARD"
+            keymap -c "$CONFIG" draw "$KEYMAP" > "$OUTPUT"
+          done
+
 
       - name: Draw seperate layer keymaps
         run: |
           # Ensure errors propagate when piping stdout
           set -o pipefail
 
-          export KEYMAP="${{ env.output_folder }}/${{ env.keyboard }}.yaml"
           export CONFIG="${{ env.km_dr_config }}"
 
           # Function to draw the given layer's keymap
           draw() {
-            LAYER="$1"
-            OUTPUT="${{ env.output_folder }}/${{ env.keyboard }}_${LAYER}.svg"
+            KEYMAP="$1"
+            LAYER="$2"
+            KEYBOARD=$(basename -s .yaml "$KEYMAP")
+            OUTPUT="${{ env.output_folder }}/${KEYBOARD}_${LAYER}.svg"
 
-            echo "Drawing $LAYER layer"
+            echo "Drawing $LAYER layer for $KEYBOARD"
             keymap -c "$CONFIG" draw "$KEYMAP" -s "$LAYER" > "$OUTPUT"
           }
           export -f draw # Ensure the draw function can be called by `parallel`'s subprocess
 
-          # Run `draw()` for each layer in the keymap. Up to 4 layers at a time...
-          echo "Drawing layers in parallel"
-          python3 .github/workflows/layers.py "$KEYMAP" \
-          | parallel --jobs 4 draw
+          # FIXME can glob false positeves, e.g. previous keymaps
+          for KEYMAP in ${{ env.output_folder }}/*.yaml; do
+            # Run `draw()` for each layer in the keymap. Up to 4 layers at a time...
+            echo "Drawing layers in parallel"
+            python3 .github/workflows/layers.py "$KEYMAP" \
+            | parallel --jobs 4 draw "$KEYMAP"
+          done
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
