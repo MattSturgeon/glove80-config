@@ -213,7 +213,7 @@ layers:
   - '@'
   - /
   - '*'
-  - '|'
+  - \
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:symbol$$
