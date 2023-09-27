@@ -183,6 +183,8 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
+/* Note, it is dumb, but SVG requires that ampersand be escaped (even in CSS!): &amp; */
+
 /* Nord color scheme */
 :root {
     --dark1: #2e3440;
@@ -214,7 +216,7 @@ path.combo {
 }
 
 .info {
-    & .shifted, & .hold {
+    &amp; .shifted, &amp; .hold {
         fill: var(--dark1)
     }
 }
@@ -237,7 +239,7 @@ path.combo {
 
 .trans, .none, .ghost {
     opacity: 0.8!important;
-    & .tap {
+    &amp; .tap {
         fill: var(--blue2) !important;
     }
 }
@@ -247,7 +249,7 @@ path.combo {
 .keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-39, .keypos-40, .keypos-41, .keypos-42, .keypos-43, .keypos-44,
 .keypos-47, .keypos-48, .keypos-49, .keypos-50, .keypos-51, .keypos-58, .keypos-59, .keypos-60, .keypos-61, .keypos-62
 {
-    & rect {
+    &amp; rect {
         fill: var(--light1);
     }
 }
@@ -255,7 +257,7 @@ path.combo {
 /* Home keys */
 .keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-41, .keypos-42, .keypos-43, .keypos-44
 {
-    & rect {
+    &amp; rect {
         stroke: var(--purple);
     }
 }
