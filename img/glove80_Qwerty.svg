@@ -183,24 +183,88 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
-/* Traparent keys */
-.trans, .none, .ghost {
-  opacity: 0.4;
+/* Nord color scheme */
+:root {
+    --dark1: #2e3440;
+    --dark2: #3b4252;
+    --dark3: #434c5e;
+    --dark4: #4c566a;
+   --light1: #d8dee9;
+   --light2: #e5e9f0;
+   --light3: #eceff4;
+    --blue1: #8fbcbb;
+    --blue2: #88c0d0;
+    --blue3: #81a1c1;
+    --blue4: #5e81ac;
+      --red: #bf616a;
+   --orange: #d08770;
+   --yellow: #ebcb8b;
+    --green: #a3be8c;
+   --purple: #b48ead;
 }
 
-/* Tweak hold/shift styles */
+.key rect {
+    stroke: var(--light3);
+    fill: var(--light3);
+}
+
+.tap {
+    fill: var(--dark1);
+    
+}
+
+.info {
+    & .shifted, & .hold {
+        fill: var(--dark1)
+    }
+}
+
 .shifted, .hold {
   font-size: 18px;
+  fill: var(--blue4);
+}
+
+.shifted {
+    dominant-baseline: hanging;
+    text-anchor: end;
+    translate: 1.8em 0.5em;
+}
+
+.hold {
+  dominant-baseline: ideographic !important;
   text-anchor: middle;
 }
-.shifted {
-  translate: -25px 2px;
-  dominant-baseline: hanging;
-  fill: rgb(96, 125, 139);
+
+.trans, .none, .ghost {
+    opacity: 0.8!important;
+    & .tap {
+        fill: var(--blue2) !important;
+    }
 }
-.hold {
-  dominant-baseline: ideographic;
-  fill: rgb(96, 125, 139);
+
+/* Row 2,3,4 (alpha keys) */
+.keypos-23, .keypos-24, .keypos-25, .keypos-26, .keypos-27, .keypos-28, .keypos-29, .keypos-30, .keypos-31, .keypos-32,
+.keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-39, .keypos-40, .keypos-41, .keypos-42, .keypos-43, .keypos-44,
+.keypos-47, .keypos-48, .keypos-49, .keypos-50, .keypos-51, .keypos-58, .keypos-59, .keypos-60, .keypos-61, .keypos-62
+{
+    & rect {
+        fill: var(--light1);
+    }
+}
+
+/* Home keys */
+.keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-41, .keypos-42, .keypos-43, .keypos-44
+{
+    & rect {
+        stroke: var(--purple);
+    }
+}
+
+/* Thumb keys: */
+.keypos-52, .keypos-53, .keypos-54,     .keypos-55, .keypos-56, .keypos-57,
+.keypos-69, .keypos-70, .keypos-71,     .keypos-72, .keypos-73, .keypos-74
+{
+   /* TODO? */
 }
 </style>
 <g transform="translate(30, 0)" class="layer-Qwerty">

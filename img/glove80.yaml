@@ -406,7 +406,7 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   Magic:
-  - {t: '$$mdi:bluetooth-off$$', h: Clear}
+  - {t: '$$mdi:bluetooth-off$$', h: Clear, type: info}
   - ''
   - ''
   - ''
@@ -415,7 +415,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '$$mdi:bluetooth-off$$', h: Clr All}
+  - {t: '$$mdi:bluetooth-off$$', h: Clr All, type: info}
   - ''
   - ''
   - ''
@@ -458,8 +458,8 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '$$mdi:bluetooth-connect$$', s: '2'}
-  - {t: '$$mdi:bluetooth-connect$$', s: '3'}
+  - {t: '$$mdi:bluetooth-connect$$', s: '2', type: info}
+  - {t: '$$mdi:bluetooth-connect$$', s: '3', type: info}
   - ''
   - ''
   - ''
@@ -475,8 +475,8 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '$$mdi:bluetooth-connect$$', s: '0'}
-  - {t: '$$mdi:bluetooth-connect$$', s: '1'}
+  - {t: '$$mdi:bluetooth-connect$$', s: '0', type: info}
+  - {t: '$$mdi:bluetooth-connect$$', s: '1', type: info}
   - $$mdi:usb$$
   - ''
   - ''
