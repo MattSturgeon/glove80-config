@@ -2,6 +2,8 @@ draw_config:
   shrink_wide_legends: 5
   append_colon_to_layer_header: false
   svg_extra_style: |
+    /* Note, it is dumb, but SVG requires that ampersand be escaped (even in CSS!): &amp; */
+
     /* Nord color scheme */
     :root {
         --dark1: #2e3440;
@@ -33,7 +35,7 @@ draw_config:
     }
 
     .info {
-        & .shifted, & .hold {
+        &amp; .shifted, &amp; .hold {
             fill: var(--dark1)
         }
     }
@@ -56,7 +58,7 @@ draw_config:
 
     .trans, .none, .ghost {
         opacity: 0.8!important;
-        & .tap {
+        &amp; .tap {
             fill: var(--blue2) !important;
         }
     }
@@ -66,7 +68,7 @@ draw_config:
     .keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-39, .keypos-40, .keypos-41, .keypos-42, .keypos-43, .keypos-44,
     .keypos-47, .keypos-48, .keypos-49, .keypos-50, .keypos-51, .keypos-58, .keypos-59, .keypos-60, .keypos-61, .keypos-62
     {
-        & rect {
+        &amp; rect {
             fill: var(--light1);
         }
     }
@@ -74,7 +76,7 @@ draw_config:
     /* Home keys */
     .keypos-35, .keypos-36, .keypos-37, .keypos-38, .keypos-41, .keypos-42, .keypos-43, .keypos-44
     {
-        & rect {
+        &amp; rect {
             stroke: var(--purple);
         }
     }
