@@ -197,16 +197,16 @@ parse_config:
     BACKSLASH: '#' # UK layout
     BSLH: '#' # UK layout
     PIPE: '~' # UK layout
-    NON_US_BACKSLASH: \
+    NON_US_BSLH: '\'
+    NON_US_BACKSLASH: '\'
     PIPE2: '|'
-    NON_US_BSLH: '|'
     SEMICOLON: ;
     SEMI: ;
     COLON: ':'
-    SINGLE_QUOTE: ''''
-    SQT: ''''
-    APOSTROPHE: <
-    APOS: .
+    SINGLE_QUOTE: "'"
+    SQT: "'"
+    APOSTROPHE: "'"
+    APOS: "'"
     DOUBLE_QUOTES: '@' # UK layout
     DQT: '@' # UK layout
     COMMA: ','
