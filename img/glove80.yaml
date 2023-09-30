@@ -54,10 +54,10 @@ layers:
   - D
   - V
   - $$mdi:apple-keyboard-shift$$
-  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
+  - {t: $$num-nav$$, h: Num/Nav, type: info}
   - {t: '$$mdi:monitor-dashboard$$', h: Meta, type: info}
   - Alt
-  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
+  - {t: $$num-nav$$, h: Num/Nav, type: info}
   - $$mdi:apple-keyboard-shift$$
   - K
   - H
@@ -297,10 +297,10 @@ layers:
   - '3'
   - /
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
+  - {t: $$num-nav$$, h: Num/Nav, type: info}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
+  - {t: $$num-nav$$, h: Num/Nav, type: info}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:backspace-reverse-outline$$
   - $$mdi:volume-low$$
