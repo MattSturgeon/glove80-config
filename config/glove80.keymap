@@ -212,12 +212,12 @@
 
         layer_Symbols {
             bindings = <
-&trans  &trans     &trans        &trans           &trans                                                                                       &trans     &trans    &trans    &trans     &trans
-&trans  &trans     &trans        &trans           &trans           &trans                                                           &trans     &trans     &trans    &trans    &trans     &trans
-&trans  &kp SQT    &kp LT        &kp GT           &kp AT           &trans                                                           &trans     &kp PRCNT  &kp LBKT  &kp RBKT  &kp CARET  &trans
-&trans  &kp GRAVE  &kp KP_MINUS  &kp KP_PLUS      &kp KP_EQUAL     &kp NON_US_HASH                                                  &kp QMARK  &kp EXCL   &kp LPAR  &kp RPAR  &kp AMPS   &kp TILDE2
-&trans  &kp DQT    &kp KP_SLASH  &kp KP_MULTIPLY  &kp NON_US_BSLH  &trans           &trans  &none   &trans  &trans  &none   &trans  &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
-&trans  &trans     &trans        &trans           &trans                            &trans  &trans  &trans  &trans  &trans  &trans             &trans     &trans    &trans    &trans     &trans
+&trans  &trans                &trans        &trans           &trans                                                                                      &trans     &trans    &trans    &trans     &trans
+&trans  &trans                &trans        &trans           &trans          &trans                                                           &trans     &trans     &trans    &trans    &trans     &trans
+&trans  &kp GRAVE             &kp LT        &kp GT           &kp AT          &trans                                                           &trans     &kp PRCNT  &kp LBKT  &kp RBKT  &kp CARET  &trans
+&trans  &kp TILDE2            &kp KP_MINUS  &kp KP_PLUS      &kp KP_EQUAL    &kp NON_US_HASH                                                  &kp QMARK  &kp EXCL   &kp LPAR  &kp RPAR  &kp AMPS   &kp DOUBLE_QUOTES
+&trans  &kp NON_US_BACKSLASH  &kp KP_SLASH  &kp KP_MULTIPLY  &kp APOSTROPHE  &trans           &trans  &none   &trans  &trans  &none   &trans  &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
+&trans  &trans                &trans        &trans           &trans                           &trans  &trans  &trans  &trans  &trans  &trans             &trans     &trans    &trans    &trans     &trans
             >;
         };
 
