@@ -56,7 +56,7 @@ layers:
   - $$mdi:apple-keyboard-shift$$
   - $$mdi:ship-wheel$$
   - LEFT GUI
-  - LEFT ALT
+  - Alt
   - $$mdi:ship-wheel$$
   - $$mdi:apple-keyboard-shift$$
   - K
@@ -72,8 +72,8 @@ layers:
   - ''
   - {t: '$$mdi:backspace$$', type: backspace}
   - {t: ESCAPE, h: Symbols}
-  - {t: '$$mdi:keyboard-tab-reverse$$', h: LEFT CONTROL}
-  - {t: '$$mdi:keyboard-tab$$', h: RIGHT CONTROL}
+  - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
+  - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-return$$', h: Symbols}
   - $$mdi:keyboard-space$$
   - ''
@@ -272,11 +272,11 @@ layers:
   - '8'
   - '9'
   - '*'
-  - PG UP
+  - Pg Up
   - $$mdi:chevron-double-left$$
   - $$mdi:arrow-up-bold$$
   - $$mdi:chevron-double-right$$
-  - PG DN
+  - Pg Down
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - £
@@ -303,13 +303,13 @@ layers:
   - $$mdi:ship-wheel$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:backspace-reverse-outline$$
-  - VOLUME DOWN
+  - $$mdi:volume-low$$
   - $$mdi:volume-off$$
-  - VOLUME UP
+  - $$mdi:volume-high$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - KP NUMLOCK
+  - Num Lock
   - '0'
   - '0'
   - .
@@ -319,8 +319,8 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - PREVIOUS
-  - PLAY PAUSE
+  - $$mdi:skip-previous$$
+  - $$mdi:play-pause$$
   - $$mdi:skip-next$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
