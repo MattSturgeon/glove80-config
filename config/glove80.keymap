@@ -194,7 +194,7 @@
 &kp F11        &kp N1      &kp N2  &kp N3  &kp N4  &kp N5                                                                                                             &kp N6  &kp N7  &kp N8       &kp N9      &kp N0          &kp F12
 &none          &kp Q       &kp W   &kp F   &kp P   &kp B                                                                                                              &kp J   &kp L   &kp U        &kp Y       &quotes         &none
 &under_backsl  &kp A       &kp R   &kp S   &kp T   &kp G                                                                                                              &kp M   &kp N   &kp E        &kp I       &kp O           &dash_slash
-&none          &kp Z       &kp X   &kp C   &kp D   &kp V   &smart_lshift  &nav          &kp LEFT_GUI              &kp LEFT_ALT           &nav          &smart_rshift  &kp K   &kp H   &comma_semi  &dot_colon  &question_excl  &none
+&none          &kp Z       &kp X   &kp C   &kp D   &kp V   &smart_lshift  &nav          &kp LEFT_META             &kp LEFT_ALT           &nav          &smart_rshift  &kp K   &kp H   &comma_semi  &dot_colon  &question_excl  &none
 &tog 4         &magic 5 0  &none   &none   &none           &kp BSPC       &lt 2 ESCAPE  &mt LEFT_CONTROL LS(TAB)  &mt RIGHT_CONTROL TAB  &lt 2 RETURN  &kp SPACE              &none   &none        &none       &kp RALT        &tog 1
             >;
         };

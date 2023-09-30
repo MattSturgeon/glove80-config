@@ -106,6 +106,7 @@ parse_config:
 
   raw_binding_map:
     # Custom behavior
+    '&caps_word': $$mdi:apple-keyboard-caps$$
     '&smart_lshift': $$mdi:apple-keyboard-shift$$
     '&smart_rshift': $$mdi:apple-keyboard-shift$$
     '&symbols': $$mdi:symbol$$
@@ -146,9 +147,6 @@ parse_config:
     '&sys_reset': 'Reset'
 
   zmk_keycode_map:
-    '&caps_word': $$mdi:apple-keyboard-caps$$
-    Symbols: $$mdi:symbol$$
-
     RET:
       type: enter
       tap: $$mdi:keyboard-return$$
@@ -159,6 +157,7 @@ parse_config:
       type: enter
       tap: $$mdi:keyboard-return$$
     ESC: $$mdi:keyboard-esc$$
+    ESCAPE: $$mdi:keyboard-esc$$
     TAB: $$mdi:keyboard-tab$$
     LS(TAB): $$mdi:keyboard-tab-reverse$$
     SPACE: $$mdi:keyboard-space$$
@@ -180,8 +179,15 @@ parse_config:
     RCTRL: 'Ctrl'
     RIGHT_CONTROL: 'Ctrl'
     LSHFT: $$mdi:apple-keyboard-shift$$
+    LSHIFT: $$mdi:apple-keyboard-shift$$
+    LEFT_SHIFT: $$mdi:apple-keyboard-shift$$
     RSHFT: $$mdi:apple-keyboard-shift$$
+    RSHIFT: $$mdi:apple-keyboard-shift$$
+    RIGHT_SHIFT: $$mdi:apple-keyboard-shift$$
     LGUI: $$mdi:monitor-dashboard$$
+    LEFT_GUI: $$mdi:monitor-dashboard$$
+    LMETA: $$mdi:monitor-dashboard$$
+    LEFT_META: $$mdi:monitor-dashboard$$
     
     EXCLAMATION: '!'
     EXCL: '!'
