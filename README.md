@@ -2,7 +2,7 @@
 
 ![Layout](img/glove80_ColmakDH.svg)
 
-This repo contains my current keyboad config for my Glove80. It is based on the [official MoErgo Glove80 ZMK configuration](https://github.com/moergo-sc/glove80-zmk-config) and was initially built using MoErgo's [official Layout Editor](https://my.glove80.com), however now it is maintained using @nickcoutsos's excellent [Keymap Editor](https://github.com/nickcoutsos/keymap-editor) and the occarional manual tweaking of the `keymap` file.
+This repo contains my current keyboad config for my Glove80. It is based on the [official MoErgo Glove80 ZMK configuration](https://github.com/moergo-sc/glove80-zmk-config) and was initially built using MoErgo's [official Layout Editor](https://my.glove80.com), however now it is maintained using @nickcoutsos's excellent [Keymap Editor](https://github.com/nickcoutsos/keymap-editor) and the occasional manual tweaking of the `keymap` file.
 
 The keyboard firmware is built automatically using MoErgo's Github Actionr CI Workflow. CI is also used to automatically render keymap images of each layer using @caksoylar's excellent [Keymap Drawer](https://github.com/caksoylar/keymap-drawer).
 
