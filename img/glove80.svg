@@ -45,6 +45,9 @@
 <svg id="mdi:keyboard-esc">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-esc" viewBox="0 0 24 24"><path d="M1 7H7V9H3V11H7V13H3V15H7V17H1V7M11 7H15V9H11V11H13C14.11 11 15 11.9 15 13V15C15 16.11 14.11 17 13 17H9V15H13V13H11C9.9 13 9 12.11 9 11V9C9 7.9 9.9 7 11 7M19 7H21C22.11 7 23 7.9 23 9V10H21V9H19V15H21V14H23V15C23 16.11 22.11 17 21 17H19C17.9 17 17 16.11 17 15V9C17 7.9 17.9 7 19 7Z" /></svg>
 </svg>
+<svg id="mdi:keyboard-outline">
+<svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-outline" viewBox="0 0 24 24"><path d="M4,5A2,2 0 0,0 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7A2,2 0 0,0 20,5H4M4,7H20V17H4V7M5,8V10H7V8H5M8,8V10H10V8H8M11,8V10H13V8H11M14,8V10H16V8H14M17,8V10H19V8H17M5,11V13H7V11H5M8,11V13H10V11H8M11,11V13H13V11H11M14,11V13H16V11H14M17,11V13H19V11H17M8,14V16H16V14H8Z" /></svg>
+</svg>
 <svg id="mdi:keyboard-return">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-return" viewBox="0 0 24 24"><path d="M19,7V11H5.83L9.41,7.41L8,6L2,12L8,18L9.41,16.58L5.83,13H21V7H19Z" /></svg>
 </svg>
@@ -281,7 +284,6 @@ path.combo {
 
 /* Highlight WASD */
 .layer-Gaming {
-    /* Home keys */
     &amp; .keypos-25 rect {
         stroke: var(--purple);
     }
@@ -515,21 +517,24 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <use href="#mdi:apple-keyboard-shift" xlink:href="#mdi:apple-keyboard-shift" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:apple-keyboard-shift"/>
 </g>
-<g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:ship-wheel"/>
+<g transform="translate(419, 329) rotate(30.0)" class="key info keypos-53">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:ship-wheel"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 71%">Num+Nav</tspan></text>
 </g>
-<g transform="translate(466, 365) rotate(45.0)" class="key keypos-54">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:monitor-dashboard" xlink:href="#mdi:monitor-dashboard" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:monitor-dashboard"/>
+<g transform="translate(466, 365) rotate(45.0)" class="key info keypos-54">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:monitor-dashboard" xlink:href="#mdi:monitor-dashboard" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:monitor-dashboard"/>
+<text x="0" y="24" class="key info hold">Meta</text>
 </g>
 <g transform="translate(546, 361) rotate(-45.0)" class="key keypos-55">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Alt</text>
 </g>
-<g transform="translate(594, 327) rotate(-30.0)" class="key keypos-56">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:ship-wheel"/>
+<g transform="translate(594, 327) rotate(-30.0)" class="key info keypos-56">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:ship-wheel"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 71%">Num+Nav</tspan></text>
 </g>
 <g transform="translate(646, 304) rotate(-20.0)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -561,13 +566,15 @@ path.combo {
 <g transform="translate(980, 280)" class="key keypos-63">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(28, 336)" class="key keypos-64">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:controller" xlink:href="#mdi:controller" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:controller"/>
+<g transform="translate(28, 336)" class="key info keypos-64">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:controller" xlink:href="#mdi:controller" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:controller"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 83%">Gaming</tspan></text>
 </g>
-<g transform="translate(84, 336)" class="key keypos-65">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#moergo" xlink:href="#moergo" x="-21" y="-7" height="14" width="41.674418604651166" class="key tap glyph moergo"/>
+<g transform="translate(84, 336)" class="key info keypos-65">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#moergo" xlink:href="#moergo" x="-21" y="-7" height="14" width="41.674418604651166" class="key info tap glyph moergo"/>
+<text x="0" y="24" class="key info hold">Magic</text>
 </g>
 <g transform="translate(140, 308)" class="key keypos-66">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -619,9 +626,10 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">AltGr</text>
 </g>
-<g transform="translate(980, 336)" class="key keypos-79">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap"><tspan style="font-size: 83%">Qwerty</tspan></text>
+<g transform="translate(980, 336)" class="key info keypos-79">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:keyboard-outline" xlink:href="#mdi:keyboard-outline" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:keyboard-outline"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 83%">Qwerty</tspan></text>
 </g>
 <g class="combo combopos-0">
 <path d="M507,305 l-121,1" class="combo"/>
@@ -1503,9 +1511,10 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
 </g>
-<g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:ship-wheel"/>
+<g transform="translate(419, 329) rotate(30.0)" class="key info keypos-53">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:ship-wheel"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 71%">Num+Nav</tspan></text>
 </g>
 <g transform="translate(466, 365) rotate(45.0)" class="key trans keypos-54">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -1515,9 +1524,10 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
 </g>
-<g transform="translate(594, 327) rotate(-30.0)" class="key keypos-56">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:ship-wheel"/>
+<g transform="translate(594, 327) rotate(-30.0)" class="key info keypos-56">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:ship-wheel" xlink:href="#mdi:ship-wheel" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:ship-wheel"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 71%">Num+Nav</tspan></text>
 </g>
 <g transform="translate(646, 304) rotate(-20.0)" class="key trans keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -1871,9 +1881,10 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
 </g>
-<g transform="translate(28, 336)" class="key keypos-64">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:controller" xlink:href="#mdi:controller" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:controller"/>
+<g transform="translate(28, 336)" class="key info keypos-64">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key info"/>
+<use href="#mdi:controller" xlink:href="#mdi:controller" x="-7" y="-7" height="14" width="14.0" class="key info tap glyph mdi:controller"/>
+<text x="0" y="24" class="key info hold"><tspan style="font-size: 83%">Gaming</tspan></text>
 </g>
 <g transform="translate(84, 336)" class="key keypos-65">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

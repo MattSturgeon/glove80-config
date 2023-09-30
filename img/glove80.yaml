@@ -54,10 +54,10 @@ layers:
   - D
   - V
   - $$mdi:apple-keyboard-shift$$
-  - $$mdi:ship-wheel$$
-  - $$mdi:monitor-dashboard$$
+  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
+  - {t: '$$mdi:monitor-dashboard$$', h: Meta, type: info}
   - Alt
-  - $$mdi:ship-wheel$$
+  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
   - $$mdi:apple-keyboard-shift$$
   - K
   - H
@@ -65,8 +65,8 @@ layers:
   - {t: ., s: ':'}
   - {t: '?', s: '!'}
   - ''
-  - $$mdi:controller$$
-  - $$moergo$$
+  - {t: '$$mdi:controller$$', h: Gaming, type: info}
+  - {t: $$moergo$$, h: Magic, type: info}
   - ''
   - ''
   - ''
@@ -80,7 +80,7 @@ layers:
   - ''
   - ''
   - AltGr
-  - Qwerty
+  - {t: '$$mdi:keyboard-outline$$', h: Qwerty, type: info}
   Qwerty:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -297,10 +297,10 @@ layers:
   - '3'
   - /
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - $$mdi:ship-wheel$$
+  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - $$mdi:ship-wheel$$
+  - {t: '$$mdi:ship-wheel$$', h: Num+Nav, type: info}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:backspace-reverse-outline$$
   - $$mdi:volume-low$$
@@ -389,7 +389,7 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - $$mdi:controller$$
+  - {t: '$$mdi:controller$$', h: Gaming, type: info}
   - Alt
   - ''
   - ''
