@@ -256,6 +256,17 @@ path.combo {
 {
    /* TODO? */
 }
+
+/* Highlight WASD */
+.layer-Gaming {
+    /* Home keys */
+    &amp; .keypos-25 rect {
+        stroke: var(--purple);
+    }
+    &amp; .keypos-35 rect {
+        stroke: var(--light1);
+    }
+}
 </style>
 <g transform="translate(30, 0)" class="layer-ColmakDH">
 <text x="0" y="28" class="label">ColmakDH</text>
