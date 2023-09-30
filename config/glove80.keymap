@@ -105,6 +105,16 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        under_backsl: under_backsl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDER_BACKSL";
+            bindings =
+                <&kp UNDERSCORE>,
+                <&kp NON_US_BACKSLASH>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
     };
 };
 
@@ -180,12 +190,12 @@
 
         layer_ColmakDH {
             bindings = <
-&kp F1   &kp F2      &kp F3  &kp F4  &kp F5                                                                                                  &kp F6  &kp F7       &kp F8      &kp F9          &kp F10
-&kp F11  &kp N1      &kp N2  &kp N3  &kp N4  &kp N5                                                                                  &kp N6  &kp N7  &kp N8       &kp N9      &kp N0          &kp F12
-&none    &kp Q       &kp W   &kp F   &kp P   &kp B                                                                                   &kp J   &kp L   &kp U        &kp Y       &quotes         &none
-&kp TAB  &kp A       &kp R   &kp S   &kp T   &kp G                                                                                   &kp M   &kp N   &kp E        &kp I       &kp O           &dash_slash
-&none    &kp Z       &kp X   &kp C   &kp D   &kp V   &smart_lshift  &symbols       &nav      &nav      &symbols       &smart_rshift  &kp K   &kp H   &comma_semi  &dot_colon  &question_excl  &none
-&tog 4   &magic 5 0  &none   &none   &none           &kp BSPC       &mt LCTRL ESC  &kp LGUI  &kp LALT  &mt RCTRL RET  &kp SPACE              &none   &none        &none       &kp RALT        &tog 1
+&kp F1         &kp F2      &kp F3  &kp F4  &kp F5                                                                                                                             &kp F6  &kp F7       &kp F8      &kp F9          &kp F10
+&kp F11        &kp N1      &kp N2  &kp N3  &kp N4  &kp N5                                                                                                             &kp N6  &kp N7  &kp N8       &kp N9      &kp N0          &kp F12
+&none          &kp Q       &kp W   &kp F   &kp P   &kp B                                                                                                              &kp J   &kp L   &kp U        &kp Y       &quotes         &none
+&under_backsl  &kp A       &kp R   &kp S   &kp T   &kp G                                                                                                              &kp M   &kp N   &kp E        &kp I       &kp O           &dash_slash
+&none          &kp Z       &kp X   &kp C   &kp D   &kp V   &smart_lshift  &nav          &kp LEFT_GUI              &kp LEFT_ALT           &nav          &smart_rshift  &kp K   &kp H   &comma_semi  &dot_colon  &question_excl  &none
+&tog 4         &magic 5 0  &none   &none   &none           &kp BSPC       &lt 2 ESCAPE  &mt LEFT_CONTROL LS(TAB)  &mt RIGHT_CONTROL TAB  &lt 2 RETURN  &kp SPACE              &none   &none        &none       &kp RALT        &tog 1
             >;
         };
 
@@ -202,23 +212,23 @@
 
         layer_Symbols {
             bindings = <
-&trans  &trans     &trans        &trans           &trans                                                                                          &trans     &trans    &trans    &trans     &trans
-&trans  &trans     &trans        &trans           &trans           &trans                                                              &trans     &trans     &trans    &trans    &trans     &trans
-&trans  &kp SQT    &kp LT        &kp GT           &kp AT           &trans                                                              &trans     &kp PRCNT  &kp LBKT  &kp RBKT  &kp CARET  &trans
-&trans  &kp GRAVE  &kp KP_MINUS  &kp KP_PLUS      &kp KP_EQUAL     &kp NON_US_HASH                                                     &kp QMARK  &kp EXCL   &kp LPAR  &kp RPAR  &kp AMPS   &kp TILDE2
-&trans  &kp DQT    &kp KP_SLASH  &kp KP_MULTIPLY  &kp NON_US_BSLH  &trans           &trans  &tog 2  &none   &none   &tog 2  &trans     &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
-&trans  &trans     &trans        &trans           &trans                            &trans  &trans  &trans  &trans  &trans  &kp UNDER             &trans     &trans    &trans    &trans     &trans
+&trans  &trans     &trans        &trans           &trans                                                                                       &trans     &trans    &trans    &trans     &trans
+&trans  &trans     &trans        &trans           &trans           &trans                                                           &trans     &trans     &trans    &trans    &trans     &trans
+&trans  &kp SQT    &kp LT        &kp GT           &kp AT           &trans                                                           &trans     &kp PRCNT  &kp LBKT  &kp RBKT  &kp CARET  &trans
+&trans  &kp GRAVE  &kp KP_MINUS  &kp KP_PLUS      &kp KP_EQUAL     &kp NON_US_HASH                                                  &kp QMARK  &kp EXCL   &kp LPAR  &kp RPAR  &kp AMPS   &kp TILDE2
+&trans  &kp DQT    &kp KP_SLASH  &kp KP_MULTIPLY  &kp NON_US_BSLH  &trans           &trans  &trans  &none   &none   &trans  &trans  &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
+&trans  &trans     &trans        &trans           &trans                            &trans  &trans  &trans  &trans  &trans  &trans             &trans     &trans    &trans    &trans     &trans
             >;
         };
 
         layer_Navigation {
             bindings = <
-&trans  &trans        &trans     &trans     &trans                                                                                       &trans          &trans          &trans           &trans        &trans
-&trans  &kp F1        &kp F2     &kp F3     &kp F4      &kp F5                                                               &kp F6      &kp F7          &kp F8          &kp F9           &kp F10       &trans
-&trans  &kp KP_PLUS   &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_MULTIPLY                                                      &kp F11     &kp LC(LEFT)    &kp UP_ARROW    &kp LC(RIGHT)    &kp F12       &trans
-&trans  &kp HASH      &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp DLLR                                                             &kp HOME    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END       &trans
-&trans  &kp KP_MINUS  &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp KP_SLASH     &kp KP_NUM  &none   &tog 3  &tog 3  &none   &trans  &kp C_MUTE  &kp PAGE_UP     &kp PSCRN       &kp PAGE_DOWN    &kp C_VOL_UP  &trans
-&trans  &trans        &kp KP_N0  &kp KP_N0  &kp KP_DOT                   &trans      &trans  &trans  &trans  &trans  &trans              &kp C_PREV      &kp C_PP        &kp C_NEXT       &kp C_VOL_DN  &trans
+&trans  &trans          &trans     &trans     &trans                                                                                   &trans             &trans            &trans           &trans     &trans
+&trans  &trans          &trans     &trans     &trans      &trans                                                           &trans      &trans             &trans            &trans           &trans     &trans
+&trans  &kp KP_PLUS     &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_MULTIPLY                                                  &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN  &trans
+&trans  &kp HASH        &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_EQUAL                                                     &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END    &trans
+&trans  &kp KP_MINUS    &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp KP_SLASH     &trans  &tog 3  &trans  &trans  &tog 3  &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &trans     &trans
+&trans  &kp KP_NUMLOCK  &kp KP_N0  &kp KP_N0  &kp KP_DOT                   &trans  &trans  &trans  &trans  &trans  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans     &trans
             >;
         };
 
@@ -239,7 +249,7 @@
 &none        &none            &none            &none            &none            &none                                                             &none  &none  &none  &none  &none  &none
 &none        &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                   &none  &none  &none  &none  &none  &none
 &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &none  &none  &none  &none  &bootloader
-&reset       &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none  &reset
+&sys_reset   &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none  &sys_reset
 &none        &none            &none            &none            &none                             &bt_0  &bt_1  &out OUT_USB  &none  &none  &none         &none  &none  &none  &none  &none
             >;
         };
