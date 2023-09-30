@@ -90,7 +90,6 @@ draw_config:
 
     /* Highlight WASD */
     .layer-Gaming {
-        /* Home keys */
         &amp; .keypos-25 rect {
             stroke: var(--purple);
         }
@@ -117,14 +116,36 @@ parse_config:
     '&caps_word': $$mdi:apple-keyboard-caps$$
     '&smart_lshift': $$mdi:apple-keyboard-shift$$
     '&smart_rshift': $$mdi:apple-keyboard-shift$$
-    '&symbols': $$mdi:symbol$$
-    '&tog 2': $$mdi:symbol$$
-    '&nav': $$mdi:ship-wheel$$
-    '&tog 3': $$mdi:ship-wheel$$
-    '&tog 4': $$mdi:controller$$
+    '&tog 1':
+      tap: $$mdi:keyboard-outline$$
+      hold: Qwerty
+      type: info
+    '&symbols':
+      tap: $$mdi:symbol$$
+      hold: Symbols
+      type: info
+    '&tog 2':
+      tap: $$mdi:symbol$$
+      hold: Symbols
+      type: info
+    '&nav':
+      tap: $$mdi:ship-wheel$$
+      hold: Num+Nav
+      type: info
+    '&tog 3':
+      tap: $$mdi:ship-wheel$$
+      hold: Num+Nav
+      type: info
+    '&tog 4':
+      tap: $$mdi:controller$$
+      hold: Gaming
+      type: info
 
     # Moergo behavior
-    '&magic 5 0': $$moergo$$
+    '&magic 5 0':
+      tap: $$moergo$$
+      hold: Magic
+      type: info
     '&bt_0':
       type: info
       tap: $$mdi:bluetooth-connect$$
@@ -192,10 +213,22 @@ parse_config:
     RSHFT: $$mdi:apple-keyboard-shift$$
     RSHIFT: $$mdi:apple-keyboard-shift$$
     RIGHT_SHIFT: $$mdi:apple-keyboard-shift$$
-    LGUI: $$mdi:monitor-dashboard$$
-    LEFT_GUI: $$mdi:monitor-dashboard$$
-    LMETA: $$mdi:monitor-dashboard$$
-    LEFT_META: $$mdi:monitor-dashboard$$
+    LGUI:
+      tap: $$mdi:monitor-dashboard$$
+      hold: Meta
+      type: info
+    LEFT_GUI:
+      tap: $$mdi:monitor-dashboard$$
+      hold: Meta
+      type: info
+    LMETA:
+      tap: $$mdi:monitor-dashboard$$
+      hold: Meta
+      type: info
+    LEFT_META:
+      tap: $$mdi:monitor-dashboard$$
+      hold: Meta
+      type: info
     
     EXCLAMATION: '!'
     EXCL: '!'
