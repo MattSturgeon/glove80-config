@@ -22,7 +22,6 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
-
     behaviors {
         symbols: symbols {
             compatible = "zmk,behavior-tap-dance";
@@ -157,8 +156,24 @@
     };
 };
 
-    /* Automatically generated keymap */
+/* Automatically generated keymap */
+
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        dbl_shift {
+            bindings = <&caps_word>;
+            key-positions = <52 57>;
+            layers = <0>;
+        };
+
+        underscore {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <69 74>;
+            layers = <0>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
