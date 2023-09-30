@@ -216,19 +216,19 @@
 &trans  &trans     &trans        &trans           &trans           &trans                                                           &trans     &trans     &trans    &trans    &trans     &trans
 &trans  &kp SQT    &kp LT        &kp GT           &kp AT           &trans                                                           &trans     &kp PRCNT  &kp LBKT  &kp RBKT  &kp CARET  &trans
 &trans  &kp GRAVE  &kp KP_MINUS  &kp KP_PLUS      &kp KP_EQUAL     &kp NON_US_HASH                                                  &kp QMARK  &kp EXCL   &kp LPAR  &kp RPAR  &kp AMPS   &kp TILDE2
-&trans  &kp DQT    &kp KP_SLASH  &kp KP_MULTIPLY  &kp NON_US_BSLH  &trans           &trans  &trans  &none   &none   &trans  &trans  &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
+&trans  &kp DQT    &kp KP_SLASH  &kp KP_MULTIPLY  &kp NON_US_BSLH  &trans           &trans  &none   &trans  &trans  &none   &trans  &trans     &kp DLLR   &kp LBRC  &kp RBRC  &kp PIPE2  &trans
 &trans  &trans     &trans        &trans           &trans                            &trans  &trans  &trans  &trans  &trans  &trans             &trans     &trans    &trans    &trans     &trans
             >;
         };
 
         layer_Navigation {
             bindings = <
-&trans  &trans          &trans     &trans     &trans                                                                                   &trans             &trans            &trans           &trans     &trans
-&trans  &trans          &trans     &trans     &trans      &trans                                                           &trans      &trans             &trans            &trans           &trans     &trans
-&trans  &kp KP_PLUS     &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_MULTIPLY                                                  &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN  &trans
-&trans  &kp HASH        &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_EQUAL                                                     &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END    &trans
-&trans  &kp KP_MINUS    &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp KP_SLASH     &trans  &tog 3  &trans  &trans  &tog 3  &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &trans     &trans
-&trans  &kp KP_NUMLOCK  &kp KP_N0  &kp KP_N0  &kp KP_DOT                   &trans  &trans  &trans  &trans  &trans  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans     &trans
+&trans  &trans          &trans     &trans     &trans                                                                                           &trans             &trans            &trans           &trans     &trans
+&trans  &trans          &trans     &trans     &trans      &trans                                                                   &trans      &trans             &trans            &trans           &trans     &trans
+&trans  &kp KP_PLUS     &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp KP_MULTIPLY                                                          &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN  &trans
+&trans  &kp HASH        &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_EQUAL                                                             &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END    &trans
+&trans  &kp KP_MINUS    &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp KP_SLASH     &trans  &tog 3      &trans  &trans  &tog 3      &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &trans     &trans
+&trans  &kp KP_NUMLOCK  &kp KP_N0  &kp KP_N0  &kp KP_DOT                   &trans  &kp ESCAPE  &trans  &trans  &kp RETURN  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans     &trans
             >;
         };
 
