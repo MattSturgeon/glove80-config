@@ -486,3 +486,10 @@ layers:
   - ''
   - ''
   - ''
+combos:
+- p: [52, 57]
+  k: '&caps_word'
+  l: [ColmakDH]
+- p: [69, 74]
+  k: _
+  l: [ColmakDH]

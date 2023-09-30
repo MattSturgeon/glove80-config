@@ -599,6 +599,18 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap"><tspan style="font-size: 83%">Qwerty</tspan></text>
 </g>
+<g class="combo combopos-0">
+<path d="M507,305 l-121,1" class="combo"/>
+<path d="M507,305 l121,-1" class="combo"/>
+<rect rx="6" ry="6" x="493" y="292" width="28" height="26" class="combo"/>
+<text x="507" y="305" class="combo tap"><tspan style="font-size: 60%">&amp;caps_word</tspan></text>
+</g>
+<g class="combo combopos-1">
+<path d="M504,356 l-171,0" class="combo"/>
+<path d="M504,356 l171,0" class="combo"/>
+<rect rx="6" ry="6" x="490" y="343" width="28" height="26" class="combo"/>
+<text x="504" y="356" class="combo tap">_</text>
+</g>
 </g>
 </g>
 <g transform="translate(30, 512)" class="layer-Qwerty">
