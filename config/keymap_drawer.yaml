@@ -88,6 +88,17 @@ draw_config:
        /* TODO? */
     }
 
+    /* Highlight WASD */
+    .layer-Gaming {
+        /* Home keys */
+        &amp; .keypos-25 rect {
+            stroke: var(--purple);
+        }
+        &amp; .keypos-35 rect {
+            stroke: var(--light1);
+        }
+    }
+
 parse_config:
   trans_legend:
     tap: $$mdi:chevron-down$$
