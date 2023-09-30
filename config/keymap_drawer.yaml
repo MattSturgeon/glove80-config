@@ -146,6 +146,9 @@ parse_config:
     '&sys_reset': 'Reset'
 
   zmk_keycode_map:
+    '&caps_word': $$mdi:apple-keyboard-caps$$
+    Symbols: $$mdi:symbol$$
+
     RET:
       type: enter
       tap: $$mdi:keyboard-return$$
@@ -169,9 +172,13 @@ parse_config:
     DEL: $$mdi:backspace-reverse-outline$$
 
     LALT: 'Alt' # UK layout
+    LEFT_ALT: 'Alt' # UK layout
     RALT: 'AltGr' # UK layout
+    RIGHT_ALT: 'AltGr' # UK layout
     LCTRL: 'Ctrl'
+    LEFT_CONTROL: 'Ctrl'
     RCTRL: 'Ctrl'
+    RIGHT_CONTROL: 'Ctrl'
     LSHFT: $$mdi:apple-keyboard-shift$$
     RSHFT: $$mdi:apple-keyboard-shift$$
     LGUI: $$mdi:monitor-dashboard$$
@@ -273,6 +280,7 @@ parse_config:
       shifted: ')'
 
     KP_NUM: 'Num Lock'
+    KP_NUMLOCK: 'Num Lock'
     KP_MINUS: '-'
     KP_PLUS: '+'
     KP_SLASH: '/'
@@ -297,14 +305,20 @@ parse_config:
     UP_ARROW: $$mdi:arrow-up-bold$$
     DOWN_ARROW: $$mdi:arrow-down-bold$$
     PAGE_UP: 'Pg Up'
+    PG_UP: 'Pg Up'
     PAGE_DOWN: 'Pg Down'
+    PG_DN: 'Pg Down'
     HOME: 'Home'
     END: 'End'
     PSCRN: 'Print'
 
     C_PP: $$mdi:play-pause$$
+    C_PLAY_PAUSE: $$mdi:play-pause$$
     C_PREV: $$mdi:skip-previous$$
+    C_PREVIOUS: $$mdi:skip-previous$$
     C_NEXT: $$mdi:skip-next$$
     C_MUTE: $$mdi:volume-off$$
     C_VOL_UP: $$mdi:volume-high$$
+    C_VOLUME_UP: $$mdi:volume-high$$
     C_VOL_DN: $$mdi:volume-low$$
+    C_VOLUME_DOWN: $$mdi:volume-low$$
