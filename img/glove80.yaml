@@ -55,7 +55,7 @@ layers:
   - V
   - $$mdi:apple-keyboard-shift$$
   - $$mdi:ship-wheel$$
-  - LEFT GUI
+  - $$mdi:monitor-dashboard$$
   - Alt
   - $$mdi:ship-wheel$$
   - $$mdi:apple-keyboard-shift$$
@@ -71,7 +71,7 @@ layers:
   - ''
   - ''
   - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: ESCAPE, h: Symbols}
+  - {t: '$$mdi:keyboard-esc$$', h: Symbols}
   - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
   - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-return$$', h: Symbols}
@@ -314,7 +314,7 @@ layers:
   - '0'
   - .
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - ESCAPE
+  - $$mdi:keyboard-esc$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:keyboard-return$$', type: enter}
@@ -488,7 +488,7 @@ layers:
   - ''
 combos:
 - p: [52, 57]
-  k: '&caps_word'
+  k: $$mdi:apple-keyboard-caps$$
   l: [ColmakDH]
 - p: [69, 74]
   k: _
