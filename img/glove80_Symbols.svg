@@ -472,19 +472,19 @@ path.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
 </g>
-<g transform="translate(419, 329) rotate(30.0)" class="key trans keypos-53">
+<g transform="translate(419, 329) rotate(30.0)" class="key keypos-53">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(466, 365) rotate(45.0)" class="key trans keypos-54">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
 </g>
-<g transform="translate(466, 365) rotate(45.0)" class="key keypos-54">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-</g>
-<g transform="translate(546, 361) rotate(-45.0)" class="key keypos-55">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-</g>
-<g transform="translate(594, 327) rotate(-30.0)" class="key trans keypos-56">
+<g transform="translate(546, 361) rotate(-45.0)" class="key trans keypos-55">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <use href="#mdi:chevron-down" xlink:href="#mdi:chevron-down" x="-7" y="-7" height="14" width="14.0" class="key trans tap glyph mdi:chevron-down"/>
+</g>
+<g transform="translate(594, 327) rotate(-30.0)" class="key keypos-56">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g transform="translate(646, 304) rotate(-20.0)" class="key trans keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
