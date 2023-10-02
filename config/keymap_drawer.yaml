@@ -157,19 +157,19 @@ parse_config:
       type: info
     '&bt_0':
       type: info
-      tap: $$mdi:bluetooth-connect$$
+      tap: $$mdi:bluetooth$$
       shifted: 0
     '&bt_1':
       type: info
-      tap: $$mdi:bluetooth-connect$$
+      tap: $$mdi:bluetooth$$
       shifted: 1
     '&bt_2':
       type: info
-      tap: $$mdi:bluetooth-connect$$
+      tap: $$mdi:bluetooth$$
       shifted: 2
     '&bt_3':
       type: info
-      tap: $$mdi:bluetooth-connect$$
+      tap: $$mdi:bluetooth$$
       shifted: 3
     '&bt BT_CLR':
       type: info
