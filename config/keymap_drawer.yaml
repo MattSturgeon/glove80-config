@@ -378,3 +378,53 @@ parse_config:
     C_VOLUME_UP: $$mdi:volume-high$$
     C_VOL_DN: $$mdi:volume-low$$
     C_VOLUME_DOWN: $$mdi:volume-low$$
+
+    RGB_TOG:
+      tap: $$mdi:palette$$
+      hold: Toggle
+      type: info
+    RGB_EFF:
+      tap: $$mdi:palette$$
+      hold: Effect
+      type: info
+    RGB_BRI:
+      tap: $$mdi:palette$$
+      hold: Brightness
+      shifted: +
+      type: info
+    RGB_BRD:
+      tap: $$mdi:palette$$
+      hold: Brightness
+      shifted: '-'
+      type: info
+    RGB_HUI:
+      tap: $$mdi:palette$$
+      hold: Hue
+      shifted: +
+      type: info
+    RGB_HUD:
+      tap: $$mdi:palette$$
+      hold: Hue
+      shifted: '-'
+      type: info
+    RGB_SAI:
+      tap: $$mdi:palette$$
+      hold: Saturation
+      shifted: +
+      type: info
+    RGB_SAD:
+      tap: $$mdi:palette$$
+      hold: Saturation
+      shifted: '-'
+      type: info
+    RGB_SPI:
+      tap: $$mdi:palette$$
+      hold: Speed
+      shifted: +
+      type: info
+    RGB_SPD:
+      tap: $$mdi:palette$$
+      hold: Speed
+      shifted: '-'
+      type: info
+
