@@ -70,8 +70,8 @@ layers:
   - ''
   - ''
   - ''
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: '$$mdi:keyboard-esc$$', h: Symbols}
+  - $$mdi:backspace$$
+  - {t: Esc, h: Symbols}
   - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
   - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-return$$', h: Symbols}
@@ -236,7 +236,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:chevron-down$$', type: trans}
+  - {type: held}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -314,10 +314,10 @@ layers:
   - '0'
   - .
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - $$mdi:keyboard-esc$$
+  - Esc
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - $$mdi:keyboard-return$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:skip-previous$$
   - $$mdi:play-pause$$
@@ -395,7 +395,7 @@ layers:
   - ''
   - ''
   - $$mdi:keyboard-space$$
-  - $$mdi:keyboard-esc$$
+  - Esc
   - '`'
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
