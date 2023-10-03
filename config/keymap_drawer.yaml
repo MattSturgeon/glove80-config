@@ -56,6 +56,10 @@ draw_config:
       text-anchor: middle;
     }
 
+    .held rect {
+        fill: var(--blue1);
+    }
+
     .trans, .none, .ghost {
         opacity: 0.8!important;
         &amp; .tap {
@@ -116,6 +120,8 @@ draw_config:
 
 
 parse_config:
+  mark_alternate_layer_activators: true
+
   trans_legend:
     tap: $$mdi:chevron-down$$
     type: trans
