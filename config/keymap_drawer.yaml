@@ -123,28 +123,22 @@ parse_config:
   raw_binding_map:
     # Custom behavior
     '&caps_word': $$mdi:apple-keyboard-caps$$
-    '&smart_lshift': $$mdi:apple-keyboard-shift$$
-    '&smart_rshift': $$mdi:apple-keyboard-shift$$
+    '&smart_lshift': &sft $$mdi:apple-keyboard-shift$$
+    '&smart_rshift': *sft
     '&tog 1':
       tap: $$mdi:keyboard-outline$$
       hold: Qwerty
       type: info
-    '&symbols':
+    '&symbols': &symbols
       tap: $$mdi:symbol$$
       hold: Symbols
       type: info
-    '&tog 2':
-      tap: $$mdi:symbol$$
-      hold: Symbols
-      type: info
-    '&nav':
+    '&tog 2': *symbols
+    '&nav': &nav
       tap: $$num-nav$$
       hold: Num/Nav
       type: info
-    '&tog 3':
-      tap: $$num-nav$$
-      hold: Num/Nav
-      type: info
+    '&tog 3': *nav
     '&tog 4':
       tap: $$mdi:controller$$
       hold: Gaming
@@ -155,94 +149,85 @@ parse_config:
       tap: $$moergo$$
       hold: Magic
       type: info
-    '&bt_0':
+    '&bt_0': &bt
       type: info
       tap: $$mdi:bluetooth$$
       shifted: 0
     '&bt_1':
-      type: info
-      tap: $$mdi:bluetooth$$
+      <<: *bt
       shifted: 1
     '&bt_2':
-      type: info
-      tap: $$mdi:bluetooth$$
+      <<: *bt
       shifted: 2
     '&bt_3':
-      type: info
-      tap: $$mdi:bluetooth$$
+      <<: *bt
       shifted: 3
-    '&bt BT_CLR':
+    '&bt BT_CLR': &bt_clr
       type: info
       tap: $$mdi:bluetooth-off$$
       hold: Clear
     '&bt BT_CLR_ALL':
-      type: info
-      tap: $$mdi:bluetooth-off$$
+      <<: *bt_clr
       hold: Clr All
     '&out OUT_USB': $$mdi:usb$$
-    '&bootloader': 'Boot'
-    '&reset': 'Reset'
-    '&sys_reset': 'Reset'
+    '&bootloader': Boot
+    '&reset': Reset
+    '&sys_reset': Reset
 
   zmk_keycode_map:
-    RET:
-      type: enter
-      tap: $$mdi:keyboard-return$$
-    RETURN:
-      type: enter
-      tap: $$mdi:keyboard-return$$
-    ENTER:
-      type: enter
-      tap: $$mdi:keyboard-return$$
-    ESC: $$mdi:keyboard-esc$$
-    ESCAPE: $$mdi:keyboard-esc$$
+    RET: &ret $$mdi:keyboard-return$$
+    RETURN: *ret
+    ENTER: *ret
+    ESC: &esc Esc
+    ESCAPE: *esc
     TAB: $$mdi:keyboard-tab$$
     LS(TAB): $$mdi:keyboard-tab-reverse$$
     SPACE: $$mdi:keyboard-space$$
-    BACKSPACE:
-      type: backspace
-      tap: $$mdi:backspace$$
-    BSPC:
-      type: backspace
-      tap: $$mdi:backspace$$
-    DELETE: $$mdi:backspace-reverse-outline$$
-    DEL: $$mdi:backspace-reverse-outline$$
+    BSPC: &back $$mdi:backspace$$
+    BACKSPACE: *back
+    DEL: &del $$mdi:backspace-reverse-outline$$
+    DELETE: *del
 
-    LALT: 'Alt' # UK layout
-    LEFT_ALT: 'Alt' # UK layout
-    RALT: 'AltGr' # UK layout
-    RIGHT_ALT: 'AltGr' # UK layout
-    LCTRL: 'Ctrl'
-    LEFT_CONTROL: 'Ctrl'
-    RCTRL: 'Ctrl'
-    RIGHT_CONTROL: 'Ctrl'
-    LSHFT: $$mdi:apple-keyboard-shift$$
-    LSHIFT: $$mdi:apple-keyboard-shift$$
-    LEFT_SHIFT: $$mdi:apple-keyboard-shift$$
-    RSHFT: $$mdi:apple-keyboard-shift$$
-    RSHIFT: $$mdi:apple-keyboard-shift$$
-    RIGHT_SHIFT: $$mdi:apple-keyboard-shift$$
-    LGUI:
+    LALT: &lalt Alt
+    LEFT_ALT: *lalt
+    RALT: &ralt AltGr # UK layout
+    RIGHT_ALT: *ralt
+    LCTRL: &ctrl Ctrl
+    LEFT_CONTROL: *ctrl
+    RCTRL: *ctrl
+    RIGHT_CONTROL: *ctrl
+    LSHFT: *sft
+    LSHIFT: *sft
+    LEFT_SHIFT: *sft
+    RSHFT: *sft
+    RSHIFT: *sft
+    RIGHT_SHIFT: *sft
+    LGUI: &gui
       tap: $$mdi:monitor-dashboard$$
       hold: Meta
       type: info
-    LEFT_GUI:
-      tap: $$mdi:monitor-dashboard$$
-      hold: Meta
-      type: info
-    LMETA:
-      tap: $$mdi:monitor-dashboard$$
-      hold: Meta
-      type: info
-    LEFT_META:
-      tap: $$mdi:monitor-dashboard$$
-      hold: Meta
-      type: info
+    LEFT_GUI: *gui
+    LMETA: *gui
+    LEFT_META: *gui
     
+    COMMA: ','
+    PERIOD: .
+    DOT: .
+    QUESTION: '?'
+    QMARK: '?'
     EXCLAMATION: '!'
     EXCL: '!'
+    SEMICOLON: ;
+    SEMI: ;
+    COLON: ':'
+
+    SINGLE_QUOTE: "'"
+    SQT: "'"
+    APOSTROPHE: "'"
+    APOS: "'"
     AT_SIGN: '"' # UK layout
     AT: '"' # UK layout
+
     HASH: '£' # UK layout
     POUND: '£' # UK layout
     DOLLAR: $
@@ -255,10 +240,6 @@ parse_config:
     ASTERISK: '*'
     ASTRK: '*'
     STAR: '*'
-    LEFT_PARENTHESIS: (
-    LPAR: (
-    RIGHT_PARENTHESIS: )
-    RPAR: )
     EQUAL: '='
     PLUS: +
     MINUS: '-'
@@ -266,43 +247,38 @@ parse_config:
     UNDER: _
     SLASH: /
     FSLH: /
-    QUESTION: '?'
-    QMARK: '?'
-    BACKSLASH: '#' # UK layout
-    BSLH: '#' # UK layout
+    DOUBLE_QUOTES: '@' # UK layout
+    DQT: '@' # UK layout
+
+    LEFT_PARENTHESIS: (
+    LPAR: (
+    RIGHT_PARENTHESIS: )
+    RPAR: )
+    LEFT_BRACKET: '['
+    LBKT: '['
+    RIGHT_BRACKET: ']'
+    RBKT: ']'
+    LEFT_BRACE: '{'
+    LBRC: '{'
+    RIGHT_BRACE: '}'
+    RBRC: '}'
+    LESS_THAN: <
+    LT: <
+    GREATER_THAN: '>'
+    GT: '>'
+
+    # This block is kinda funky on UK layout:
+    BACKSLASH: &hash '#' # UK layout
+    BSLH: *hash
+    NUHS: *hash
+    NON_US_HASH: *hash
     PIPE: '~' # UK layout
+    TILDE2: '~' # UK layout
     NON_US_BSLH: '\'
     NON_US_BACKSLASH: '\'
     PIPE2: '|'
-    SEMICOLON: ;
-    SEMI: ;
-    COLON: ':'
-    SINGLE_QUOTE: "'"
-    SQT: "'"
-    APOSTROPHE: "'"
-    APOS: "'"
-    DOUBLE_QUOTES: '@' # UK layout
-    DQT: '@' # UK layout
-    COMMA: ','
-    LESS_THAN: <
-    LT: <
-    PERIOD: .
-    DOT: .
-    GREATER_THAN: '>'
-    GT: '>'
-    LEFT_BRACKET: '['
-    LBKT: '['
-    LEFT_BRACE: '{'
-    LBRC: '{'
-    RIGHT_BRACKET: ']'
-    RBKT: ']'
-    RIGHT_BRACE: '}'
-    RBRC: '}'
     GRAVE: '`'
     TILDE: '¬' # UK layout
-    NON_US_HASH: '#'
-    NUHS: '#'
-    TILDE2: '~'
 
     N1:
       tap: 1
@@ -356,17 +332,21 @@ parse_config:
 
     'LC(LEFT)': $$mdi:chevron-double-left$$
     'LC(RIGHT)': $$mdi:chevron-double-right$$
-    LEFT_ARROW: $$mdi:arrow-left-bold$$
-    RIGHT_ARROW: $$mdi:arrow-right-bold$$
-    UP_ARROW: $$mdi:arrow-up-bold$$
-    DOWN_ARROW: $$mdi:arrow-down-bold$$
-    PAGE_UP: 'Pg Up'
-    PG_UP: 'Pg Up'
-    PAGE_DOWN: 'Pg Down'
-    PG_DN: 'Pg Down'
-    HOME: 'Home'
-    END: 'End'
-    PSCRN: 'Print'
+    LEFT: &left $$mdi:arrow-left-bold$$
+    LEFT_ARROW: *left
+    RIGHT: &right $$mdi:arrow-right-bold$$
+    RIGHT_ARROW: *right
+    UP: &up $$mdi:arrow-up-bold$$
+    UP_ARROW: *up
+    DOWN: &down $$mdi:arrow-down-bold$$
+    DOWN_ARROW: *down
+    PG_UP: Pg Up
+    PAGE_UP: Pg Up
+    PG_DN: Pg Down
+    PAGE_DOWN: Pg Down
+    HOME: Home
+    END: End
+    PSCRN: Print
 
     C_PP: $$mdi:play-pause$$
     C_PLAY_PAUSE: $$mdi:play-pause$$
@@ -379,52 +359,43 @@ parse_config:
     C_VOL_DN: $$mdi:volume-low$$
     C_VOLUME_DOWN: $$mdi:volume-low$$
 
-    RGB_TOG:
+    RGB_TOG: &rgb
       tap: $$mdi:palette$$
       hold: Toggle
       type: info
     RGB_EFF:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Effect
-      type: info
     RGB_BRI:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Brightness
       shifted: +
-      type: info
     RGB_BRD:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Brightness
       shifted: '-'
-      type: info
     RGB_HUI:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Hue
       shifted: +
-      type: info
     RGB_HUD:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Hue
       shifted: '-'
-      type: info
     RGB_SAI:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Saturation
       shifted: +
-      type: info
     RGB_SAD:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Saturation
       shifted: '-'
-      type: info
     RGB_SPI:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Speed
       shifted: +
-      type: info
     RGB_SPD:
-      tap: $$mdi:palette$$
+      <<: *rgb
       hold: Speed
       shifted: '-'
-      type: info
 
