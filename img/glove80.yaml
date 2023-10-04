@@ -214,7 +214,7 @@ layers:
   - /
   - '*'
   - ''''
-  - RA(4)
+  - €
   - {t: '$$mdi:chevron-down$$', type: trans}
   - ''
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -306,10 +306,10 @@ layers:
   - $$mdi:volume-low$$
   - $$mdi:volume-off$$
   - $$mdi:volume-high$$
-  - PRINTSCREEN
+  - Print
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - Num Lock
+  - €
   - $
   - £
   - .
