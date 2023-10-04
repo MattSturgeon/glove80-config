@@ -348,7 +348,7 @@
 &trans  &kp KP_PLUS     &sev_f7     &eight_f8  &nine_f9    &mult_f11                                                             &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN        &trans
 &trans  &zero_f10       &four_f4    &five_f5   &six_f6     &eq_f12                                                               &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END          &trans
 &trans  &kp KP_MINUS    &one_f1     &two_f2    &three_f3   &kp KP_SLASH  &trans  &tog 3      &trans  &trans  &tog 3      &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &kp PRINTSCREEN  &trans
-&trans  &kp KP_NUMLOCK  &kp DOLLAR  &kp POUND  &kp KP_DOT                &trans  &kp ESCAPE  &trans  &trans  &kp RETURN  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans           &trans
+&trans  &kp RA(N4)  &kp DOLLAR  &kp POUND  &kp KP_DOT                &trans  &kp ESCAPE  &trans  &trans  &kp RETURN  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans           &trans
             >;
         };
 

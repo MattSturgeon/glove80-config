@@ -238,6 +238,8 @@ parse_config:
     POUND: '£' # UK layout
     DOLLAR: $
     DLLR: $
+    'RA(N4)': € # UK layout
+
     PERCENT: '%'
     PRCNT: '%'
     CARET: ^
@@ -352,7 +354,8 @@ parse_config:
     PAGE_DOWN: Pg Down
     HOME: Home
     END: End
-    PSCRN: Print
+    PSCRN: &print Print
+    PRINTSCREEN: *print
 
     C_PP: $$mdi:play-pause$$
     C_PLAY_PAUSE: $$mdi:play-pause$$
