@@ -238,18 +238,18 @@ path.combo {
     }
 }
 
-.shifted, .hold {
-  font-size: 18px;
+text.shifted, text.hold {
+  font-size: 8px;
   fill: var(--blue4);
 }
 
-.shifted {
+text.shifted {
     dominant-baseline: hanging;
     text-anchor: end;
-    translate: 1.8em 0.5em;
+    translate: 22px 2px;
 }
 
-.hold {
+text.hold {
   dominant-baseline: ideographic !important;
   text-anchor: middle;
 }
