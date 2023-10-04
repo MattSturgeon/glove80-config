@@ -190,8 +190,8 @@ layers:
   - <
   - '>'
   - '"'
-  - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:chevron-down$$', type: trans}
+  - £
+  - ':'
   - '%'
   - '['
   - ']'
@@ -214,14 +214,14 @@ layers:
   - /
   - '*'
   - ''''
-  - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: '$$mdi:chevron-down$$', type: trans}
-  - ''
-  - {t: '$$mdi:chevron-down$$', type: trans}
+  - RA(4)
   - {t: '$$mdi:chevron-down$$', type: trans}
   - ''
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
+  - ''
+  - {t: '$$mdi:chevron-down$$', type: trans}
+  - ;
   - $
   - '{'
   - '}'
@@ -268,10 +268,10 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - +
-  - '7'
-  - '8'
-  - '9'
-  - '*'
+  - {t: '7', s: F7}
+  - {t: '8', s: F8}
+  - {t: '9', s: F9}
+  - {t: '*', s: F11}
   - Pg Up
   - $$mdi:chevron-double-left$$
   - $$mdi:arrow-up-bold$$
@@ -279,11 +279,11 @@ layers:
   - Pg Down
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - £
-  - '4'
-  - '5'
-  - '6'
-  - '='
+  - {t: '0', s: F10}
+  - {t: '4', s: F4}
+  - {t: '5', s: F5}
+  - {t: '6', s: F6}
+  - {t: '=', s: F12}
   - Home
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
@@ -292,9 +292,9 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - '-'
-  - '1'
-  - '2'
-  - '3'
+  - {t: '1', s: F1}
+  - {t: '2', s: F2}
+  - {t: '3', s: F3}
   - /
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: $$num-nav$$, h: Num/Nav, type: info}
@@ -306,12 +306,12 @@ layers:
   - $$mdi:volume-low$$
   - $$mdi:volume-off$$
   - $$mdi:volume-high$$
-  - {t: '$$mdi:chevron-down$$', type: trans}
+  - PRINTSCREEN
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - Num Lock
-  - '0'
-  - '0'
+  - $
+  - £
   - .
   - {t: '$$mdi:chevron-down$$', type: trans}
   - Esc
