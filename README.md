@@ -1,6 +1,6 @@
 # My custom ZMK config for the MoErgo Glove80
 
-![Layout](img/glove80_ColmakDH.svg)
+![Photo](img/glove80_photo.png)
 
 This repo contains my current keyboad config for my Glove80. It is based on the [official MoErgo Glove80 ZMK configuration](https://github.com/moergo-sc/glove80-zmk-config) and was initially built using MoErgo's [official Layout Editor](https://my.glove80.com), however now it is maintained using @nickcoutsos's excellent [Keymap Editor](https://github.com/nickcoutsos/keymap-editor) and the occasional manual tweaking of the `keymap` file.
 
