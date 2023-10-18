@@ -297,10 +297,10 @@ layers:
   - {t: '3', s: F3}
   - /
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: $$num-nav$$, h: Num/Nav, type: info}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: $$num-nav$$, h: Num/Nav, type: info}
+  - {t: '$$mdi:chevron-down$$', type: trans}
+  - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - $$mdi:backspace-reverse-outline$$
   - $$mdi:volume-low$$
