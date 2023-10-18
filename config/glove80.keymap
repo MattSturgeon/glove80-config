@@ -27,40 +27,30 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SYMBOLS";
             #binding-cells = <0>;
-            bindings =
-                <&mo 2>,
-                <&to 2>;
+            bindings = <&mo 2>, <&to 2>;
         };
         nav: nav {
             compatible = "zmk,behavior-tap-dance";
             label = "NAV";
             #binding-cells = <0>;
-            bindings =
-                <&mo 3>,
-                <&to 3>;
+            bindings = <&mo 3>, <&to 3>;
         };
         smart_lshift: smart_lshift {
             compatible = "zmk,behavior-tap-dance";
             label = "SMART_LSHIFT";
             #binding-cells = <0>;
-            bindings =
-                <&kp LSHFT>,
-                <&caps_word>;
+            bindings = <&kp LSHFT>, <&caps_word>;
         };
         smart_rshift: smart_rshift {
             compatible = "zmk,behavior-tap-dance";
             label = "SMART_RSHIFT";
             #binding-cells = <0>;
-            bindings =
-                <&kp RSHFT>,
-                <&caps_word>;
+            bindings = <&kp RSHFT>, <&caps_word>;
         };
         quotes: quotes {
             compatible = "zmk,behavior-mod-morph";
             label = "QUOTES";
-            bindings =
-                <&kp SINGLE_QUOTE>,
-                <&kp AT>;
+            bindings = <&kp SINGLE_QUOTE>, <&kp AT>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -68,9 +58,7 @@
         question_excl: question_excl {
             compatible = "zmk,behavior-mod-morph";
             label = "QUESTION_EXCL";
-            bindings =
-                <&kp QUESTION>,
-                <&kp EXCL>;
+            bindings = <&kp QUESTION>, <&kp EXCL>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -78,9 +66,7 @@
         dash_slash: dash_slash {
             compatible = "zmk,behavior-mod-morph";
             label = "DASH_SLASH";
-            bindings =
-                <&kp MINUS>,
-                <&kp SLASH>;
+            bindings = <&kp MINUS>, <&kp SLASH>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -88,9 +74,7 @@
         dot_colon: dot_colon {
             compatible = "zmk,behavior-mod-morph";
             label = "DOT_COLON";
-            bindings =
-                <&kp DOT>,
-                <&kp COLON>;
+            bindings = <&kp DOT>, <&kp COLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -98,9 +82,7 @@
         comma_semi: comma_semi {
             compatible = "zmk,behavior-mod-morph";
             label = "COMMA_SEMI";
-            bindings =
-                <&kp COMMA>,
-                <&kp SEMI>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -108,9 +90,7 @@
         under_backsl: under_backsl {
             compatible = "zmk,behavior-mod-morph";
             label = "UNDER_BACKSL";
-            bindings =
-                <&kp UNDERSCORE>,
-                <&kp NON_US_BACKSLASH>;
+            bindings = <&kp UNDERSCORE>, <&kp NON_US_BACKSLASH>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -118,9 +98,7 @@
         zero_f10: zero_f10 {
             compatible = "zmk,behavior-mod-morph";
             label = "ZERO_F10";
-            bindings =
-                <&kp N0>,
-                <&kp F10>;
+            bindings = <&kp N0>, <&kp F10>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -128,9 +106,7 @@
         one_f1: one_f1 {
             compatible = "zmk,behavior-mod-morph";
             label = "ONE_F1";
-            bindings =
-                <&kp N1>,
-                <&kp F1>;
+            bindings = <&kp N1>, <&kp F1>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -138,9 +114,7 @@
         two_f2: two_f2 {
             compatible = "zmk,behavior-mod-morph";
             label = "TWO_F2";
-            bindings =
-                <&kp N2>,
-                <&kp F2>;
+            bindings = <&kp N2>, <&kp F2>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -148,9 +122,7 @@
         three_f3: three_f3 {
             compatible = "zmk,behavior-mod-morph";
             label = "THREE_F3";
-            bindings =
-                <&kp N3>,
-                <&kp F3>;
+            bindings = <&kp N3>, <&kp F3>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -158,9 +130,7 @@
         four_f4: four_f4 {
             compatible = "zmk,behavior-mod-morph";
             label = "FOUR_F4";
-            bindings =
-                <&kp N4>,
-                <&kp F4>;
+            bindings = <&kp N4>, <&kp F4>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -168,9 +138,7 @@
         five_f5: five_f5 {
             compatible = "zmk,behavior-mod-morph";
             label = "FIVE_F5";
-            bindings =
-                <&kp N5>,
-                <&kp F5>;
+            bindings = <&kp N5>, <&kp F5>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -178,9 +146,7 @@
         six_f6: six_f6 {
             compatible = "zmk,behavior-mod-morph";
             label = "SIX_F6";
-            bindings =
-                <&kp N6>,
-                <&kp F6>;
+            bindings = <&kp N6>, <&kp F6>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -188,9 +154,7 @@
         sev_f7: sev_f7 {
             compatible = "zmk,behavior-mod-morph";
             label = "SEV_F7";
-            bindings =
-                <&kp N7>,
-                <&kp F7>;
+            bindings = <&kp N7>, <&kp F7>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -198,9 +162,7 @@
         eight_f8: eight_f8 {
             compatible = "zmk,behavior-mod-morph";
             label = "EIGHT_F8";
-            bindings =
-                <&kp N8>,
-                <&kp F8>;
+            bindings = <&kp N8>, <&kp F8>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -208,9 +170,7 @@
         nine_f9: nine_f9 {
             compatible = "zmk,behavior-mod-morph";
             label = "NINE_F9";
-            bindings =
-                <&kp N9>,
-                <&kp F9>;
+            bindings = <&kp N9>, <&kp F9>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -218,9 +178,7 @@
         mult_f11: mult_f11 {
             compatible = "zmk,behavior-mod-morph";
             label = "MULT_F11";
-            bindings =
-                <&kp KP_MULTIPLY>,
-                <&kp F11>;
+            bindings = <&kp KP_MULTIPLY>, <&kp F11>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -228,9 +186,7 @@
         eq_f12: eq_f12 {
             compatible = "zmk,behavior-mod-morph";
             label = "EQ_F12";
-            bindings =
-                <&kp KP_EQUAL>,
-                <&kp F12>;
+            bindings = <&kp KP_EQUAL>, <&kp F12>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -280,9 +236,7 @@
         #binding-cells = <2>;
         flavor = "tap-preferred";
         tapping-term-ms = <200>;
-        bindings =
-            <&mo>,
-            <&rgb_ug_status_macro>;
+        bindings = <&mo>, <&rgb_ug_status_macro>;
     };
 };
 
@@ -343,12 +297,12 @@
 
         layer_Navigation {
             bindings = <
-&trans  &trans          &trans      &trans     &trans                                                                                        &trans             &trans            &trans           &trans           &trans
-&trans  &trans          &trans      &trans     &trans      &trans                                                                &trans      &trans             &trans            &trans           &trans           &trans
-&trans  &kp KP_PLUS     &sev_f7     &eight_f8  &nine_f9    &mult_f11                                                             &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN        &trans
-&trans  &zero_f10       &four_f4    &five_f5   &six_f6     &eq_f12                                                               &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END          &trans
-&trans  &kp KP_MINUS    &one_f1     &two_f2    &three_f3   &kp KP_SLASH  &trans  &tog 3      &trans  &trans  &tog 3      &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &kp PRINTSCREEN  &trans
-&trans  &kp RA(N4)  &kp DOLLAR  &kp POUND  &kp KP_DOT                &trans  &kp ESCAPE  &trans  &trans  &kp RETURN  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans           &trans
+&trans  &trans        &trans      &trans     &trans                                                                                        &trans             &trans            &trans           &trans           &trans
+&trans  &trans        &trans      &trans     &trans      &trans                                                                &trans      &trans             &trans            &trans           &trans           &trans
+&trans  &kp KP_PLUS   &sev_f7     &eight_f8  &nine_f9    &mult_f11                                                             &kp PG_UP   &kp LC(LEFT)       &kp UP_ARROW      &kp LC(RIGHT)    &kp PG_DN        &trans
+&trans  &zero_f10     &four_f4    &five_f5   &six_f6     &eq_f12                                                               &kp HOME    &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW  &kp END          &trans
+&trans  &kp KP_MINUS  &one_f1     &two_f2    &three_f3   &kp KP_SLASH  &trans  &trans      &trans  &trans  &trans      &trans  &kp DELETE  &kp C_VOLUME_DOWN  &kp C_MUTE        &kp C_VOLUME_UP  &kp PRINTSCREEN  &trans
+&trans  &kp RA(N4)    &kp DOLLAR  &kp POUND  &kp KP_DOT                &trans  &kp ESCAPE  &trans  &trans  &kp RETURN  &trans              &kp C_PREVIOUS     &kp C_PLAY_PAUSE  &kp C_NEXT       &trans           &trans
             >;
         };
 
