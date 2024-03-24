@@ -5,6 +5,14 @@
       url = "github:moergo-sc/zmk";
       flake = false;
     };
+    keymap-drawer = {
+      url = "github:caksoylar/keymap-drawer";
+      flake = false;
+    };
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -19,6 +27,8 @@
     self,
     nixpkgs,
     glove80-zmk,
+    keymap-drawer,
+    poetry2nix,
     flake-parts,
     devshell,
   } @ inputs:
@@ -51,6 +61,14 @@
           };
         in
           firmware.combine_uf2 glove80_left glove80_right;
+
+        packages.keymap-drawer = let
+          inherit (poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
+        in
+          mkPoetryApplication {
+            projectDir = keymap-drawer;
+            preferWheels = true;
+          };
 
         devshells.default.commands = [
           {
