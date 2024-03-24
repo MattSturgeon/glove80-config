@@ -36,6 +36,7 @@
       systems = nixpkgs.lib.systems.flakeExposed;
       imports = [
         inputs.devshell.flakeModule
+        ./drawer
       ];
 
       perSystem = {
@@ -61,14 +62,6 @@
           };
         in
           firmware.combine_uf2 glove80_left glove80_right;
-
-        packages.keymap-drawer = let
-          inherit (poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
-        in
-          mkPoetryApplication {
-            projectDir = keymap-drawer;
-            preferWheels = true;
-          };
 
         devshells.default.commands = [
           {
