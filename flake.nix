@@ -5,6 +5,14 @@
       url = "github:moergo-sc/zmk";
       flake = false;
     };
+    keymap-drawer = {
+      url = "github:caksoylar/keymap-drawer";
+      flake = false;
+    };
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -19,6 +27,8 @@
     self,
     nixpkgs,
     glove80-zmk,
+    keymap-drawer,
+    poetry2nix,
     flake-parts,
     devshell,
   } @ inputs:
@@ -26,6 +36,7 @@
       systems = nixpkgs.lib.systems.flakeExposed;
       imports = [
         inputs.devshell.flakeModule
+        ./drawer
       ];
 
       perSystem = {
