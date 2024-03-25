@@ -60,9 +60,20 @@ with lib; {
           pkgs.runCommandNoCC "${name}-parsed" {} ''
             echo "Parsing keymap for ${name}"
             mkdir -p "$out"
+
+            # Create a temp link because keymap-drawer uses the file's stem
+            # to guess the keyboard name...
+            # Using `file` directly won't work because it has a nar hash prefix.
+            # FIXME find workaround upstream
+            LINK="$out/${baseNameOf file}"
+            ln -s "${file}" "$LINK"
+
             ${exe} --config "${configFile}" \
-              parse --zmk-keymap "${file}" \
+              parse --zmk-keymap "$LINK" \
               > "$out/${name}.yaml"
+
+            # Cleanup temp link
+            rm "$LINK"
           '')
         keymapFiles;
       };
