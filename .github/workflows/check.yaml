@@ -1,0 +1,26 @@
+name: Check
+
+on:
+  workflow_dispatch:  # can be triggered manually
+  pull_request:
+  push:
+    paths-ignore:
+      - "LICENSE"
+      - "**.md"
+      - "img/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Setup nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Run flake checker
+        uses: DeterminateSystems/flake-checker-action@main
+      - name: Check flake
+        # TODO print to $GITHUB_STEP_SUMMARY
+        run: nix flake check

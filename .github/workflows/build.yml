@@ -36,8 +36,6 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
       - name: Setup nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: Run flake checker
-        uses: DeterminateSystems/flake-checker-action@main
       - name: Build Glove80 firmware
         run: nix build
       - name: Upload
