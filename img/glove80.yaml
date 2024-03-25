@@ -1,6 +1,6 @@
 layout: {qmk_keyboard: glove80}
 layers:
-  ColmakDH:
+  default:
   - F1
   - F2
   - F3
@@ -71,17 +71,17 @@ layers:
   - ''
   - ''
   - $$mdi:backspace$$
-  - {t: Esc, h: Symbols}
+  - {t: Esc, h: symbols}
   - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
   - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
-  - {t: '$$mdi:keyboard-return$$', h: Symbols}
+  - {t: '$$mdi:keyboard-return$$', h: symbols}
   - $$mdi:keyboard-space$$
   - ''
   - ''
   - ''
   - AltGr
   - {t: '$$mdi:keyboard-outline$$', h: Qwerty, type: info}
-  Qwerty:
+  qwerty:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -162,7 +162,7 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  Symbols:
+  symbols:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -243,7 +243,7 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  Navigation:
+  navigation:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -324,7 +324,7 @@ layers:
   - $$mdi:skip-next$$
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  Gaming:
+  gaming:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -405,7 +405,7 @@ layers:
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  Magic:
+  magic:
   - {t: '$$mdi:bluetooth-off$$', h: Clear, type: info}
   - ''
   - ''
@@ -489,7 +489,7 @@ layers:
 combos:
 - p: [52, 57]
   k: $$mdi:apple-keyboard-caps$$
-  l: [ColmakDH]
+  l: [default]
 - p: [69, 74]
   k: _
-  l: [ColmakDH]
+  l: [default]
