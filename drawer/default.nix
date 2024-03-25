@@ -72,9 +72,8 @@ with lib; {
         paths =
           concatMap (
             {
-              name,
               file,
-              data,
+              name,
               layers,
               ...
             }:
@@ -83,7 +82,7 @@ with lib; {
                   echo "Drawing all layers for ${name}"
                   mkdir -p "$out"
                   ${exe} --config "${configFile}" \
-                    draw ${file}" \
+                    draw "${file}" \
                     > "$out/${name}.svg"
                 '')
               ]
