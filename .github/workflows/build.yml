@@ -15,19 +15,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - id: date
+      - name: Calculate metadata
+        id: data
         run: |
-          date=$(date +'%Y-%m-%d')
-          echo "Date: $date"
+          # Calculate
+          full="${{ github.sha }}"
+          short="${full:0:6}"
+          date="$(date --utc +'%Y-%m-%d_%H-%M-%s')"
+
+          # Print to output
+          echo "full=$full" >> $GITHUB_OUTPUT
+          echo "short=$short" >> $GITHUB_OUTPUT
           echo "date=$date" >> $GITHUB_OUTPUT
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - uses: DeterminateSystems/flake-checker-action@main
+          echo "name_suffix=_${date}_${short}" >> $GITHUB_OUTPUT
+
+          # Print to stdout too
+          echo Metadata:
+          echo $GITHUB_OUTPUT
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Setup nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Run flake checker
+        uses: DeterminateSystems/flake-checker-action@main
       - name: Build Glove80 firmware
         run: nix build
-      - name: Upload result
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: glove80-${{ steps.date.outputs.date }}.uf2
+          name: glove80${{ steps.data.outputs.name_suffix }}.uf2
           path: result/glove80.uf2
