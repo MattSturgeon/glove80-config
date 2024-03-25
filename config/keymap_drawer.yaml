@@ -93,7 +93,7 @@ draw_config:
     }
 
     /* Highlight WASD */
-    .layer-Gaming {
+    .layer-gaming {
         &amp; .keypos-25 rect {
             stroke: var(--purple);
         }
