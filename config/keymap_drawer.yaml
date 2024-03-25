@@ -327,16 +327,16 @@ parse_config:
     KP_MULTIPLY: '*'
     KP_EQUAL: '='
     KP_DOT: '.'
-    KP_N1: 1
-    KP_N2: 2
-    KP_N3: 3
-    KP_N4: 4
-    KP_N5: 5
-    KP_N6: 6
-    KP_N7: 7
-    KP_N8: 8
-    KP_N9: 9
-    KP_N0: 0
+    KP_N1: '1'
+    KP_N2: '2'
+    KP_N3: '3'
+    KP_N4: '4'
+    KP_N5: '5'
+    KP_N6: '6'
+    KP_N7: '7'
+    KP_N8: '8'
+    KP_N9: '9'
+    KP_N0: '0'
 
     'LC(LEFT)': $$mdi:chevron-double-left$$
     'LC(RIGHT)': $$mdi:chevron-double-right$$
