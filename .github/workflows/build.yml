@@ -5,11 +5,8 @@ on:
   pull_request:
   push:               # automatically run on changes to following paths
     paths:
-      - "config/*.keymap"
-      - "config/glove80.conf"
-      - "config/info.json"
-      - "config/keymap.json"
-      - "config/default.nix"
+      - "**.lock"
+      - "config/**"
 
 jobs:
   build:
