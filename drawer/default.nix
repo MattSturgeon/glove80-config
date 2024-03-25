@@ -31,10 +31,10 @@ with lib; {
 
     # List of parsed keyboard configs, complete with various metadata
     parsedCfgs = mapAttrsToList (fname: type:
-      assert hasSuffix ".keymap" fname;
+      assert hasSuffix ".yaml" fname;
       assert type != "directory"; rec {
         file = parsedPkg + "/${fname}";
-        name = removeSuffix ".keymap" fname;
+        name = removeSuffix ".yaml" fname;
         data = importYaml file;
         layers = attrNames data.layers;
       }) (readDir parsedPkg);
