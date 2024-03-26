@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install nix
-        uses: DeterminateSystems/nix-installer-action@main
+        uses: cachix/install-nix-action@v25
       - name: Setup nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build Glove80 firmware
