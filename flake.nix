@@ -52,6 +52,9 @@
         in
           firmware.combine_uf2 glove80_left glove80_right;
 
+        # Expose devshells as a runnable app too
+        apps.default = config.devShells.default.flakeApp;
+
         devshells.default.commands = [
           {
             name = "flash";
