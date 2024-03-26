@@ -37,7 +37,7 @@ in {
             cmd="${exe} --config $keymap_dir/keymap_drawer.yaml"
 
             echo "Removing previous images"
-            rm "$out"/*
+            rm "$out"/*.{yaml,svg}
 
             for file in "$keymap_dir"/*.keymap
             do
