@@ -22,5 +22,18 @@ jobs:
         with:
           pr-labels: dependencies
           pr-assignees: MattSturgeon
-      - name: Print PR number
-        run: echo "Pull request \#${{ steps.update.outputs.pull-request-number }}."
+      - name: Summary
+        run: |
+          base="${{ github.server_url }}/${{ github.repository }}"
+          num="${{ steps.update.outputs.pull-request-number }}"
+          action="${{ steps.update.outputs.pull-request-operation }}"
+          url="${base}/pull/${num}"
+          pr="#${num}"
+
+          # stdout
+          echo "${pr} was ${action}."
+
+          # summary
+          echo "## Pull Request" >> $GITHUB_STEP_SUMMARY
+          echo "[${pr}](${url}) was ${action}." >> $GITHUB_STEP_SUMMARY
+
