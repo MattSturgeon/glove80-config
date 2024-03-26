@@ -24,29 +24,29 @@ The keyboard firmware is built automatically using MoErgo's Github Actionr CI Wo
 
 The main base layer is Colmak DH. Some punctuation is moved around uring Mod Morphs, and usuful stuff is placed on the thunb keys.
 
-![Colmak DH](img/glove80_ColmakDH.svg)
+![Default](img/glove80_default.svg)
 
 There is a secondary Qwerty base layer available as a fallback:
 
-![Qwerty](img/glove80_Qwerty.svg)
+![Qwerty](img/glove80_qwerty.svg)
 
 ### Gaming
 
 A gaming layer extends Qwerty, shifting WASD to a more comfortable position.
 
-![Gaming](img/glove80_Gaming.svg)
+![Gaming](img/glove80_gaming.svg)
 
 ### Symbols
 
 Readily accesible from a thumb key, the symbols layer attempts to find comfortable positions for commonly used programming symbols.
 
-![Symbols](img/glove80_Symbols.svg)
+![Symbols](img/glove80_symbols.svg)
 
 ### Numbers & Navigation
 
 Also on the thumb keys, a nav layer has a comfortable numpad and navigation keys.
 
-![Numbers & Navigation](img/glove80_Navigation.svg)
+![Numbers & Navigation](img/glove80_navigation.svg)
 
 I may consider switching from a numpad layout to a 2x 4-finger numrow in an attempt to keep everything closer to the home row. Alternatively, moving the `0` key up may have the same effect.
 
@@ -54,7 +54,7 @@ I may consider switching from a numpad layout to a 2x 4-finger numrow in an atte
 
 As standard on all Glove80 keyboards, a Magic layer provider access to system utitities, such as bluetooth settings and RGB lighting config.
 
-![Magic Layer](img/glove80_Magic.svg)
+![Magic Layer](img/glove80_magic.svg)
  
 ## Firmware Files
 To locate your firmware files and reflash your Glove80...
