@@ -2,25 +2,15 @@
 
 ![Photo](img/glove80_photo.png)
 
-This repo contains the current config for my Glove80 keyboard. It is based on [MoErgo's official config](https://github.com/moergo-sc/glove80-zmk-config) and [Gaétan Lepage's flake](https://github.com/GaetanLepage/glove80-zmk-config).
+Based on [MoErgo's template](https://github.com/moergo-sc/glove80-zmk-config) and [Gaétan Lepage's flake](https://github.com/GaetanLepage/glove80-zmk-config).
 
-The keymap was initially built using MoErgo's [official Layout Editor](https://my.glove80.com), however now it is maintained [Keymap Editor](https://github.com/nickcoutsos/keymap-editor) and occasional manual tweaking.
+This repo contains the current config for my Glove80 keyboard.
+The keymap was initially built using MoErgo's [Layout Editor](https://my.glove80.com),
+however it is now maintained using [Keymap Editor] with occasional manual tweaking.
 
 The keyboard firmware can be built locally using `nix`, which is also used for [automatic builds](https://github.com/MattSturgeon/glove80-config/actions/workflows/build.yml).
 
-[Keymap Drawer](https://github.com/caksoylar/keymap-drawer) is used to render images of each layer (see below).
-
-## Resources
-- @nickcoutsos's [Keymap Editor](https://github.com/nickcoutsos/keymap-editor).
-- @caksoylar's [Keymap Drawer](https://github.com/caksoylar/keymap-drawer).
-- MoErgo's official [Layout Editor](https://my.glove80.com).
-- The [official MoErgo Glove80 Support](https://moergo.com/glove80-support) web site. Glove80 documentation and other technical resources.
-- The [official MoErgo Discord Server](https://moergo.com/discord). Instant conversations with other Glove80 users.
-
-- The [official ZMK Documentation](https://zmk.dev/docs) web site. Find the answers to many of your questions about ZMK Firmware.
-- The [official ZMK Discord Server](https://discord.gg/8cfMkQksSB). Instant conversations with other ZMK developers and users. Great technical resource!
-
-- The [official Glove80 ZMK Distribution](https://github.com/moergo-sc/zmk). Repository for ZMK firmware customized for Glove80.
+[Keymap Drawer] is used to render images of each layer (see below).
 
 ## Layers
 
@@ -92,3 +82,20 @@ Bootloader mode can be entered two ways:
 - Hold the Magic key
 - Tap the outside home-row key (traditionally, `<CAPS>` or `'`)
 
+## Resources
+- [@nickcoutsos]'s [Keymap Editor].
+- [@caksoylar]'s [Keymap Drawer].
+
+- [Glove80 User Guide](https://docs.moergo.com/glove80-user-guide).
+- MoErgo's [Glove80 Support](https://moergo.com/glove80-support) page.
+- MoErgo's [Discord Server](https://moergo.com/discord).
+
+- [ZMK Documentation](https://zmk.dev/docs).
+- ZMK's [Discord Server](https://discord.gg/8cfMkQksSB).
+
+- MoErgo's [ZMK Distribution](https://github.com/moergo-sc/zmk).
+
+[@nickcoutsos]: https://github.com/nickcoutsos
+[@caksoylar]: https://github.com/caksoylar
+[Keymap Editor]: https://github.com/nickcoutsos/keymap-editor
+[Keymap Drawer]: https://github.com/caksoylar/keymap-drawer
