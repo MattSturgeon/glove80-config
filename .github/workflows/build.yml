@@ -18,7 +18,7 @@ jobs:
           # Calculate
           full="${{ github.sha }}"
           short="${full:0:6}"
-          date="$(date --utc +'%Y-%m-%d_%H-%M-%s')"
+          date="$(date --utc +'%Y-%m-%d_%H-%M-%S')"
 
           # Print to output
           echo "full=$full" >> $GITHUB_OUTPUT
@@ -28,7 +28,7 @@ jobs:
 
           # Print to stdout too
           echo Metadata:
-          echo $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
 
       - name: Checkout
         uses: actions/checkout@v4
