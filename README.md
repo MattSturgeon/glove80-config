@@ -8,7 +8,7 @@ This repo contains the current config for my Glove80 keyboard.
 The keymap was initially built using MoErgo's [Layout Editor](https://my.glove80.com),
 however it is now maintained using [Keymap Editor] with occasional manual tweaking.
 
-The keyboard firmware can be built locally using `nix`, which is also used for [automatic builds](https://github.com/MattSturgeon/glove80-config/actions/workflows/build.yml).
+The keyboard firmware can be built locally using `nix`, which is also used for [automatic builds].
 
 [Keymap Drawer] is used to render images of each layer (see below).
 
@@ -50,16 +50,22 @@ As standard on all Glove80 keyboards, a Magic layer provider access to system ut
 
 ![Magic Layer](img/glove80_magic.svg)
  
-## Flashing Firmware
+## Setup
 
-If nix is installed with flake support, the easiest method is the `flash` command included in the dev shell (`nix develop`).
+### Flashing Firmware
 
-This can also be run using `nix run . -- flash` without entering the dev shell.
+Before flashing, ensure `udisks2` is setup and enabled so that the keyboard can mount its bootloader storage device.
 
-- Ensure `udisk2` is running...
-  - [`services.udisks2.enable`](https://nixos.org/manual/nixos/stable/options#opt-services.udisks2.enable) NixOS option
-  - `systemctl status udisks2.service`
-  - `udisksctl status`
+- [`services.udisks2.enable`](https://nixos.org/manual/nixos/stable/options#opt-services.udisks2.enable) NixOS option
+- `systemctl status udisks2.service`
+- `udisksctl status`
+
+#### Flashing automatically
+
+The easiest way to flash the firmware is using the `flash` command in the `nix develop` shell.
+
+This can also be run without entering the dev shell by using `nix run . -- flash`.
+
 - Enter shell using `nix develop`
 - Connect the **right** half (in bootloader mode)
 - Run `flash`
@@ -67,7 +73,15 @@ This can also be run using `nix run . -- flash` without entering the dev shell.
 - Run `flash`
 - Done!
 
-## Quick reference
+#### Flashing manually
+
+You can also manually copy the `uf2` firmware file to the keyboard.
+
+The firmware can be built locally using `nix build` and will be written to `./result/glove80.uf2`.
+Alternatively, the firmware can be downloaded from [GitHub Actions][automatic builds]'s artifacts.
+
+Connect the keyboard half in bootloader mode, then copy the firmware file into the keyboard's USB storage.
+The keyboard will unmount when it has finished flashing.
 
 ### Booting into bootloader mode
 
@@ -163,6 +177,7 @@ Unpair the selected Bluetooth profile using the `BT_Clear` key (see [magic layer
 - MoErgo's [ZMK Distribution](https://github.com/moergo-sc/zmk).
 
 [magic layer]: #moergos-magic-layer
+[automatic builds]: https://github.com/MattSturgeon/glove80-config/actions/workflows/build.yml
 [@nickcoutsos]: https://github.com/nickcoutsos
 [@caksoylar]: https://github.com/caksoylar
 [Keymap Editor]: https://github.com/nickcoutsos/keymap-editor
