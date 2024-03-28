@@ -1,66 +1,69 @@
 {
   inputs,
-  lib,
   ...
-}: let
-in {
-    perSystem = {
-      config,
-      pkgs,
-      system,
-      ...
-    }: let
-      inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
-
-      exe = lib.getExe config.packages.keymap-drawer;
-      yq = lib.getExe pkgs.yq-go;
-    in {
-      packages = {
-        keymap-drawer = mkPoetryApplication {
-          projectDir = inputs.keymap-drawer;
-          preferWheels = true;
-          meta = {
-            mainProgram = "keymap";
-            homepage = "https://github.com/caksoylar/keymap-drawer";
-          };
+}: {
+  perSystem = {
+    config,
+    pkgs,
+    system,
+    ...
+  }: let
+    inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
+  in {
+    packages = {
+      keymap-drawer = mkPoetryApplication {
+        projectDir = inputs.keymap-drawer;
+        preferWheels = true;
+        meta = {
+          mainProgram = "keymap";
+          homepage = "https://github.com/caksoylar/keymap-drawer";
         };
-    };
+      };
 
-      devshells.default.commands = [
-        {
-          name = "draw";
-          command = /*bash*/ ''
-            set +e
 
-            out="$PRJ_ROOT"/img
-            keymap_dir="$PRJ_ROOT"/config
-            cmd="${exe} --config $keymap_dir/keymap_drawer.yaml"
+      # Draw SVG images of the keymap
+      draw = pkgs.writeShellApplication {
+        name = "draw";
+        runtimeInputs = [
+          pkgs.yq-go
+          config.packages.keymap-drawer
+        ];
+        text = ''
+          set +e
 
-            echo "Removing previous images"
-            rm "$out"/*.{yaml,svg}
+          out=./img
+          keymap_dir=./config
 
-            for file in "$keymap_dir"/*.keymap
+          cmd() {
+            keymap --config "$keymap_dir"/keymap_drawer.yaml "$@"
+          }
+
+          for file in "$keymap_dir"/*.keymap
+          do
+            name="$(basename --suffix=".keymap" "$file")"
+            config="$out/$name.yaml"
+            echo "Found $name keymap"
+
+            echo "- Removing old images"
+            rm "$out"/"$name".yaml
+            rm "$out"/"$name".svg
+            rm "$out"/"$name"_*.svg
+
+            echo "- Parsing keymap-drawer"
+            cmd  parse --zmk-keymap "$file" > "$config"
+
+            echo "- Drawing all layers"
+            cmd draw "$config" > "$out"/"$name".svg
+
+            layers=$(yq '.layers | keys | .[]' "$config")
+            for layer in $layers
             do
-              name="$(basename --suffix=".keymap" "$file")"
-              config="$out/$name.yaml"
-              echo "Found $name keymap"
-
-              echo "- Parsing keymap-drawer"
-              $cmd  parse --zmk-keymap "$file" > "$config"
-
-              echo "- Drawing all layers"
-              $cmd draw "$config" > "$out"/"$name".svg
-
-              layers=$(${yq} '.layers | keys | .[]' "$config")
-              for layer in $layers
-              do
-                echo "- Drawing $layer layer"
-                $cmd draw "$config" --select-layers "$layer" > "$out"/"$name"_"$layer".svg
-              done
+              echo "- Drawing $layer layer"
+              cmd draw "$config" --select-layers "$layer" > "$out"/"$name"_"$layer".svg
             done
-          '';
-          help = "Draw SVG images of the keymap";
-        }
-      ];
+          done
+        '';
+      };
+    };
   };
 }

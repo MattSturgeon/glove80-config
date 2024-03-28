@@ -62,15 +62,13 @@ Before flashing, ensure `udisks2` is setup and enabled so that the keyboard can 
 
 #### Flashing automatically
 
-The easiest way to flash the firmware is using the `flash` command in the `nix develop` shell.
+The easiest way to flash the firmware is using `nix run`.
 
-This can also be run without entering the dev shell by using `nix run . -- flash`.
-
-- Enter shell using `nix develop`
+- `cd` into the project root
 - Connect the **right** half (in bootloader mode)
-- Run `flash`
+- Run `nix run`
 - Connect the **left** half (in bootloader mode)
-- Run `flash`
+- Run `nix run`
 - Done!
 
 #### Flashing manually

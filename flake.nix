@@ -17,10 +17,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -30,12 +26,11 @@
     keymap-drawer,
     poetry2nix,
     flake-parts,
-    devshell,
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = nixpkgs.lib.systems.flakeExposed;
+
       imports = [
-        inputs.devshell.flakeModule
         ./drawer
       ];
 
@@ -45,6 +40,7 @@
         system,
         ...
       }: {
+        # `nix build`
         packages.default = let
           firmware = import glove80-zmk {inherit pkgs;};
 
@@ -63,31 +59,94 @@
         in
           firmware.combine_uf2 glove80_left glove80_right;
 
-        # Expose devshells as a runnable app too
-        apps.default = config.devShells.default.flakeApp;
+        # `nix run`
+        apps.default = {
+          type = "app";
+          program = config.packages.flash;
+        };
 
-        devshells.default.commands = [
-          {
-            name = "flash";
-            command = /*bash*/ ''
-              set +e
+        # Builds the firmware and copies it to the plugged-in keyboard half
+        packages.flash = pkgs.writeShellApplication {
+          name = "flash";
+          text = ''
+            set +e
 
-              root="/run/media/$(whoami)"
-              dest_folder_name=$(ls $root | grep GLV80)
-              dest="$root"/"$dest_folder_name"
+            # Disable -u because empty arrays are treated as "unbound"
+            set +u
 
-              if [[ -n "$dest_folder_name" && -d "$dest" ]]; then
-                echo Flashing to "$dest"
-                cp ${config.packages.default}/glove80.uf2 "$dest"/CURRENT.UF2
-                exit 0
-              else
-                echo "Error: Glove80 keyboard is not plugged-in"
-                exit 1
+            # Enable nullglob so that non-matching globs have no output
+            shopt -s nullglob
+
+            # Indent piped input 4 spaces
+            indent() {
+              sed -e 's/^/    /'
+            }
+
+            # Platform specific disk candidates
+            declare -a disks
+            if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+              # Linux/GNU
+              # - /run/media/<user>/<disk>
+              disks=(/run/media/"$(whoami)"/GLV80*)
+            elif [[ "$OSTYPE" == "darwin"* ]]; then
+              # Mac OSX
+              # - /Volumes/<disk>
+              disks=(/Volumes/GLV80*)
+            elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+              # Cygwin or Msys2
+              # - /<drive letter>
+              disks=(/?)
+            elif (grep -sq Microsoft /proc/version); then
+              # WSL
+              # - /mnt/<drive letter>
+              disks=(/mnt/?)
+            else
+              echo "Error: Unable to detect platform!"
+              echo "OSTYPE=$OSTYPE"
+              echo "/proc/version"
+              indent < /proc/version
+              exit 1
+            fi
+
+            # Disks that have a matching INFO_UF2
+            declare -a matches
+            for disk in "''${disks[@]}"; do
+              if (grep -sq Glove80 "$disk"/INFO_UF2.TXT); then
+                matches+=("$disk")
               fi
-            '';
-            help = "builds the firmware and copies it to the plugged-in keybaord half";
-          }
-        ];
+            done
+
+            # Assert we found exactly one keyboard
+            count="''${#matches[@]}"
+            if [[ "$count" -lt 1 ]]; then
+              # No matches. Exit
+              echo "Error: No Glove80 connected!"
+              exit 1
+            elif [[ "$count" -gt 1 ]]; then
+              # Multiple matches. Print them and exit
+              echo "Error: $count Glove80s connected. Expected 1!"
+              for i in "''${!matches[@]}"; do
+                kb="''${matches[$i]}"
+                # Print the relevant lines from INFO_UF2
+                echo "$((i + 1)). $kb"
+                grep --no-filename --color=never Glove80 "$kb"/INFO_UF2.TXT | indent
+              done
+              exit 1
+            fi
+
+            # We have a winner!
+            kb="''${matches[0]}"
+            echo "Found keyboard:"
+            echo "$kb"
+            indent < "$kb"/INFO_UF2.TXT
+            echo
+
+            # Flash by copying the firmware package
+            echo "Flashing firmware..."
+            cp -r "${config.packages.default}" "$kb" \
+              && echo "Done!" || echo "Error: Unable to flash firmware!"
+          '';
+        };
 
         formatter = pkgs.alejandra;
       };
