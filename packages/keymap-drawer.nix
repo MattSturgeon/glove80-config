@@ -1,13 +1,8 @@
 {inputs, ...}: {
-  perSystem = {
-    config,
-    pkgs,
-    system,
-    ...
-  }: let
-    inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
+  perSystem = {pkgs, ...}: let
+    poetry2nix = inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;};
   in {
-    packages.keymap-drawer = mkPoetryApplication {
+    packages.keymap-drawer = poetry2nix.mkPoetryApplication {
       projectDir = inputs.keymap-drawer;
       preferWheels = true;
       meta = {
