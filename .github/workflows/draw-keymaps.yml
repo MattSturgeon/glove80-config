@@ -31,10 +31,25 @@ jobs:
       - name: Draw keymaps
         run: nix run .#draw
 
-      # TODO print to $GITHUB_STEP_SUMMARY
       - name: Commit changes
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[Draw] ${{ github.event.head_commit.message || '(Manually triggered)' }}"
           file_pattern: img/**
+
+      - name: Summarize
+        run: |
+          sha="${{ steps.commit.outputs.commit_hash }}"
+          url="${{ github.server_url }}/${{ github.repository }}/commit/$sha"
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ -z "$sha" ]]; then
+            echo "Nothing to commit!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "[\`${sha:0:6}\`]($url) pushed to \`${{ github.ref_name }}\`." >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo >> $GITHUB_STEP_SUMMARY
 
