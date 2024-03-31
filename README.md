@@ -161,11 +161,11 @@ Unpair the selected Bluetooth profile using the `BT_Clear` key (see [magic layer
 
 
 ## Resources
-- [@nickcoutsos]'s [Keymap Editor].
+- [@nickcoutsos]'s [Keymap Editor] ([webapp](https://nickcoutsos.github.io/keymap-editor)).
 - [@caksoylar]'s [Keymap Drawer].
 
-- [Glove80 User Guide](https://docs.moergo.com/glove80-user-guide).
-- [Glove80 Troubleshooting](https://docs.moergo.com/troubleshooting-faqs).
+- [Glove80 User Guide](https://docs.moergo.com/glove80-user-guide/).
+- [Glove80 Troubleshooting](https://docs.moergo.com/troubleshooting-faqs/).
 - MoErgo's [Glove80 Support](https://moergo.com/glove80-support) page.
 - MoErgo's [Discord Server](https://moergo.com/discord).
 
