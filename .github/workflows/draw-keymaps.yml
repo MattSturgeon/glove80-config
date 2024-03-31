@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit changes
         id: commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "[Draw] ${{ github.event.head_commit.message || '(Manually triggered)' }}"
           file_pattern: img/**
