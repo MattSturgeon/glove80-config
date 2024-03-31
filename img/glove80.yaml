@@ -490,6 +490,3 @@ combos:
 - p: [52, 57]
   k: $$mdi:apple-keyboard-caps$$
   l: [default]
-- p: [69, 74]
-  k: _
-  l: [default]
