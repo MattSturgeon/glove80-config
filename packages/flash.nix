@@ -92,17 +92,27 @@ writeShellApplication {
 
       # We have a winner!
       kb="''${matches[0]}"
-      echo "Found keyboard:"
+      echo "Flashing keyboard:"
       echo "$kb"
       indent < "$kb"/INFO_UF2.TXT
-      echo
 
-      # Flash by copying the firmware package
-      if gum spin --title "Flashing firmware..." \
-        -- cp -Tfr ${firmware} "$kb"
-      then echo "Firmaware flashed!"
-      else echo "Error flashing firmware!"
+      # Ask before flashing...
+      if gum confirm "Are you sure?" \
+          --default="yes" \
+          --affirmative="Flash" \
+          --negative="Cancel"
+      then
+        # Flash by copying the firmware package
+        if gum spin --title "Flashing firmware..." \
+          -- cp -Tfr ${firmware} "$kb"
+        then echo "Firmaware flashed!"
+        else echo "Error flashing firmware!"
+        fi
+      else
+        echo "Cancelled"
       fi
+
+      echo # blankline
     }
 
     # Run the script
