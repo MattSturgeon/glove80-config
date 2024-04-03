@@ -1,5 +1,6 @@
 {
   flake,
+  gum,
   writeShellApplication,
 }:
 let
@@ -8,6 +9,9 @@ in
 # Builds the firmware and copies it to the plugged-in keyboard half
 writeShellApplication {
   name = "flash";
+  runtimeInputs = [
+    gum # Use Charm Gum for fancy interactivity
+  ];
   text = ''
     set +e
 
@@ -16,6 +20,9 @@ writeShellApplication {
 
     # Enable nullglob so that non-matching globs have no output
     shopt -s nullglob
+
+    # Style
+    export GUM_SPIN_SPINNER="minidot"
 
     # Indent piped input 4 spaces
     indent() {
@@ -82,8 +89,10 @@ writeShellApplication {
     echo
 
     # Flash by copying the firmware package
-    echo "Flashing firmware..."
-    cp -r ${firmware} "$kb" \
-      && echo "Done!" || echo "Error: Unable to flash firmware!"
+    if gum spin --title "Flashing firmware..." \
+      -- cp -Tfr ${firmware} "$kb"
+    then echo "Firmaware flashed!"
+    else echo "Error flashing firmware!"
+    fi
   '';
 }
