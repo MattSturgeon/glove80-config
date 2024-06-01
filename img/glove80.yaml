@@ -72,7 +72,7 @@ layers:
   - ''
   - $$mdi:backspace$$
   - {t: Esc, h: symbols}
-  - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
+  - {t: 'Sft+ $$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-return$$', h: symbols}
   - $$mdi:keyboard-space$$
@@ -214,7 +214,7 @@ layers:
   - /
   - '*'
   - ''''
-  - €
+  - {t: AGr+ 4, s: AGr+ $}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - ''
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -236,7 +236,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {type: held}
+  - {type: held alternate}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -273,9 +273,9 @@ layers:
   - {t: '9', s: F9}
   - {t: '*', s: F11}
   - Pg Up
-  - $$mdi:chevron-double-left$$
+  - Ctl+ $$mdi:arrow-left-bold$$
   - $$mdi:arrow-up-bold$$
-  - $$mdi:chevron-double-right$$
+  - Ctl+ $$mdi:arrow-right-bold$$
   - Pg Down
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -309,7 +309,7 @@ layers:
   - Print
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - €
+  - {t: AGr+ 4, s: AGr+ $}
   - $
   - £
   - .
