@@ -33,9 +33,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install nix
-        uses: cachix/install-nix-action@v25
+        uses: cachix/install-nix-action@v31
       - name: Setup nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@main
+        uses: cachix/cachix-action@v16
+        with:
+          name: matt-sturgeon
+          authToken: ${{ secrets.CACHIX_TOKEN }}
       - name: Build Glove80 firmware
         run: nix build
       - name: Upload
