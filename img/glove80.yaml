@@ -1,4 +1,4 @@
-layout: {qmk_keyboard: glove80}
+layout: {zmk_keyboard: glove80}
 layers:
   default:
   - F1
@@ -72,7 +72,7 @@ layers:
   - ''
   - $$mdi:backspace$$
   - {t: Esc, h: symbols}
-  - {t: 'Sft+ $$mdi:keyboard-tab$$', h: Ctrl}
+  - {t: '$$mdi:keyboard-tab-reverse$$', h: Ctrl}
   - {t: '$$mdi:keyboard-tab$$', h: Ctrl}
   - {t: '$$mdi:keyboard-return$$', h: symbols}
   - $$mdi:keyboard-space$$
@@ -214,7 +214,7 @@ layers:
   - /
   - '*'
   - ''''
-  - {t: AGr+ 4, s: AGr+ $}
+  - €
   - {t: '$$mdi:chevron-down$$', type: trans}
   - ''
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -273,9 +273,9 @@ layers:
   - {t: '9', s: F9}
   - {t: '*', s: F11}
   - Pg Up
-  - Ctl+ $$mdi:arrow-left-bold$$
+  - $$mdi:chevron-double-left$$
   - $$mdi:arrow-up-bold$$
-  - Ctl+ $$mdi:arrow-right-bold$$
+  - $$mdi:chevron-double-right$$
   - Pg Down
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
@@ -309,7 +309,7 @@ layers:
   - Print
   - {t: '$$mdi:chevron-down$$', type: trans}
   - {t: '$$mdi:chevron-down$$', type: trans}
-  - {t: AGr+ 4, s: AGr+ $}
+  - €
   - $
   - £
   - .
