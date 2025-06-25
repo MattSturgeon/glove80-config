@@ -5,10 +5,6 @@
       url = "github:moergo-sc/zmk";
       flake = false;
     };
-    keymap-drawer = {
-      url = "github:caksoylar/keymap-drawer";
-      flake = false;
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

@@ -1,16 +1,11 @@
 {
-  perSystem = {
-    config,
-    pkgs,
-    system,
-    ...
-  }: {
+  perSystem = { pkgs, ... }: {
     # Draw SVG images of the keymap
     packages.draw = pkgs.writeShellApplication {
       name = "draw";
-      runtimeInputs = [
-        pkgs.yq-go
-        config.packages.keymap-drawer
+      runtimeInputs = with pkgs; [
+        yq-go
+        keymap-drawer
       ];
       text = ''
         set +e

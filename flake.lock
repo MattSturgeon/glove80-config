@@ -36,22 +36,6 @@
         "type": "github"
       }
     },
-    "keymap-drawer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750980029,
-        "narHash": "sha256-eBcNswXSAqs2j14emIbGjOM42REVNnb0aOf1qmSDOCM=",
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
-        "rev": "020e04ff51f2196d22ed1453a35a0b2d832eef50",
-        "type": "github"
-      },
-      "original": {
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1751011381,
@@ -72,7 +56,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "glove80-zmk": "glove80-zmk",
-        "keymap-drawer": "keymap-drawer",
         "nixpkgs": "nixpkgs"
       }
     }
