@@ -15,13 +15,9 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = nixpkgs.lib.systems.flakeExposed;
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
       imports = [
         ./packages
@@ -30,14 +26,10 @@
       perSystem = {
         config,
         pkgs,
-        system,
         ...
       }: {
         # `nix run`
-        apps.default = {
-          type = "app";
-          program = config.packages.flash;
-        };
+        apps.default.program = config.packages.flash;
 
         # `nix build`
         packages.default = config.packages.firmware;
