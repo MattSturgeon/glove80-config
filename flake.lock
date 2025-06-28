@@ -39,11 +39,11 @@
     "keymap-drawer": {
       "flake": false,
       "locked": {
-        "lastModified": 1749158183,
-        "narHash": "sha256-DMkbC+cB4Dhec2n6yM0PuYWLiYFRqI3CdwoTyDbVcsw=",
+        "lastModified": 1750980029,
+        "narHash": "sha256-eBcNswXSAqs2j14emIbGjOM42REVNnb0aOf1qmSDOCM=",
         "owner": "caksoylar",
         "repo": "keymap-drawer",
-        "rev": "74a1526a6875f66378a88a1dcf2078790212d8b5",
+        "rev": "020e04ff51f2196d22ed1453a35a0b2d832eef50",
         "type": "github"
       },
       "original": {
@@ -54,11 +54,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1749794982,
-        "narHash": "sha256-Kh9K4taXbVuaLC0IL+9HcfvxsSUx8dPB5s5weJcc9pc=",
+        "lastModified": 1751011381,
+        "narHash": "sha256-krGXKxvkBhnrSC/kGBmg5MyupUUT5R6IBCLEzx9jhMM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+        "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
         "type": "github"
       },
       "original": {
