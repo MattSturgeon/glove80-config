@@ -1,9 +1,4 @@
-{
-  lib,
-  self,
-  inputs,
-  ...
-}:
+{ lib, ... }:
 let
   inherit (builtins)
     mapAttrs
@@ -25,29 +20,7 @@ let
 in
 {
   perSystem =
-    {
-      pkgs,
-      self',
-      inputs',
-      ...
-    }:
-    let
-      # TODO: simplify with an overlay
-      callPackage = lib.callPackageWith (
-        pkgs
-        // {
-          flake = {
-            inherit (self') packages;
-            inherit
-              self
-              self'
-              inputs
-              inputs'
-              ;
-          };
-        }
-      );
-    in
+    { pkgs, ... }:
     {
       packages = lib.pipe ./. [
         readDir
@@ -55,7 +28,7 @@ in
         (mapAttrs (name: type: if type == "directory" then ./${name}/package.nix else ./${name}))
         (filterAttrs (name: pkg: hasSuffix ".nix" (toString pkg)))
         (filterAttrs (name: lib.pathIsRegularFile))
-        (mapAttrs' (name: pkg: lib.nameValuePair (removeSuffix ".nix" name) (callPackage pkg { })))
+        (mapAttrs' (name: pkg: lib.nameValuePair (removeSuffix ".nix" name) (pkgs.callPackage pkg { })))
       ];
     };
 }

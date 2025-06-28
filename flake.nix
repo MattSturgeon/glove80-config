@@ -17,6 +17,7 @@
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
       imports = [
+        ./flake-pkgs.nix
         ./packages/flake-module.nix
       ];
 
