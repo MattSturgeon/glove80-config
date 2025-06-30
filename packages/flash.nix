@@ -58,11 +58,11 @@ writeShellApplication {
 
     # Assert we found exactly one keyboard
     count="''${#matches[@]}"
-    if [[ "$count" -lt 1 ]]; then
+    if (( count < 1 )); then
       # No matches. Exit
       echo "Error: No Glove80 connected!"
       exit 1
-    elif [[ "$count" -gt 1 ]]; then
+    elif (( count > 1 )); then
       # Multiple matches. Print them and exit
       echo "Error: $count Glove80s connected. Expected 1!"
       for i in "''${!matches[@]}"; do
