@@ -8,7 +8,11 @@ writeShellApplication {
   name = "draw";
   runtimeInputs = [
     yq-go
-    keymap-drawer
+    (keymap-drawer.overrideAttrs (old: {
+      pythonRelaxDeps = old.pythonRelaxDeps ++ [
+        "tree-sitter"
+      ];
+    }))
   ];
   text = ''
     set +e
