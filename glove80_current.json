@@ -3,11 +3,11 @@
   "firmware_api_version": "1",
   "locale": "en-US",
   "uuid": "",
-  "parent_uuid": "74ef4acb-e6fc-42a9-a609-3c6698ba4bd6",
+  "parent_uuid": "be9b1c1d-5747-4546-b384-9119fdb21297",
   "unlisted": false,
-  "date": 1769014697,
+  "date": 1772075872,
   "creator": "xkonti",
-  "title": "TailorKey v4.2m Bilateral",
+  "title": "TailorKey v4.2m Bilateral v2",
   "notes": "🧿TK42mBIL: https://sites.google.com/view/tailorkey\nTailorKey is a zero-code, Glorious Engrammer–inspired layout that’s beginner-friendly yet fully pro-ready. \nIt delivers a full set of advanced features, including:\n• Advanced Home Row Mods with Bilateral Combinations Enforcement (Sunaku)\n• Autoshift\n• Symbol, Cursor, and Gaming Layers\n• RGB Lighting (optional)\n• Advanced Mouse Emulation\n• Combo Keys\n\nTailorKey leverages the Layout Editor’s powerful built-in (native) functions, enabling easy customization, or allows you to simply copy its capabilities to craft your own unique layout—all without relying on Custom-Defined Behaviors.\n\n🖱️Mouse Emulation\nEnable mouse emulation by turning on the HID_POINTING option under Advanced Configuration.\nIf you’re using mouse emulation for the first time, unpair the keyboard from all host computers and then re-pair it.\n\nThis zero-code layout is developed by @moosy. More information is available on https://sites.google.com/view/tailorkey\nTailorKey is inspired by the fully featured Glorious Engrammer, developed by @sunaku. Please see https://github.com/sunaku/glove80-keymaps/releases for the Glorious Engrammer layout.\n\n💡 Tip: Want to use only part of this layout (like Home-Row Mods or AutoShift)? Just copy the relevant layer—its associated macros and hold-tap actions will be included automatically.\n📺 See how it's done here:  https://www.youtube.com/watch?v=m72eTAEUWho",
   "tags": [
     "qwerty",
@@ -22,12 +22,12 @@
       "value": "y"
     },
     {
-      "paramName": "HID_POINTING_SMOOTH_SCROLLING",
+      "paramName": "DEEP_SLEEP",
       "value": "y"
     },
     {
-      "paramName": "DEEP_SLEEP",
-      "value": "y"
+      "paramName": "HID_POINTING_SMOOTH_SCROLLING",
+      "value": "n"
     }
   ],
   "layout_parameters": {},
@@ -661,8 +661,7 @@
         "value": "&delete_v3_TKZ",
         "params": [
           {
-            "value": 20,
-            "params": []
+            "value": 20
           },
           {
             "value": "DEL"
@@ -5220,9 +5219,9 @@
           }
         ],
         "decoration": {
-          "background": "#fffec9",
+          "label": "Copy",
           "icon": "fa-copy",
-          "label": "Copy"
+          "background": "#fffec9"
         }
       },
       {
@@ -9312,8 +9311,7 @@
         ]
       },
       {
-        "value": "&none",
-        "params": []
+        "value": "&none"
       },
       {
         "value": "&none"
@@ -9398,8 +9396,7 @@
         "value": "&none"
       },
       {
-        "value": "&none",
-        "params": []
+        "value": "&none"
       },
       {
         "value": "&none"
@@ -9589,8 +9586,7 @@
         ]
       },
       {
-        "value": "&none",
-        "params": []
+        "value": "&none"
       },
       {
         "value": "&kp",
@@ -9607,8 +9603,7 @@
         "value": "&trans"
       },
       {
-        "value": "&trans",
-        "params": []
+        "value": "&trans"
       },
       {
         "value": "&trans"
@@ -9709,8 +9704,7 @@
         "value": "&to",
         "params": [
           {
-            "value": 0,
-            "params": []
+            "value": 0
           }
         ]
       },
