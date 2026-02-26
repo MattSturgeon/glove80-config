@@ -2,152 +2,70 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## What This Is
 
-This is a **ZMK firmware configuration repository** for the **MoErgo Glove80** split ergonomic keyboard. The project uses Nix flakes for reproducible builds and includes automated workflows for firmware compilation, flashing, and keymap visualization.
+ZMK firmware configuration for a MoErgo Glove80 split keyboard. The keymap is a customized fork of the **TailorKey 4.2m** layout with modifications for Vim-style navigation and tiling window manager workflows (Hyprland on Linux, GlazeWM on Windows).
 
-## Common Commands
+## Repository Structure
 
-### Building and Flashing
-```bash
-# Build firmware (outputs to ./result/glove80.uf2)
-nix build
+- `glove80_current.json` — Active keymap in Layout Editor format (primary source of truth)
+- `glove80_current.keymap` — ZMK devicetree source, kept for backwards compatibility
+- `tailorkey_*.json` / `tailorkey_*.keymap` — Upstream TailorKey reference versions (do not modify)
+- `zmk-config/glove80.conf` — ZMK build configuration (sleep, pointing device settings)
+- `zmk-config/info.json` — Board metadata for the Layout Editor
 
-# Flash firmware to connected keyboard (interactive, auto-detects mounted keyboard)
-nix run
+## Build Workflow
 
-# Generate keymap SVG diagrams
-nix run .#draw
+There is no local build system. Firmware is built through the **MoErgo Glove80 Layout Editor** web tool:
 
-# Validate flake and run checks
-nix flake check
+1. Import `glove80_current.json` into the Layout Editor
+2. Edit in the web UI or modify the `.json` file directly
+3. Export from the Layout Editor, build firmware, and flash via USB
 
-# Update dependencies
-nix flake update
+The `.json` files are the primary format — they are imported into and exported from the Layout Editor. The `.keymap` files are the ZMK devicetree source kept for potential backwards compatibility.
 
-# Format Nix code
-nix fmt
-```
+## Keymap Architecture
 
-### Flashing Process
-The firmware file contains both keyboard halves:
-1. Build firmware: `nix build`
-2. Connect **right half** in bootloader mode (hold C6R6 + C3R2 while powering on)
-3. Flash: `nix run` (or manually copy `result/glove80.uf2` to mounted volume)
-4. Connect **left half** in bootloader mode
-5. Flash: `nix run`
+21 layers using **Bilateral Home Row Mods (HRM)** — an advanced HRM variant where home-row modifier keys (Ctrl, Shift, Alt, etc.) only trigger when combined with a key pressed by the opposite hand, minimizing misfires while promoting balanced typing. Per-finger modifier isolation layers enforce this bilateral combination requirement:
 
-## Architecture
+| Layer | Purpose |
+|-------|---------|
+| HRM_WinLinx (0) | Base layer with home row mods |
+| Typing (1) | Plain typing without HRM |
+| Autoshift (2) | Auto-shift behavior |
+| LeftPinky–LeftIndex (3–6) | Left-hand HRM isolation layers |
+| RightPinky–RightIndex (7–10) | Right-hand HRM isolation layers |
+| Cursor (11) | Navigation/arrows (Vim-style HJKL) |
+| Symbol (12) | Symbols |
+| Mouse (13) | Mouse emulation |
+| MouseSlow/Fast/Warp (14–16) | Mouse speed modifiers |
+| Gaming (17) | Gaming without HRM |
+| Lower (18) | Function keys and media |
+| Magic (19) | Bluetooth, RGB, system controls |
+| Numbers (20) | Dedicated number row for Super+N workspace switching |
 
-### Nix Flake Structure
+## Key Design Patterns
 
-The project uses **flake-parts** for modular organization:
+- **Bilateral HRM isolation**: Each finger has a dedicated modifier layer enforcing opposite-hand-only activation. The `hold-trigger-key-positions` property restricts which keys can trigger the hold behavior.
+- **urob zmk-helpers macros**: The keymap uses helper macros (`ZMK_BEHAVIOR`, `ZMK_TAP_DANCE`, etc.) inlined from urob's zmk-helpers for cleaner behavior definitions.
+- **Named constants**: Layers are referenced via `LAYER_*` defines, not raw numbers.
+- **Explicit shift expressions**: Shifted symbols use explicit key expressions rather than relying on implicit shift.
 
-- **`flake.nix`**: Main entry point, imports sub-modules
-- **`flake-pkgs.nix`**: Custom overlay that exposes flake attributes (`flake.inputs`, `flake.packages`, etc.) to packages via `callPackage`
-- **`packages/flake-module.nix`**: Auto-discovers all `.nix` files in `packages/` and registers them as outputs
+## Current Customizations vs Upstream TailorKey
 
-This architecture enables packages to access flake internals. For example, `firmware.nix` can reference `flake.inputs.glove80-zmk` because of the overlay.
+### 1. Esc/Tab swap on base layer (HRM_WinLinx)
 
-**Adding new packages**: Simply drop a `.nix` file in `packages/` - it will be auto-discovered and callable as `nix run .#<name>`.
+TailorKey has Tab on row 3 (Q-row, leftmost) and Esc on row 4 (home row, leftmost). These are swapped so Esc is on the upper row and Tab is on the home row — closer to Vim conventions where Esc is used frequently.
 
-### ZMK Firmware Build Process
+### 2. Arrow keys in Vim order on base layer bottom row
 
-**Dual-Half Architecture** (`packages/firmware.nix`):
-1. Builds separate firmware images for left (`glove80_lh`) and right (`glove80_rh`) halves
-2. Uses `firmware.combine_uf2` to merge both into a single `.uf2` file
-3. Single file is flashed to both keyboard halves sequentially
+TailorKey's bottom-row thumb cluster has arrows in order: Left, Right, ..., Up, Down (left-to-right across both halves). Changed to Left, Down, ..., Up, Right — matching Vim's HJKL directional convention (left, down, up, right).
 
-**Configuration Files**:
-- **`config/glove80.keymap`**: Main keymap in DeviceTree syntax (338 lines)
-  - Defines layers (Colemak-DH base, Qwerty, gaming, symbols, navigation, magic)
-  - Uses advanced ZMK features: behaviors, tap-dance, mod-morphs
-  - Mod-morphs: keys that change when shift is held (e.g., `?` → `!`)
-  - Tap-dance: different actions on single vs. double tap
-- **`config/glove80.conf`**: ZMK build configuration (currently empty)
-- **`config/keymap.json`**: JSON representation for web-based Keymap Editor
+### 3. Cursor layer arrows in Vim order
 
-### Smart Flashing (`packages/flash.nix`)
+TailorKey's Cursor layer (layer 11) has arrow keys on the right-hand home row in order: Left, Up, Down, Right. Changed to Vim order: Left, Down, Up, Right (HJKL convention). The Copy key (`LC(C)`) that originally occupied the Left position was moved to the right of arrow keys to make room.
 
-The flash package is a shell application with:
-- **Platform-agnostic detection**: Works on Linux, macOS, Windows (WSL/Cygwin)
-- **Automatic keyboard detection**: Finds mounted Glove80 in bootloader mode
-- **Validation**: Ensures exactly one keyboard is connected before flashing
-- **Terminal UI**: Uses `gum` for interactive prompts
+### 4. Dedicated Numbers layer (layer 20)
 
-### Automated Keymap Visualization (`packages/draw.nix`)
-
-Uses **keymap-drawer** (Python tool) to:
-1. Parse `.keymap` files (DeviceTree) into YAML representation
-2. Generate SVG diagrams (both full keyboard and per-layer views)
-3. Output to `img/` directory
-
-**Workflow**: Changes to `config/glove80.keymap` trigger GitHub Actions that automatically regenerate SVGs and commit them to the repository.
-
-## CI/CD Workflows
-
-All workflows defined in `.github/workflows/`:
-
-- **`build.yml`**: Triggered on config changes, builds firmware and uploads as artifact
-- **`draw-keymaps.yml`**: Triggered on config changes, generates keymap SVGs and auto-commits
-- **`check.yaml`**: Runs `nix flake check` on all pushes
-- **`update.yml`**: Weekly (Saturdays) automated `flake.lock` updates via pull request
-
-**Binary Cache**: Uses Cachix (`matt-sturgeon`) to speed up CI builds.
-
-## Integration Points
-
-### Keymap Editor
-This repository integrates with **nickcoutsos/keymap-editor** (web-based visual editor):
-- Editor reads/writes `config/keymap.json`
-- Changes sync to `config/glove80.keymap` via the editor's backend
-- Preferred over MoErgo's official Layout Editor
-
-### ZMK Fork
-Uses **moergo-sc/zmk** (MoErgo's ZMK fork) rather than upstream ZMK:
-- Includes Glove80-specific features and board definitions
-- Referenced in `flake.nix` as `glove80-zmk` input
-
-## Key Concepts
-
-### DeviceTree Syntax
-`.keymap` files use DeviceTree syntax, not C. Key patterns:
-```dts
-&kp ESC          // Key press behavior
-&lt LAYER TAB    // Layer-tap: hold for layer, tap for key
-&mt LSHIFT A     // Mod-tap: hold for modifier, tap for key
-```
-
-### Package Auto-Discovery
-The `packages/` directory uses Nix auto-discovery:
-1. `packages/flake-module.nix` scans directory for `.nix` files
-2. Each file is called with `callPackage`, receiving overlay attributes
-3. Packages can access `flake.inputs`, `flake.packages`, etc.
-4. No manual registration needed - just add file
-
-### Local Development = CI
-Nix ensures local builds are **identical** to CI builds:
-- Same toolchain versions (pinned in `flake.lock`)
-- Same build process
-- Same dependencies
-- If it builds locally, it will build in CI
-
-## Development Workflow
-
-### Making Keymap Changes
-1. Edit `config/glove80.keymap` (or use Keymap Editor for `keymap.json`)
-2. Test build: `nix build`
-3. Flash to keyboard: `nix run`
-4. Commit changes
-5. CI automatically generates updated SVG diagrams
-
-### Adding New Layers or Behaviors
-Study the existing keymap structure:
-- Behaviors defined in `behaviors {}` node
-- Layers defined in `keymap {}` node
-- Reference existing patterns for tap-dance, mod-morph usage
-
-### Debugging Build Issues
-- Check `nix flake check` for validation errors
-- ZMK build errors typically indicate DeviceTree syntax issues in `.keymap`
-- Compare against ZMK documentation for behavior syntax
+Added a new Numbers layer accessed via hold on the Delete key (using `delete_v3_TKZ` hold-tap behavior). Uses regular number keys (N0–N9), not numpad codes — this is intentional because Super+Number workspace switching in Hyprland and GlazeWM requires standard number keycodes. The layer also includes: media controls on top row, Home/End/PgUp/PgDn navigation, left-hand modifiers (GUI/Alt/Ctrl/Shift) on the home row for easy Super+N combos, numpad operators (+, -, *, /, =, dot, enter), and F1–F3/F13 function keys.
+The Super and F13 are used in combination with 0-9 keys for various Hyprland and GlazeWM shortcuts.
