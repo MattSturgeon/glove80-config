@@ -60,6 +60,7 @@
 #define KB_TYPE_GO_60    2
 
 #define KB_TYPE          KB_TYPE_GLOVE_80
+#define EDITOR_LAYOUT_OS 'L'
 #define EDITOR_HOST_OS   'L'
 
 /* Automatically generated layer name defines */
@@ -83,6 +84,7 @@
 #define LAYER_Gaming 17
 #define LAYER_Lower 18
 #define LAYER_Magic 19
+#define LAYER_Numbers 20
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -1343,6 +1345,16 @@
             flavor = "balanced";
             quick-tap-ms = <300>;
         };
+
+        // space_layer_access - TailorKey
+        delete_v3_TKZ: delete_v3_TKZ {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <150>;
+        };
     };
 };
 
@@ -1408,12 +1420,12 @@
 
         layer_HRM_WinLinx {
             bindings = <
-               &kp F1                          &kp F2                         &kp F3                           &kp F4                           &kp F5                                                                                                                                                                             &kp F6                            &kp F7                          &kp F8                              &kp F9    &kp F10
-            &kp EQUAL                          &kp N1                         &kp N2                           &kp N3                           &kp N4  &kp N5                                                                                                                                   &kp N6                            &kp N7                            &kp N8                          &kp N9                              &kp N0  &kp MINUS
-              &kp TAB                           &kp Q                          &kp W                            &kp E                            &kp R   &kp T                                                                                                                                    &kp Y                             &kp U                             &kp I                           &kp O                               &kp P   &kp BSLH
-              &kp ESC  &HRM_left_pinky_v1B_TKZ LGUI A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LCTRL D  &HRM_left_index_v1B_TKZ LSHFT F   &kp G                                                                                                                                    &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RCTRL K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RGUI SEMI    &kp SQT
-            &kp GRAVE                           &kp Z                          &kp X                            &kp C                            &kp V   &kp B         &CAPSWord_v1_TKZ LSHFT 0  &kp LCTRL    &lower  &kp LGUI                      &kp RCTRL          &CAPSWord_v1_TKZ RSHFT 0   &kp N                             &kp M                         &kp COMMA                         &kp DOT                            &kp FSLH  &kp PG_UP
- &magic LAYER_Magic 0                        &kp HOME                        &kp END                         &kp LEFT                        &kp RIGHT          &thumb_v2_TKZ LAYER_Cursor BSPC    &kp DEL  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Mouse RET  &space_v3_TKZ LAYER_Symbol SPACE                                    &kp UP                          &kp DOWN                        &kp LBKT                            &kp RBKT  &kp PG_DN
+               &kp F1                          &kp F2                         &kp F3                           &kp F4                           &kp F5                                                                                                                                                                                                    &kp F6                            &kp F7                          &kp F8                              &kp F9    &kp F10
+            &kp EQUAL                          &kp N1                         &kp N2                           &kp N3                           &kp N4  &kp N5                                                                                                                                                          &kp N6                            &kp N7                            &kp N8                          &kp N9                              &kp N0  &kp MINUS
+              &kp ESC                           &kp Q                          &kp W                            &kp E                            &kp R   &kp T                                                                                                                                                           &kp Y                             &kp U                             &kp I                           &kp O                               &kp P   &kp BSLH
+              &kp TAB  &HRM_left_pinky_v1B_TKZ LGUI A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LCTRL D  &HRM_left_index_v1B_TKZ LSHFT F   &kp G                                                                                                                                                           &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RCTRL K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RGUI SEMI    &kp SQT
+            &kp GRAVE                           &kp Z                          &kp X                            &kp C                            &kp V   &kp B         &CAPSWord_v1_TKZ LSHFT 0                         &kp LCTRL    &lower  &kp LGUI                      &kp RCTRL          &CAPSWord_v1_TKZ RSHFT 0   &kp N                             &kp M                         &kp COMMA                         &kp DOT                            &kp FSLH  &kp PG_UP
+ &magic LAYER_Magic 0                        &kp HOME                        &kp END                         &kp LEFT                         &kp DOWN          &thumb_v2_TKZ LAYER_Cursor BSPC  &delete_v3_TKZ LAYER_Numbers DEL  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Mouse RET  &space_v3_TKZ LAYER_Symbol SPACE                                    &kp UP                         &kp RIGHT                        &kp LBKT                            &kp RBKT  &kp PG_DN
             >;
         };
 
@@ -1532,7 +1544,7 @@
      &none      &none                    &none                    &none      &none                                                                                                                                                                 &none          &none      &none      &none      &none
      &none    &kp ESC                  &kp INS              &kp LS(TAB)    &kp DEL      &none                                                                                                                                         &none        &none          &none      &none      &none      &none
      &none    &kp RET                &kp SPACE                  &kp TAB   &kp BSPC  &kp LC(X)                                                                                                                                     &kp LC(X)  &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)    &kp TAB      &none
- &sk LSHFT   &kp LGUI                 &kp LALT                &kp LCTRL  &kp LSHFT  &kp LC(C)                                                                                                                                     &kp LC(C)     &kp LEFT         &kp UP   &kp DOWN  &kp RIGHT  &sk RSHFT
+ &sk LSHFT   &kp LGUI                 &kp LALT                &kp LCTRL  &kp LSHFT  &kp LC(C)                                                                                                                                      &kp LEFT     &kp DOWN         &kp UP  &kp RIGHT  &kp LC(C)  &sk RSHFT
  &kp LC(L)  &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ  &kp LC(F)  &kp LC(V)  &mod_tab_v2_TKZ LALT   &mod_tab_v2_TKZ LGUI  &kp PSCRN  &cur_SELECT_NONE_v1_TKZ  &cur_EXTEND_LINE_v1_TKZ  &cur_EXTEND_WORD_v1_TKZ  &kp LC(V)     &kp HOME      &kp PG_UP  &kp PG_DN    &kp END  &kp LC(L)
  &kp LC(K)  &kp LC(Z)                &kp LC(Y)            &kp LC(LS(G))  &kp LC(G)                            &none  &mod_tab_v2_TKZ LCTRL  &kp LG(D)                &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ               &kp LC(F)  &kp LC(LS(G))  &kp LC(G)  &kp LC(H)  &kp LC(K)
             >;
@@ -1623,6 +1635,17 @@
    &bootloader  &rgb_ug RGB_SPD   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD      &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
     &sys_reset            &none             &none            &none            &none                &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
          &none            &none             &none            &none            &none                        &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none       &none           &none
+            >;
+        };
+
+        layer_Numbers {
+            bindings = <
+         &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT   &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
+                &none         &none       &none       &none      &none   &kp HOME                                                  &kp LS(N9)  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
+               &trans         &none       &none       &none      &none    &kp END                                                  &kp LS(N0)      &kp N7        &kp N8        &kp N9     &kp KP_MINUS   &kp SCROLLLOCK
+               &trans      &kp LGUI    &kp LALT   &kp LCTRL  &kp LSHFT  &kp PG_UP                                                  &kp LS(N5)      &kp N4        &kp N5        &kp N6      &kp KP_PLUS           &kp F3
+            &kp K_APP       &kp F13       &none      &kp UP      &none  &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans   &kp COMMA      &kp N1        &kp N2        &kp N3     &kp KP_ENTER           &kp F2
+ &magic LAYER_Magic 0       &kp DEL    &kp LEFT    &kp DOWN  &kp RIGHT             &trans   &to 0  &trans  &trans  &trans  &trans                  &kp N0        &kp N0    &kp KP_DOT     &kp KP_ENTER           &kp F1
             >;
         };
 
