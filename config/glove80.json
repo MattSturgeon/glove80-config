@@ -235,7 +235,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "TAB"
+            "value": "ESC"
           }
         ]
       },
@@ -331,7 +331,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "ESC"
+            "value": "TAB"
           }
         ]
       },
