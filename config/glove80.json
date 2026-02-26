@@ -5162,25 +5162,18 @@
         "value": "&kp",
         "params": [
           {
-            "value": "LC",
-            "params": [
-              {
-                "value": "C"
-              }
-            ]
+            "value": "LEFT"
           }
         ],
         "decoration": {
-          "label": "Copy",
-          "icon": "fa-copy",
-          "background": "#fffec9"
+          "background": "#d9f9c9ff"
         }
       },
       {
         "value": "&kp",
         "params": [
           {
-            "value": "LEFT"
+            "value": "DOWN"
           }
         ],
         "decoration": {
@@ -5202,7 +5195,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "DOWN"
+            "value": "RIGHT"
           }
         ],
         "decoration": {
@@ -5213,11 +5206,18 @@
         "value": "&kp",
         "params": [
           {
-            "value": "RIGHT"
+            "value": "LC",
+            "params": [
+              {
+                "value": "C"
+              }
+            ]
           }
         ],
         "decoration": {
-          "background": "#d9f9c9"
+          "background": "#fffec9",
+          "icon": "fa-copy",
+          "label": "Copy"
         }
       },
       {
