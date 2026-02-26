@@ -55,28 +55,34 @@
         bindings = <&mo layer>, <&to layer>; \
 )
 
-/* Automatically generated layer name #define */
+/* Environment and metadata defines */
+#define KB_TYPE_GLOVE_80 1
+#define KB_TYPE_GO_60    2
+
+#define KB_TYPE          KB_TYPE_GLOVE_80
+#define EDITOR_HOST_OS   'L'
+
+/* Automatically generated layer name defines */
 #define LAYER_HRM_WinLinx 0
 #define LAYER_Typing 1
 #define LAYER_Autoshift 2
-#define LAYER_Cursor 3
-#define LAYER_Symbol 4
-#define LAYER_Gaming 5
-#define LAYER_Lower 6
-#define LAYER_LeftIndex 7
-#define LAYER_LeftMiddy 8
-#define LAYER_LeftRingy 9
-#define LAYER_LeftPinky 10
-#define LAYER_RightIndex 11
-#define LAYER_RightMiddy 12
-#define LAYER_RightRingy 13
-#define LAYER_RightPinky 14
-#define LAYER_Mouse 15
-#define LAYER_MouseSlow 16
-#define LAYER_MouseFast 17
-#define LAYER_MouseWarp 18
+#define LAYER_LeftPinky 3
+#define LAYER_LeftRingy 4
+#define LAYER_LeftMiddy 5
+#define LAYER_LeftIndex 6
+#define LAYER_RightPinky 7
+#define LAYER_RightRingy 8
+#define LAYER_RightMiddy 9
+#define LAYER_RightIndex 10
+#define LAYER_Cursor 11
+#define LAYER_Symbol 12
+#define LAYER_Mouse 13
+#define LAYER_MouseSlow 14
+#define LAYER_MouseFast 15
+#define LAYER_MouseWarp 16
+#define LAYER_Gaming 17
+#define LAYER_Lower 18
 #define LAYER_Magic 19
-#define LAYER_Numbers 20
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -84,502 +90,23 @@
 #endif
 
 /* Custom Device-tree */
-//////////////////////////////////////////////////////////////////////////////////
-// KeyLight Configurator simplifies per-key RGB configuration (PR36):
-// - Starting from scratch: Easily create layers and assign colors intuitively.
-// - Glorious Engrammer or TailorKey users can simply paste their device tree here.
-// Once you're done, just copy the device tree into the Layout Editor.
-// TIP: You can select multiple keys with Ctrl and/or edit text in the Device Tree
-//////////////////////////////////////////////////////////////////////////////////
 
-#if __has_include(<dt-bindings/zmk/rgb_colors.h>)
-  //
-  // Color definitions with conflict guard to prevent
-  // accidental redefinition of common abbreviations.
-  //
-  #if defined(RED) || defined(RED_RGB) || \
-      defined(COR) || defined(COR_RGB) || \
-      defined(ORN) || defined(ORN_RGB) || \
-      defined(GDN) || defined(GDN_RGB) || \
-      defined(GOL) || defined(GOL_RGB) || \
-      defined(YLW) || defined(YLW_RGB) || \
-      defined(CHU) || defined(CHU_RGB) || \
-      defined(GRN) || defined(GRN_RGB) || \
-      defined(SPG) || defined(SPG_RGB) || \
-      defined(CYN) || defined(CYN_RGB) || \
-      defined(AZU) || defined(AZU_RGB) || \
-      defined(TEA) || defined(TEA_RGB) || \
-      defined(TUR) || defined(TUR_RGB) || \
-      defined(BLU) || defined(BLU_RGB) || \
-      defined(PUR) || defined(PUR_RGB) || \
-      defined(MAJ) || defined(MAJ_RGB) || \
-      defined(PNK) || defined(PNK_RGB) || \
-      defined(WHT) || defined(WHT_RGB) || \
-      defined(BLK) || defined(BLK_RGB) || \
-      defined(___) || \
-      defined(DUG) || defined(DUG_RGB) || \
-      defined(LAC) || defined(LAC_RGB) || \
-      defined(BSL) || defined(BNL) || defined(BCL) || \
-      defined(SSL) || defined(SNL) || defined(SCL) || \
-      defined(FST) || defined(WRP) || defined(SLO)
-  #error "Naming conflict: 3-letter color abbreviation already defined!"
-  #endif
-
-  //
-  // color definitions from QMK
-  // https://github.com/qmk/qmk_firmware/blob/master/quantum/color.h
-  //
-  #define RED_RGB 0xFF0000 // #FF0000 RED      => RED (red)
-  #define COR_RGB 0xFF7C4D // #FF7C4D CORAL    => COR (coral)
-  #define ORN_RGB 0xFF8000 // #FF8000 ORANGE   => ORN (ornj)
-  #define GDN_RGB 0xD9A521 // #D9A521 GOLDNROD => GDN (gold'nrod)
-  #define GOL_RGB 0xFFD900 // #FFD900 GOLD     => GOL (gold)
-  #define YLW_RGB 0xFFFF00 // #FFFF00 YELLOW   => YLW (yellow)
-  #define CHU_RGB 0x80FF00 // #80FF00 CHARTRSE => CHU (chartreuse)
-  #define GRN_RGB 0x00FF00 // #00FF00 GREEN    => GRN (green)
-  #define SPG_RGB 0x00FF80 // #00FF80 SPRINGRN => SPG (spring green)
-  #define CYN_RGB 0x00FFFF // #00FFFF CYAN     => CYN (sigh-an)
-  #define AZU_RGB 0x99F5FF // #99F5FF AZURE    => AZU (a-zur)
-  #define TEA_RGB 0x008080 // #008080 TEAL     => TEA (teel)
-  #define TUR_RGB 0x476E6A // #476E6A TURQUOIS => TUR (turquoise)
-  #define BLU_RGB 0x0000FF // #0000FF BLUE     => BLU (bloo)
-  #define PUR_RGB 0x7A00FF // #7A00FF PURPLE   => PUR (purp)
-  #define MAJ_RGB 0xFF00FF // #FF00FF MAGENTA  => MAJ (mah-jenta)
-  #define PNK_RGB 0xFF80BF // #FF80BF PINK     => PNK (pink)
-  #define WHT_RGB 0xFFFFFF // #FFFFFF WHITE    => WHT (white)
-  #define BLK_RGB 0x000000 // #000000 BLACK    => BLK (blak)
-
-  //
-  // color definitions from MoErgo
-  // https://github.com/moergo-sc/zmk/blob/aca523dfce9b6447ffd19d833b791d44f1f286de/app/src/rgb_underglow.c#L259-L265
-  //
-  #define DUG_RGB 0x00ff68 // #00ff68 DULL_GRN => DUG (dull green)
-  #define LAC_RGB 0x6b1fce // #6b1fce LILAC    => LAC (lilac)
-
-  //
-  // underglow for the colors above
-  //
-  #define RED &ug RED_RGB
-  #define COR &ug COR_RGB
-  #define ORN &ug ORN_RGB
-  #define GDN &ug GDN_RGB
-  #define GOL &ug GOL_RGB
-  #define YLW &ug YLW_RGB
-  #define CHU &ug CHU_RGB
-  #define GRN &ug GRN_RGB
-  #define SPG &ug SPG_RGB
-  #define CYN &ug CYN_RGB
-  #define AZU &ug AZU_RGB
-  #define TEA &ug TEA_RGB
-  #define TUR &ug TUR_RGB
-  #define BLU &ug BLU_RGB
-  #define PUR &ug PUR_RGB
-  #define MAJ &ug MAJ_RGB
-  #define PNK &ug PNK_RGB
-  #define WHT &ug WHT_RGB
-  #define ___ &ug BLK_RGB
-  #define DUG &ug DUG_RGB
-  #define LAC &ug LAC_RGB
-
-  //
-  // underglow for keyboard locks on the Base layer
-  //
-  #define BSL &ug_sl BLK_RGB RED_RGB // ScrollLock COLOR_OFF COLOR_ON
-  #define BNL &ug_nl BLK_RGB RED_RGB // NumLock    COLOR_OFF COLOR_ON
-  #define BCL &ug_cl BLK_RGB RED_RGB // CapsLock   COLOR_OFF COLOR_ON
-
-
-  //
-  // colors for mouse speed scaling in Mouse layers
-  //
-  #define FST GOL
-  #define WRP CHU
-  #define SLO COR
-
-
-
-  // ==== PER-KEY-RGB <section begins> ====
-  / {
-    underglow-layer {
-      compatible = "zmk,underglow-layer";
-
-   
-      #ifdef LAYER_HRM_WinLinx
-      HRM_WinLinx {
-        bindings = <
-          ___ ___ BCL BNL BSL                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-        >;
-        layer-id = <LAYER_HRM_WinLinx>;
-        fade-delay = <15>;
-      };
-      #endif
-
-      #ifdef LAYER_HRM_macOS
-      HRM_macOS {
-        bindings = <
-          ___ ___ BCL BNL BSL                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-        >;
-        layer-id = <LAYER_HRM_macOS>;
-        fade-delay = <15>;
-      };
-      #endif
-
-      #ifdef LAYER_Lower
-      Lower {
-        bindings = <
-          MAJ MAJ BLU BLU BLU                                             BLU BLU BLU ___ ORN
-          ___ ___ ___ ___ ___ GRN                                     WHT ORN WHT WHT WHT ORN
-          ___ ___ ___ GRN ___ GRN                                     WHT WHT WHT WHT WHT ORN
-          ___ ___ GRN GRN GRN GRN                                     WHT WHT WHT WHT WHT ___
-          ___ ORN ___ WHT WHT GRN     ___ ___ ___     ___ ___ ___     WHT WHT WHT WHT WHT ___
-          ___ ORN ORN WHT WHT         ___ ___ ___     ___ ___ ___         WHT WHT WHT WHT ___
-        >;
-        layer-id = <LAYER_Lower>;
-        fade-delay = <15>;
-      };
-      #endif
-
-  #ifdef LAYER_Autoshift
-  Autoshift {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          YLW YLW YLW YLW YLW YLW                                     YLW YLW YLW YLW YLW YLW
-          ___ YLW YLW YLW YLW YLW                                     YLW YLW YLW YLW YLW YLW
-          ___ YLW YLW YLW YLW YLW                                     YLW YLW YLW YLW YLW ___
-          YLW YLW YLW YLW YLW YLW     YLW GRN ___     MAJ GRN YLW     YLW YLW YLW YLW YLW ___
-          ___ ___ ___ ___ ___         ___ ___ CYN     CYN ___ ___         YLW YLW ___ ___ ___
-    >;
-    layer-id = <LAYER_Autoshift>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_LeftPinky
-  LeftPinky {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ MAJ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     MAJ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_LeftPinky>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_LeftRingy
-  LeftRingy {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ CYN ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ CYN     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_LeftRingy>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_LeftMiddy
-  LeftMiddy {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ DUG ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ GRN ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_LeftMiddy>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_LeftIndex
-  LeftIndex {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ YLW ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     YLW ___ ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_LeftIndex>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_RightIndex
-  RightIndex {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ YLW ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ ___ YLW     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_RightIndex>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_RightMiddy
-  RightMiddy {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ GRN ___ ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ GRN ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_RightMiddy>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_RightRingy
-  RightRingy {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ CYN ___ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     ___ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ CYN     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_RightRingy>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_RightPinky
-  RightPinky {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ MAJ ___
-          ___ ___ ___ ___ ___ ___     ___ ___ ___     MAJ ___ ___     ___ ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___         ___ ___ ___     ___ ___ ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_RightPinky>;
-    fade-delay = <15>;
-  };
-  #endif
-
-  #ifdef LAYER_Cursor
-  Cursor {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ORN ORN ORN ORN ___                                     ___ ___ ___ ___ ___ ___
-          ___ ORN ORN ORN ORN YLW                                     YLW ORN PNK PNK ORN ___
-          WHT WHT WHT WHT WHT YLW                                     YLW GRN GRN GRN GRN WHT
-          MAJ CYN CYN CYN MAJ YLW     ___ ___ ___     CYN CYN CYN     YLW GRN GRN GRN GRN MAJ
-          ___ ___ ___ MAJ MAJ         ___ DUG ___     CYN CYN CYN         MAJ MAJ MAJ MAJ ___
-    >;
-    layer-id = <LAYER_Cursor>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_Cursor_macOS
-  Cursor_macOS {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ORN ORN ORN ORN ___                                     ___ ___ ___ ___ ___ ___
-          ___ ORN ORN ORN ORN YLW                                     YLW ORN PNK PNK ORN ___
-          WHT WHT WHT WHT WHT YLW                                     YLW GRN GRN GRN GRN WHT
-          MAJ CYN CYN CYN MAJ YLW     ___ ___ ___     CYN CYN CYN     YLW GRN GRN GRN GRN MAJ
-          ___ ___ ___ MAJ MAJ         ___ DUG ___     CYN CYN CYN         MAJ MAJ MAJ MAJ ___
-    >;
-    layer-id = <LAYER_Cursor_macOS>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_Symbol
-  Symbol {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          MAJ AZU AZU AZU YLW YLW                                     ___ ___ ___ ___ ___ ___
-          AZU MAJ AZU AZU YLW YLW                                     MAJ WHT WHT WHT WHT ___
-          YLW YLW CHU ORN YLW YLW                                     MAJ ORN ORN ORN ORN ___
-          MAJ CHU CHU CHU CHU YLW     MAJ YLW YLW     ___ ___ ___     MAJ ORN ORN ORN ORN ___
-          YLW ORN MAJ MAJ ORN         YLW YLW YLW     ___ DUG ___         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_Symbol>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_Mouse
-  Mouse {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-          ___ ___ LAC AZU LAC ___                                     ___ WHT WHT WHT WHT ___
-          ___ TEA AZU AZU AZU ___                                     ___ FST WRP SLO YLW PNK
-          ___ TEA SLO WRP FST ___     MAJ ___ PNK     ___ ___ ___     ___ LAC AZU LAC ORN PNK
-          ___ ___ ___ ___ ___         YLW ORN PNK     ___ DUG ___         AZU AZU AZU MAJ ___
-    >;
-    layer-id = <LAYER_Mouse>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_MouseFast
-  MouseFast {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ YLW GRN CYN MAJ ___
-          ___ ___ FST FST FST ___                                     ___ FST FST FST FST ___
-          ___ FST FST FST FST ___                                     ___ FST WRP SLO ___ ___
-          ___ FST SLO WRP FST ___     MAJ ___ PNK     ___ ___ ___     ___ FST FST FST FST ___
-          ___ ___ ___ ___ ___         YLW ORN PNK     ___ DUG ___         YLW ORN MAJ PNK PNK
-    >;
-    layer-id = <LAYER_MouseFast>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_MouseWarp
-  MouseWarp {
-    bindings = <
-          ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-          ___ ___ ___ ___ ___ ___                                     ___ YLW GRN CYN MAJ ___
-          ___ ___ WRP WRP WRP ___                                     ___ WRP WRP WRP WRP ___
-          ___ WRP WRP WRP WRP ___                                     ___ FST WRP SLO ___ ___
-          ___ WRP SLO WRP FST ___     MAJ ___ PNK     ___ ___ ___     ___ WRP WRP WRP WRP ___
-          ___ ___ ___ ___ ___         YLW ORN PNK     ___ DUG ___         YLW ORN MAJ PNK PNK
-    >;
-    layer-id = <LAYER_MouseWarp>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_MouseSlow
-  MouseSlow {
-    bindings = <
-      ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-      ___ ___ ___ ___ ___ ___                                     ___ YLW GRN CYN MAJ ___
-      ___ ___ SLO SLO SLO ___                                     ___ SLO SLO SLO SLO ___
-      ___ SLO SLO SLO SLO ___                                     ___ FST WRP SLO ___ ___
-      ___ SLO SLO WRP FST ___     MAJ ___ PNK     ___ ___ ___     ___ SLO SLO SLO SLO ___
-      ___ ___ ___ ___ ___         YLW ORN PNK     ___ DUG ___         YLW ORN MAJ PNK PNK
-    >;
-    layer-id = <LAYER_MouseSlow>;
-    fade-delay = <5>;
-  };
-  #endif
-
-  #ifdef LAYER_Gaming
-  Gaming {
-    bindings = <
-      ORN ___ ___ ___ ___                                             ___ ___ ___ ___ ___
-      ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-      ___ ___ ___ ___ ___ ___                                     ___ ___ ___ ___ ___ ___
-      ___ ___ ___ AZU ___ ___                                     ___ ___ ___ ___ ___ ___
-      ___ YLW AZU AZU AZU ___     YLW CYN RED     ORN AZU ___     ___ ___ ___ ___ ___ ___
-      ___ GRN ___ ___ ___         ___ GRN RED     AZU AZU AZU         ___ ___ ___ ___ ___
-    >;
-    layer-id = <LAYER_Gaming>;
-    fade-delay = <15>;
-     };
-      #endif
-
-    };
-  };
-  // ==== PER-KEY-RGB <section ends> =====
-
-  #undef RED
-  #undef RED_RGB
-  #undef COR
-  #undef COR_RGB
-  #undef ORN
-  #undef ORN_RGB
-  #undef GDN
-  #undef GDN_RGB
-  #undef GOL
-  #undef GOL_RGB
-  #undef YLW
-  #undef YLW_RGB
-  #undef CHU
-  #undef CHU_RGB
-  #undef GRN
-  #undef GRN_RGB
-  #undef SPG
-  #undef SPG_RGB
-  #undef CYN
-  #undef CYN_RGB
-  #undef AZU
-  #undef AZU_RGB
-  #undef TEA
-  #undef TEA_RGB
-  #undef TUR
-  #undef TUR_RGB
-  #undef BLU
-  #undef BLU_RGB
-  #undef PUR
-  #undef PUR_RGB
-  #undef MAJ
-  #undef MAJ_RGB
-  #undef PNK
-  #undef PNK_RGB
-  #undef WHT
-  #undef WHT_RGB
-  #undef BLK
-  #undef BLK_RGB
-  #undef ___
-  #undef DUG
-  #undef DUG_RGB
-  #undef LAC
-  #undef LAC_RGB
-
-  #undef BSL
-  #undef BNL
-  #undef BCL
-
-  #undef SSL
-  #undef SNL
-  #undef SCL
-
-  #undef FST
-  #undef WRP
-  #undef SLO
-#endif
 
 /* Input Listeners */
 &mmv_input_listener {
     // LAYER_MouseSlow
     LAYER_MouseSlow {
-        layers = <16>;
+        layers = <LAYER_MouseSlow>;
         input-processors = <&zip_xy_scaler 1 9>;
     };
     // LAYER_MouseFast
     LAYER_MouseFast {
-        layers = <17>;
+        layers = <LAYER_MouseFast>;
         input-processors = <&zip_xy_scaler 3 1>;
     };
     // LAYER_MouseWarp
     LAYER_MouseWarp {
-        layers = <18>;
+        layers = <LAYER_MouseWarp>;
         input-processors = <&zip_xy_scaler 12 1>;
     };
 };
@@ -587,17 +114,17 @@
 &msc_input_listener {
     // LAYER_MouseSlow
     LAYER_MouseSlow {
-        layers = <16>;
+        layers = <LAYER_MouseSlow>;
         input-processors = <&zip_scroll_scaler 1 9>;
     };
     // LAYER_MouseFast
     LAYER_MouseFast {
-        layers = <17>;
+        layers = <LAYER_MouseFast>;
         input-processors = <&zip_scroll_scaler 3 1>;
     };
     // LAYER_MouseWarp
     LAYER_MouseWarp {
-        layers = <18>;
+        layers = <LAYER_MouseWarp>;
         input-processors = <&zip_scroll_scaler 12 1>;
     };
 };
@@ -739,87 +266,90 @@
     };
 };
 
-/* #define for key positions */
+
+/* Key positions */
+
+#define POS_LH_C6R1 0
+#define POS_LH_C5R1 1
+#define POS_LH_C4R1 2
+#define POS_LH_C3R1 3
+#define POS_LH_C2R1 4
+#define POS_RH_C2R1 5
+#define POS_RH_C3R1 6
+#define POS_RH_C4R1 7
+#define POS_RH_C5R1 8
+#define POS_RH_C6R1 9
+#define POS_LH_C6R2 10
+#define POS_LH_C5R2 11
+#define POS_LH_C4R2 12
+#define POS_LH_C3R2 13
+#define POS_LH_C2R2 14
+#define POS_LH_C1R2 15
+#define POS_RH_C1R2 16
+#define POS_RH_C2R2 17
+#define POS_RH_C3R2 18
+#define POS_RH_C4R2 19
+#define POS_RH_C5R2 20
+#define POS_RH_C6R2 21
+#define POS_LH_C6R3 22
+#define POS_LH_C5R3 23
+#define POS_LH_C4R3 24
+#define POS_LH_C3R3 25
+#define POS_LH_C2R3 26
+#define POS_LH_C1R3 27
+#define POS_RH_C1R3 28
+#define POS_RH_C2R3 29
+#define POS_RH_C3R3 30
+#define POS_RH_C4R3 31
+#define POS_RH_C5R3 32
+#define POS_RH_C6R3 33
+#define POS_LH_C6R4 34
+#define POS_LH_C5R4 35
+#define POS_LH_C4R4 36
+#define POS_LH_C3R4 37
+#define POS_LH_C2R4 38
+#define POS_LH_C1R4 39
+#define POS_RH_C1R4 40
+#define POS_RH_C2R4 41
+#define POS_RH_C3R4 42
+#define POS_RH_C4R4 43
+#define POS_RH_C5R4 44
+#define POS_RH_C6R4 45
+#define POS_LH_C6R5 46
+#define POS_LH_C5R5 47
+#define POS_LH_C4R5 48
+#define POS_LH_C3R5 49
+#define POS_LH_C2R5 50
+#define POS_LH_C1R5 51
 #define POS_LH_T1 52
 #define POS_LH_T2 53
 #define POS_LH_T3 54
+#define POS_RH_T3 55
+#define POS_RH_T2 56
+#define POS_RH_T1 57
+#define POS_RH_C1R5 58
+#define POS_RH_C2R5 59
+#define POS_RH_C3R5 60
+#define POS_RH_C4R5 61
+#define POS_RH_C5R5 62
+#define POS_RH_C6R5 63
+#define POS_LH_C6R6 64
+#define POS_LH_C5R6 65
+#define POS_LH_C4R6 66
+#define POS_LH_C3R6 67
+#define POS_LH_C2R6 68
 #define POS_LH_T4 69
 #define POS_LH_T5 70
 #define POS_LH_T6 71
-#define POS_LH_C1R2 15
-#define POS_LH_C1R3 27
-#define POS_LH_C1R4 39
-#define POS_LH_C1R5 51
-#define POS_LH_C2R1 4
-#define POS_LH_C2R2 14
-#define POS_LH_C2R3 26
-#define POS_LH_C2R4 38
-#define POS_LH_C2R5 50
-#define POS_LH_C2R6 68
-#define POS_LH_C3R1 3
-#define POS_LH_C3R2 13
-#define POS_LH_C3R3 25
-#define POS_LH_C3R4 37
-#define POS_LH_C3R5 49
-#define POS_LH_C3R6 67
-#define POS_LH_C4R1 2
-#define POS_LH_C4R2 12
-#define POS_LH_C4R3 24
-#define POS_LH_C4R4 36
-#define POS_LH_C4R5 48
-#define POS_LH_C4R6 66
-#define POS_LH_C5R1 1
-#define POS_LH_C5R2 11
-#define POS_LH_C5R3 23
-#define POS_LH_C5R4 35
-#define POS_LH_C5R5 47
-#define POS_LH_C5R6 65
-#define POS_LH_C6R1 0
-#define POS_LH_C6R2 10
-#define POS_LH_C6R3 22
-#define POS_LH_C6R4 34
-#define POS_LH_C6R5 46
-#define POS_LH_C6R6 64
-#define POS_RH_T1 57
-#define POS_RH_T2 56
-#define POS_RH_T3 55
-#define POS_RH_T4 74
-#define POS_RH_T5 73
 #define POS_RH_T6 72
-#define POS_RH_C1R2 16
-#define POS_RH_C1R3 28
-#define POS_RH_C1R4 40
-#define POS_RH_C1R5 58
-#define POS_RH_C2R1 5
-#define POS_RH_C2R2 17
-#define POS_RH_C2R3 29
-#define POS_RH_C2R4 41
-#define POS_RH_C2R5 59
+#define POS_RH_T5 73
+#define POS_RH_T4 74
 #define POS_RH_C2R6 75
-#define POS_RH_C3R1 6
-#define POS_RH_C3R2 18
-#define POS_RH_C3R3 30
-#define POS_RH_C3R4 42
-#define POS_RH_C3R5 60
 #define POS_RH_C3R6 76
-#define POS_RH_C4R1 7
-#define POS_RH_C4R2 19
-#define POS_RH_C4R3 31
-#define POS_RH_C4R4 43
-#define POS_RH_C4R5 61
 #define POS_RH_C4R6 77
-#define POS_RH_C5R1 8
-#define POS_RH_C5R2 20
-#define POS_RH_C5R3 32
-#define POS_RH_C5R4 44
-#define POS_RH_C5R5 62
 #define POS_RH_C5R6 78
-#define POS_RH_C6R1 9
-#define POS_RH_C6R2 21
-#define POS_RH_C6R3 33
-#define POS_RH_C6R4 45
-#define POS_RH_C6R5 63
 #define POS_RH_C6R6 79
+
 
 /* Custom Defined Behaviors */
 / {
@@ -838,11 +368,13 @@
             label = "&AS_SHIFTED_V1_TKZ";
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
+            tap-ms = <0>;
+            wait-ms = <0>;
             bindings = <&macro_press>
                 , <&kp LSHFT>
                 , <&macro_tap>
                 , <&macro_param_1to1>
-                , <&kp N1>
+                , <&kp MACRO_PLACEHOLDER>
                 , <&macro_release>
                 , <&kp LSHFT>;
         };
@@ -852,17 +384,17 @@
             label = "&AS_V1_TKZ";
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            tap-ms = <10>;
-            wait-ms = <10>;
+            tap-ms = <0>;
+            wait-ms = <0>;
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&macro_param_1to2>
-                , <&AS_HT_v2_TKZ A A>
+                , <&AS_HT_v2_TKZ MACRO_PLACEHOLDER MACRO_PLACEHOLDER>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&macro_param_1to2>
-                , <&AS_HT_v2_TKZ A A>;
+                , <&AS_HT_v2_TKZ MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
         };
 
         // Cursor Layer - Extent Line (seq) - TailorKey
@@ -930,12 +462,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 7>
+                , <&mo LAYER_LeftIndex>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 7>;
+                , <&mo LAYER_LeftIndex>;
         };
 
         // HRM_left_index_tap - incl. QWERTY alpha character - TailorKey
@@ -971,12 +503,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 8>
+                , <&mo LAYER_LeftMiddy>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 8>;
+                , <&mo LAYER_LeftMiddy>;
         };
 
         // HRM_left_middy_tap - incl. QWERTY alpha character - TailorKey
@@ -1012,12 +544,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 10>
+                , <&mo LAYER_LeftPinky>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 10>;
+                , <&mo LAYER_LeftPinky>;
         };
 
         // HRM_left_pinky_tap - incl. QWERTY alpha character - TailorKey
@@ -1053,12 +585,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 9>
+                , <&mo LAYER_LeftRingy>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 9>;
+                , <&mo LAYER_LeftRingy>;
         };
 
         // HRM_left_ring_tap - incl. QWERTY alpha character - TailorKey
@@ -1094,12 +626,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 11>
+                , <&mo LAYER_RightIndex>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 11>;
+                , <&mo LAYER_RightIndex>;
         };
 
         // HRM_right_index_tap - incl. QWERTY alpha character - TailorKey
@@ -1135,12 +667,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 12>
+                , <&mo LAYER_RightMiddy>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 12>;
+                , <&mo LAYER_RightMiddy>;
         };
 
         // HRM_right_middy_tap - incl. QWERTY alpha character - TailorKey
@@ -1176,12 +708,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 14>
+                , <&mo LAYER_RightPinky>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 14>;
+                , <&mo LAYER_RightPinky>;
         };
 
         // HRM_right_pinky_tap - incl. QWERTY alpha character - TailorKey
@@ -1217,12 +749,12 @@
             bindings = <&macro_press>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 13>
+                , <&mo LAYER_RightRingy>
                 , <&macro_pause_for_release>
                 , <&macro_release>
                 , <&macro_param_1to1>
                 , <&kp A>
-                , <&mo 13>;
+                , <&mo LAYER_RightRingy>;
         };
 
         // HRM_right_ring_tap - incl. QWERTY alpha character - TailorKey
@@ -1334,32 +866,8 @@
                 , <&kp O>
                 , <&kp L>
                 , <&kp A>
-                , <&kp EXCL>
+                , <&kp LS(N1)>
                 , <&kp SPACE>
-                , <&kp RET>;
-        };
-
-        // macro string2 sample - Magic Layer F2 - Text output sample macro 2 "grammar check: <paste>" - TailorKey
-        mstr2_v1_TKZ: mstr2_v1_TKZ {
-            label = "&MSTR2_V1_TKZ";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>
-                , <&kp G>
-                , <&kp R>
-                , <&kp A>
-                , <&kp M>
-                , <&kp M>
-                , <&kp A>
-                , <&kp R>
-                , <&kp SPACE>
-                , <&kp C>
-                , <&kp H>
-                , <&kp E>
-                , <&kp C>
-                , <&kp K>
-                , <&kp COLON>
-                , <&kp LC(V)>
                 , <&kp RET>;
         };
 
@@ -1409,7 +917,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1422,7 +930,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1435,7 +943,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1448,7 +956,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1461,7 +969,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1474,7 +982,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1487,7 +995,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1500,7 +1008,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1513,7 +1021,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1526,7 +1034,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1539,7 +1047,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1552,7 +1060,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1565,7 +1073,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1578,7 +1086,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1591,7 +1099,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1604,7 +1112,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
+            hold-trigger-key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3 POS_RH_T6 POS_RH_T5 POS_RH_T4 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C1R5 POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5 POS_RH_C5R5 POS_RH_C2R6 POS_RH_C3R6 POS_RH_C4R6 POS_RH_C5R6 POS_RH_C6R1 POS_RH_C6R2 POS_RH_C6R3 POS_RH_C6R4 POS_RH_C6R5 POS_RH_C6R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T5 POS_LH_T6 POS_LH_T4>;
             hold-trigger-on-release;
         };
 
@@ -1617,7 +1125,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1630,7 +1138,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1643,7 +1151,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1656,7 +1164,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1669,7 +1177,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1682,7 +1190,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 46 64 65 47 52 51 39 27 15 4 3 2 1 11 23 35 34 48 66 69 70 71 54 53 55 56 57 74 73 72 68 67 49 50 38 26 14 13 25 37 24 12 36>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_T1 POS_LH_C1R5 POS_LH_C1R4 POS_LH_C1R3 POS_LH_C1R2 POS_LH_C2R1 POS_LH_C3R1 POS_LH_C4R1 POS_LH_C5R1 POS_LH_C5R2 POS_LH_C5R3 POS_LH_C5R4 POS_LH_C6R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_T4 POS_LH_T5 POS_LH_T6 POS_LH_T3 POS_LH_T2 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6 POS_LH_C2R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C2R5 POS_LH_C2R4 POS_LH_C2R3 POS_LH_C2R2 POS_LH_C3R2 POS_LH_C3R3 POS_LH_C3R4 POS_LH_C4R3 POS_LH_C4R2 POS_LH_C4R4>;
             hold-trigger-on-release;
         };
 
@@ -1695,7 +1203,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1708,7 +1216,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1721,7 +1229,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1734,7 +1242,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1747,7 +1255,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1760,7 +1268,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1773,7 +1281,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1786,7 +1294,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1799,7 +1307,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1812,7 +1320,7 @@
             flavor = "tap-preferred";
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <0 10 22 34 46 64 65 47 35 23 1 2 12 11 24 36 48 66 67 49 37 25 13 3 4 14 15 27 26 38 39 51 50 68 52 53 54 71 70 69 55 56 57 74 73 72>;
+            hold-trigger-key-positions = <POS_LH_C6R1 POS_LH_C6R2 POS_LH_C6R3 POS_LH_C6R4 POS_LH_C6R5 POS_LH_C6R6 POS_LH_C5R6 POS_LH_C5R5 POS_LH_C5R4 POS_LH_C5R3 POS_LH_C5R1 POS_LH_C4R1 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C4R3 POS_LH_C4R4 POS_LH_C4R5 POS_LH_C4R6 POS_LH_C3R6 POS_LH_C3R5 POS_LH_C3R4 POS_LH_C3R3 POS_LH_C3R2 POS_LH_C3R1 POS_LH_C2R1 POS_LH_C2R2 POS_LH_C1R2 POS_LH_C1R3 POS_LH_C2R3 POS_LH_C2R4 POS_LH_C1R4 POS_LH_C1R5 POS_LH_C2R5 POS_LH_C2R6 POS_LH_T1 POS_LH_T2 POS_LH_T3 POS_LH_T6 POS_LH_T5 POS_LH_T4 POS_RH_T3 POS_RH_T2 POS_RH_T1 POS_RH_T4 POS_RH_T5 POS_RH_T6>;
             hold-trigger-on-release;
         };
 
@@ -1840,56 +1348,57 @@
 
 /* Automatically generated combos definitions */
 / {
-      combos {
-          compatible = "zmk,combos";
-                  // capslock when pressing both T1's - TailorKey
+    combos {
+        compatible = "zmk,combos";
+
+        // capslock when pressing both T1's - TailorKey
         combo_capslock_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <52 57>;
+            key-positions = <POS_LH_T1 POS_RH_T1>;
             bindings = <&kp CAPS>;
-            layers = <0 2>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
         // F11 on RH_C5 and RH_R1+R2 - TailorKey
         combo_F11_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <8 20>;
+            key-positions = <POS_RH_C5R1 POS_RH_C5R2>;
             bindings = <&kp F11>;
-            layers = <0 2>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
         // F12 on RH_C6 and RH_R1+R2 - TailorKey
         combo_F12_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <9 21>;
+            key-positions = <POS_RH_C6R1 POS_RH_C6R2>;
             bindings = <&kp F12>;
-            layers = <0 2>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
         // sticky "hyper" modifiers (Win + Alt + Ctrl + Shift) - TailorKey
         combo_sticky_hyp_rght_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <74 57>;
+            key-positions = <POS_RH_T4 POS_RH_T1>;
             bindings = <&sk LG(LA(LC(LSHFT)))>;
-            layers = <0 2>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
         // sticky "meh" modifiers (Alt + Ctrl + Shift) - TailorKey
         combo_sticky_meh_rght_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <73 74>;
+            key-positions = <POS_RH_T5 POS_RH_T4>;
             bindings = <&sk LA(LC(LSHFT))>;
-            layers = <0 2>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
         // toggle gaming layer - TailorKey
         combo_gaming_layer_v1_TKZ {
             timeout-ms = <50>;
-            key-positions = <51 68>;
-            bindings = <&tog 5>;
+            key-positions = <POS_LH_C1R5 POS_LH_C2R6>;
+            bindings = <&tog LAYER_Gaming>;
         };
-      };
     };
+};
 
 /* Automatically generated keymap */
 / {
@@ -1899,23 +1408,23 @@
 
         layer_HRM_WinLinx {
             bindings = <
-               &kp F1                          &kp F2                         &kp F3                           &kp F4                           &kp F5                                                                                                                                                                                                &kp F6                            &kp F7                          &kp F8                              &kp F9    &kp F10
-            &kp GRAVE                          &kp N1                         &kp N2                           &kp N3                           &kp N4  &kp N5                                                                                                                                                      &kp N6                            &kp N7                            &kp N8                          &kp N9                              &kp N0  &kp MINUS
-              &kp ESC                           &kp Q                          &kp W                            &kp E                            &kp R   &kp T                                                                                                                                                       &kp Y                             &kp U                             &kp I                           &kp O                               &kp P   &kp BSLH
-              &kp TAB  &HRM_left_pinky_v1B_TKZ LGUI A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LCTRL D  &HRM_left_index_v1B_TKZ LSHFT F   &kp G                                                                                                                                                       &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RCTRL K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RGUI SEMI    &kp SQT
-             &kp LGUI                           &kp Z                          &kp X                            &kp C                            &kp V   &kp B  &CAPSWord_v1_TKZ LSHFT MACRO_PLACEHOLDER             &kp LCTRL    &lower  &kp LGUI             &kp RCTRL  &CAPSWord_v1_TKZ RSHFT MACRO_PLACEHOLDER   &kp N                             &kp M                         &kp COMMA                         &kp DOT                            &kp FSLH  &kp PG_UP
- &magic LAYER_Magic 0                        &kp HOME                        &kp END                         &kp LEFT                        &kp RIGHT                              &thumb_v2_TKZ 3 BSPC  &thumb_v2_TKZ 20 DEL  &kp LALT  &kp RALT  &thumb_v2_TKZ 15 RET                     &space_v3_TKZ 4 SPACE                                  &kp DOWN                            &kp UP                        &kp LBKT                            &kp RBKT  &kp PG_DN
+               &kp F1                          &kp F2                         &kp F3                           &kp F4                           &kp F5                                                                                                                                                                             &kp F6                            &kp F7                          &kp F8                              &kp F9    &kp F10
+            &kp EQUAL                          &kp N1                         &kp N2                           &kp N3                           &kp N4  &kp N5                                                                                                                                   &kp N6                            &kp N7                            &kp N8                          &kp N9                              &kp N0  &kp MINUS
+              &kp TAB                           &kp Q                          &kp W                            &kp E                            &kp R   &kp T                                                                                                                                    &kp Y                             &kp U                             &kp I                           &kp O                               &kp P   &kp BSLH
+              &kp ESC  &HRM_left_pinky_v1B_TKZ LGUI A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LCTRL D  &HRM_left_index_v1B_TKZ LSHFT F   &kp G                                                                                                                                    &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RCTRL K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RGUI SEMI    &kp SQT
+            &kp GRAVE                           &kp Z                          &kp X                            &kp C                            &kp V   &kp B         &CAPSWord_v1_TKZ LSHFT 0  &kp LCTRL    &lower  &kp LGUI                      &kp RCTRL          &CAPSWord_v1_TKZ RSHFT 0   &kp N                             &kp M                         &kp COMMA                         &kp DOT                            &kp FSLH  &kp PG_UP
+ &magic LAYER_Magic 0                        &kp HOME                        &kp END                         &kp LEFT                        &kp RIGHT          &thumb_v2_TKZ LAYER_Cursor BSPC    &kp DEL  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Mouse RET  &space_v3_TKZ LAYER_Symbol SPACE                                    &kp UP                          &kp DOWN                        &kp LBKT                            &kp RBKT  &kp PG_DN
             >;
         };
 
         layer_Typing {
             bindings = <
- &trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans    &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
- &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
+               &trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans    &trans  &trans
+               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
+               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
+               &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
+               &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
+ &magic LAYER_Magic 0  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
             >;
         };
 
@@ -1930,69 +1439,14 @@
             >;
         };
 
-        layer_Cursor {
+        layer_LeftPinky {
             bindings = <
-     &none      &none                    &none                    &none      &none                                                                                                                                                                 &none          &none      &none      &none      &none
-     &none    &kp ESC                  &kp INS              &kp LS(TAB)    &kp DEL      &none                                                                                                                                         &none        &none          &none      &none      &none      &none
-     &none    &kp RET                &kp SPACE                  &kp TAB   &kp BSPC  &kp LC(X)                                                                                                                                     &kp LC(X)  &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)    &kp TAB      &none
- &sk LSHFT   &kp LGUI                 &kp LALT                &kp LCTRL  &kp LSHFT  &kp LC(C)                                                                                                                                     &kp LC(C)     &kp LEFT       &kp DOWN     &kp UP  &kp RIGHT  &sk RSHFT
- &kp LC(L)  &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ  &kp LC(F)  &kp LC(V)  &mod_tab_v2_TKZ LALT   &mod_tab_v2_TKZ LGUI  &kp PSCRN  &cur_SELECT_NONE_v1_TKZ  &cur_EXTEND_LINE_v1_TKZ  &cur_EXTEND_WORD_v1_TKZ  &kp LC(V)     &kp HOME      &kp PG_UP  &kp PG_DN    &kp END  &kp LC(L)
- &kp LC(K)  &kp LC(Z)                &kp LC(Y)            &kp LC(LS(G))  &kp LC(G)                            &none  &mod_tab_v2_TKZ LCTRL  &kp LG(D)                &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ               &kp LC(F)  &kp LC(LS(G))  &kp LC(G)  &kp LC(H)  &kp LC(K)
-            >;
-        };
-
-        layer_Symbol {
-            bindings = <
-               &none      &none      &none      &none      &none                                                                                    &none        &none      &none     &none   &none
-           &kp GRAVE   &kp RBKT   &kp LPAR   &kp RPAR  &kp COMMA    &kp DOT                                                              &none      &none        &none      &none     &none   &none
-            &kp LBKT   &kp EXCL   &kp LBRC   &kp RBRC   &kp SEMI  &kp QMARK                                                          &kp GRAVE  &sk RSHFT    &sk RCTRL   &sk RALT  &sk RGUI   &none
-            &kp HASH  &kp CARET  &kp EQUAL  &kp UNDER   &kp DLLR   &kp STAR                                                            &kp DQT  &kp RSHFT    &kp RCTRL   &kp RALT  &kp RGUI   &none
-           &kp TILDE     &kp LT   &kp PIPE  &kp MINUS     &kp GT   &kp FSLH   &kp BSLH    &kp DOT  &kp STAR   &none   &none   &none    &kp SQT   &kp BSPC      &kp TAB  &kp SPACE   &kp RET   &none
- &symb_dotdot_v1_TKZ   &kp AMPS    &kp SQT    &kp DQT   &kp PLUS             &kp PRCNT  &kp COLON    &kp AT   &none   &none   &none               &kp DEL  &kp LS(TAB)    &kp INS   &kp ESC   &none
-            >;
-        };
-
-        layer_Gaming {
-            bindings = <
- &kp ESC      &kp P   &kp O   &kp N  &kp BSPC                                                                                   &kp F1     &kp F2    &kp F3    &kp F4     &kp F5
-   &kp M     &kp N6  &kp N7  &kp N8    &kp N9  &kp N0                                                                &kp F6     &kp F7     &kp F8    &kp F9   &kp F10    &kp F11
-   &kp I     &kp N1  &kp N2  &kp N3    &kp N4  &kp N5                                                                 &kp Y      &kp U      &kp I     &kp O     &kp P    &kp F12
-   &kp T    &kp TAB   &kp Q   &kp W     &kp E   &kp R                                                                 &kp H      &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
-   &kp G  &kp LSHFT   &kp A   &kp S     &kp D   &kp F  &kp LSHFT   &kp LALT    &kp V   &kp ESC    &kp UP    &kp RET   &kp N      &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp MINUS
-   &kp B  &kp LCTRL   &kp Z   &kp X     &kp C          &kp SPACE  &kp LCTRL  &kp RET  &kp LEFT  &kp DOWN  &kp RIGHT          &kp GRAVE   &kp LBKT  &kp RBKT  &kp BSLH  &kp EQUAL
-            >;
-        };
-
-        layer_Lower {
-            bindings = <
-         &kp C_BRI_DN  &kp C_BRI_UP      &kp C_PREV      &kp C_NEXT         &kp C_PP                                                                                    &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
-               &trans         &none           &none           &none            &none   &kp HOME                                                   &kp LEFT_PARENTHESIS  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
-               &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp RIGHT_PARENTHESIS   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
-               &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                            &kp PERCENT   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
-               &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans   &to 0  &trans  &trans  &trans              &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
- &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &trans  &trans  &trans  &trans  &trans  &trans                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
-            >;
-        };
-
-        layer_LeftIndex {
-            bindings = <
-    &HRM_left_index_tap_v1B_TKZ F1        &HRM_left_index_tap_v1B_TKZ F2     &HRM_left_index_tap_v1B_TKZ F3         &HRM_left_index_tap_v1B_TKZ F4  &HRM_left_index_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
- &HRM_left_index_tap_v1B_TKZ EQUAL        &HRM_left_index_tap_v1B_TKZ N1     &HRM_left_index_tap_v1B_TKZ N2         &HRM_left_index_tap_v1B_TKZ N3  &HRM_left_index_tap_v1B_TKZ N4  &HRM_left_index_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans         &HRM_left_index_tap_v1B_TKZ Q      &HRM_left_index_tap_v1B_TKZ W          &HRM_left_index_tap_v1B_TKZ E   &HRM_left_index_tap_v1B_TKZ R   &HRM_left_index_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans  &HRM_left_index_pinky_v1B_TKZ LGUI A  &HRM_left_index_ringv1_TKZ LALT S  &HRM_left_index_middy_v1B_TKZ LCTRL D                           &none   &HRM_left_index_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans         &HRM_left_index_tap_v1B_TKZ Z      &HRM_left_index_tap_v1B_TKZ X          &HRM_left_index_tap_v1B_TKZ C   &HRM_left_index_tap_v1B_TKZ V   &HRM_left_index_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans                                &trans                             &trans                                 &trans                          &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
-            >;
-        };
-
-        layer_LeftMiddy {
-            bindings = <
-    &HRM_left_middy_tap_v1B_TKZ F1        &HRM_left_middy_tap_v1B_TKZ F2       &HRM_left_middy_tap_v1B_TKZ F3  &HRM_left_middy_tap_v1B_TKZ F4         &HRM_left_middy_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
- &HRM_left_middy_tap_v1B_TKZ EQUAL        &HRM_left_middy_tap_v1B_TKZ N1       &HRM_left_middy_tap_v1B_TKZ N2  &HRM_left_middy_tap_v1B_TKZ N3         &HRM_left_middy_tap_v1B_TKZ N4  &HRM_left_middy_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans         &HRM_left_middy_tap_v1B_TKZ Q        &HRM_left_middy_tap_v1B_TKZ W   &HRM_left_middy_tap_v1B_TKZ E          &HRM_left_middy_tap_v1B_TKZ R   &HRM_left_middy_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans  &HRM_left_middy_pinky_v1B_TKZ LGUI A  &HRM_left_middy_ring_v1B_TKZ LALT S                           &none  &HRM_left_middy_index_v1B_TKZ LSHFT F   &HRM_left_middy_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans         &HRM_left_middy_tap_v1B_TKZ Z        &HRM_left_middy_tap_v1B_TKZ X   &HRM_left_middy_tap_v1B_TKZ C          &HRM_left_middy_tap_v1B_TKZ V   &HRM_left_middy_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans                                &trans                               &trans                          &trans                                 &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
+    &HRM_left_pinky_tap_v1B_TKZ F1  &HRM_left_pinky_tap_v1B_TKZ F2       &HRM_left_pinky_tap_v1B_TKZ F3         &HRM_left_pinky_tap_v1B_TKZ F4         &HRM_left_pinky_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
+ &HRM_left_pinky_tap_v1B_TKZ EQUAL  &HRM_left_pinky_tap_v1B_TKZ N1       &HRM_left_pinky_tap_v1B_TKZ N2         &HRM_left_pinky_tap_v1B_TKZ N3         &HRM_left_pinky_tap_v1B_TKZ N4  &HRM_left_pinky_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans   &HRM_left_pinky_tap_v1B_TKZ Q        &HRM_left_pinky_tap_v1B_TKZ W          &HRM_left_pinky_tap_v1B_TKZ E          &HRM_left_pinky_tap_v1B_TKZ R   &HRM_left_pinky_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans                           &none  &HRM_left_pinky_ring_v1B_TKZ LALT S  &HRM_left_pinky_middy_v1B_TKZ LCTRL D  &HRM_left_pinky_index_v1B_TKZ LSHFT F   &HRM_left_pinky_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
+                            &trans   &HRM_left_pinky_tap_v1B_TKZ Z        &HRM_left_pinky_tap_v1B_TKZ X          &HRM_left_pinky_tap_v1B_TKZ C          &HRM_left_pinky_tap_v1B_TKZ V   &HRM_left_pinky_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans                          &trans                               &trans                                 &trans                                 &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
             >;
         };
 
@@ -2007,47 +1461,25 @@
             >;
         };
 
-        layer_LeftPinky {
+        layer_LeftMiddy {
             bindings = <
-    &HRM_left_pinky_tap_v1B_TKZ F1  &HRM_left_pinky_tap_v1B_TKZ F2       &HRM_left_pinky_tap_v1B_TKZ F3         &HRM_left_pinky_tap_v1B_TKZ F4         &HRM_left_pinky_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
- &HRM_left_pinky_tap_v1B_TKZ EQUAL  &HRM_left_pinky_tap_v1B_TKZ N1       &HRM_left_pinky_tap_v1B_TKZ N2         &HRM_left_pinky_tap_v1B_TKZ N3         &HRM_left_pinky_tap_v1B_TKZ N4  &HRM_left_pinky_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans   &HRM_left_pinky_tap_v1B_TKZ Q        &HRM_left_pinky_tap_v1B_TKZ W          &HRM_left_pinky_tap_v1B_TKZ E          &HRM_left_pinky_tap_v1B_TKZ R   &HRM_left_pinky_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans                           &none  &HRM_left_pinky_ring_v1B_TKZ LALT S  &HRM_left_pinky_middy_v1B_TKZ LCTRL D  &HRM_left_pinky_index_v1B_TKZ LSHFT F   &HRM_left_pinky_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans   &HRM_left_pinky_tap_v1B_TKZ Z        &HRM_left_pinky_tap_v1B_TKZ X          &HRM_left_pinky_tap_v1B_TKZ C          &HRM_left_pinky_tap_v1B_TKZ V   &HRM_left_pinky_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans                          &trans                               &trans                                 &trans                                 &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
+    &HRM_left_middy_tap_v1B_TKZ F1        &HRM_left_middy_tap_v1B_TKZ F2       &HRM_left_middy_tap_v1B_TKZ F3  &HRM_left_middy_tap_v1B_TKZ F4         &HRM_left_middy_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
+ &HRM_left_middy_tap_v1B_TKZ EQUAL        &HRM_left_middy_tap_v1B_TKZ N1       &HRM_left_middy_tap_v1B_TKZ N2  &HRM_left_middy_tap_v1B_TKZ N3         &HRM_left_middy_tap_v1B_TKZ N4  &HRM_left_middy_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans         &HRM_left_middy_tap_v1B_TKZ Q        &HRM_left_middy_tap_v1B_TKZ W   &HRM_left_middy_tap_v1B_TKZ E          &HRM_left_middy_tap_v1B_TKZ R   &HRM_left_middy_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans  &HRM_left_middy_pinky_v1B_TKZ LGUI A  &HRM_left_middy_ring_v1B_TKZ LALT S                           &none  &HRM_left_middy_index_v1B_TKZ LSHFT F   &HRM_left_middy_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
+                            &trans         &HRM_left_middy_tap_v1B_TKZ Z        &HRM_left_middy_tap_v1B_TKZ X   &HRM_left_middy_tap_v1B_TKZ C          &HRM_left_middy_tap_v1B_TKZ V   &HRM_left_middy_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans                                &trans                               &trans                          &trans                                 &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
             >;
         };
 
-        layer_RightIndex {
+        layer_LeftIndex {
             bindings = <
- &trans  &trans  &trans  &trans  &trans                                                                                           &HRM_right_index_tap_v1B_TKZ F6         &HRM_right_index_tap_v1B_TKZ F7       &HRM_right_index_tap_v1B_TKZ F8           &HRM_right_index_tap_v1B_TKZ F9    &HRM_right_index_tap_v1B_TKZ F10
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_index_tap_v1B_TKZ N6  &HRM_right_index_tap_v1B_TKZ N7         &HRM_right_index_tap_v1B_TKZ N8       &HRM_right_index_tap_v1B_TKZ N9           &HRM_right_index_tap_v1B_TKZ N0  &HRM_right_index_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_index_tap_v1B_TKZ Y   &HRM_right_index_tap_v1B_TKZ U          &HRM_right_index_tap_v1B_TKZ I        &HRM_right_index_tap_v1B_TKZ O            &HRM_right_index_tap_v1B_TKZ P   &HRM_right_index_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_index_tap_v1B_TKZ H                            &none  &HRM_right_index_middy_v1B_TKZ RCTRL K  &HRM_right_index_ring_v1B_TKZ LALT L  &HRM_right_index_pinky_v1B_TKZ RGUI SEMI    &HRM_right_index_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_index_tap_v1B_TKZ N   &HRM_right_index_tap_v1B_TKZ M      &HRM_right_index_tap_v1B_TKZ COMMA      &HRM_right_index_tap_v1B_TKZ DOT                                    &trans                              &trans
- &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                            &trans                                  &trans                                &trans                                    &trans                              &trans
-            >;
-        };
-
-        layer_RightMiddy {
-            bindings = <
- &trans  &trans  &trans  &trans  &trans                                                                                                  &HRM_right_middy_tap_v1B_TKZ F6     &HRM_right_middy_tap_v1B_TKZ F7       &HRM_right_middy_tap_v1B_TKZ F8           &HRM_right_middy_tap_v1B_TKZ F9    &HRM_right_middy_tap_v1B_TKZ F10
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_middy_tap_v1B_TKZ N6         &HRM_right_middy_tap_v1B_TKZ N7     &HRM_right_middy_tap_v1B_TKZ N8       &HRM_right_middy_tap_v1B_TKZ N9           &HRM_right_middy_tap_v1B_TKZ N0  &HRM_right_middy_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_middy_tap_v1B_TKZ Y          &HRM_right_middy_tap_v1B_TKZ U      &HRM_right_middy_tap_v1B_TKZ I        &HRM_right_middy_tap_v1B_TKZ O            &HRM_right_middy_tap_v1B_TKZ P   &HRM_right_middy_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_middy_tap_v1B_TKZ H  &HRM_right_middy_index_v1B_TKZ RSHFT J                               &none  &HRM_right_middy_ring_v1B_TKZ LALT L  &HRM_right_middy_pinky_v1B_TKZ RGUI SEMI    &HRM_right_middy_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_middy_tap_v1B_TKZ N          &HRM_right_middy_tap_v1B_TKZ M  &HRM_right_middy_tap_v1B_TKZ COMMA      &HRM_right_middy_tap_v1B_TKZ DOT                                    &trans                              &trans
- &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                                   &trans                              &trans                                &trans                                    &trans                              &trans
-            >;
-        };
-
-        layer_RightRingy {
-            bindings = <
- &trans  &trans  &trans  &trans  &trans                                                                                                 &HRM_right_ring_tap_v1B_TKZ F6         &HRM_right_ring_tap_v1B_TKZ F7   &HRM_right_ring_tap_v1B_TKZ F8           &HRM_right_ring_tap_v1B_TKZ F9    &HRM_right_ring_tap_v1B_TKZ F10
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_ring_tap_v1B_TKZ N6         &HRM_right_ring_tap_v1B_TKZ N7         &HRM_right_ring_tap_v1B_TKZ N8   &HRM_right_ring_tap_v1B_TKZ N9           &HRM_right_ring_tap_v1B_TKZ N0  &HRM_right_ring_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_ring_tap_v1B_TKZ Y          &HRM_right_ring_tap_v1B_TKZ U          &HRM_right_ring_tap_v1B_TKZ I    &HRM_right_ring_tap_v1B_TKZ O            &HRM_right_ring_tap_v1B_TKZ P   &HRM_right_ring_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_ring_tap_v1B_TKZ H  &HRM_right_ring_index_v1B_TKZ RSHFT J  &HRM_right_ring_middy_v1B_TKZ RCTRL K                            &none  &HRM_right_ring_pinky_v1B_TKZ RGUI SEMI    &HRM_right_ring_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_ring_tap_v1B_TKZ N          &HRM_right_ring_tap_v1B_TKZ M      &HRM_right_ring_tap_v1B_TKZ COMMA  &HRM_right_ring_tap_v1B_TKZ DOT                                   &trans                             &trans
- &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                                 &trans                                 &trans                           &trans                                   &trans                             &trans
+    &HRM_left_index_tap_v1B_TKZ F1        &HRM_left_index_tap_v1B_TKZ F2     &HRM_left_index_tap_v1B_TKZ F3         &HRM_left_index_tap_v1B_TKZ F4  &HRM_left_index_tap_v1B_TKZ F5                                                                                          &trans  &trans  &trans    &trans  &trans
+ &HRM_left_index_tap_v1B_TKZ EQUAL        &HRM_left_index_tap_v1B_TKZ N1     &HRM_left_index_tap_v1B_TKZ N2         &HRM_left_index_tap_v1B_TKZ N3  &HRM_left_index_tap_v1B_TKZ N4  &HRM_left_index_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans         &HRM_left_index_tap_v1B_TKZ Q      &HRM_left_index_tap_v1B_TKZ W          &HRM_left_index_tap_v1B_TKZ E   &HRM_left_index_tap_v1B_TKZ R   &HRM_left_index_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans  &HRM_left_index_pinky_v1B_TKZ LGUI A  &HRM_left_index_ringv1_TKZ LALT S  &HRM_left_index_middy_v1B_TKZ LCTRL D                           &none   &HRM_left_index_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
+                            &trans         &HRM_left_index_tap_v1B_TKZ Z      &HRM_left_index_tap_v1B_TKZ X          &HRM_left_index_tap_v1B_TKZ C   &HRM_left_index_tap_v1B_TKZ V   &HRM_left_index_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
+                            &trans                                &trans                             &trans                                 &trans                          &trans                                  &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
             >;
         };
 
@@ -2062,14 +1494,69 @@
             >;
         };
 
+        layer_RightRingy {
+            bindings = <
+ &trans  &trans  &trans  &trans  &trans                                                                                                 &HRM_right_ring_tap_v1B_TKZ F6         &HRM_right_ring_tap_v1B_TKZ F7   &HRM_right_ring_tap_v1B_TKZ F8           &HRM_right_ring_tap_v1B_TKZ F9    &HRM_right_ring_tap_v1B_TKZ F10
+ &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_ring_tap_v1B_TKZ N6         &HRM_right_ring_tap_v1B_TKZ N7         &HRM_right_ring_tap_v1B_TKZ N8   &HRM_right_ring_tap_v1B_TKZ N9           &HRM_right_ring_tap_v1B_TKZ N0  &HRM_right_ring_tap_v1B_TKZ MINUS
+ &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_ring_tap_v1B_TKZ Y          &HRM_right_ring_tap_v1B_TKZ U          &HRM_right_ring_tap_v1B_TKZ I    &HRM_right_ring_tap_v1B_TKZ O            &HRM_right_ring_tap_v1B_TKZ P   &HRM_right_ring_tap_v1B_TKZ BSLH
+ &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_ring_tap_v1B_TKZ H  &HRM_right_ring_index_v1B_TKZ RSHFT J  &HRM_right_ring_middy_v1B_TKZ RCTRL K                            &none  &HRM_right_ring_pinky_v1B_TKZ RGUI SEMI    &HRM_right_ring_tap_v1B_TKZ SQT
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_ring_tap_v1B_TKZ N          &HRM_right_ring_tap_v1B_TKZ M      &HRM_right_ring_tap_v1B_TKZ COMMA  &HRM_right_ring_tap_v1B_TKZ DOT                                   &trans                             &trans
+ &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                                 &trans                                 &trans                           &trans                                   &trans                             &trans
+            >;
+        };
+
+        layer_RightMiddy {
+            bindings = <
+ &trans  &trans  &trans  &trans  &trans                                                                                                  &HRM_right_middy_tap_v1B_TKZ F6     &HRM_right_middy_tap_v1B_TKZ F7       &HRM_right_middy_tap_v1B_TKZ F8           &HRM_right_middy_tap_v1B_TKZ F9    &HRM_right_middy_tap_v1B_TKZ F10
+ &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_middy_tap_v1B_TKZ N6         &HRM_right_middy_tap_v1B_TKZ N7     &HRM_right_middy_tap_v1B_TKZ N8       &HRM_right_middy_tap_v1B_TKZ N9           &HRM_right_middy_tap_v1B_TKZ N0  &HRM_right_middy_tap_v1B_TKZ MINUS
+ &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_middy_tap_v1B_TKZ Y          &HRM_right_middy_tap_v1B_TKZ U      &HRM_right_middy_tap_v1B_TKZ I        &HRM_right_middy_tap_v1B_TKZ O            &HRM_right_middy_tap_v1B_TKZ P   &HRM_right_middy_tap_v1B_TKZ BSLH
+ &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_middy_tap_v1B_TKZ H  &HRM_right_middy_index_v1B_TKZ RSHFT J                               &none  &HRM_right_middy_ring_v1B_TKZ LALT L  &HRM_right_middy_pinky_v1B_TKZ RGUI SEMI    &HRM_right_middy_tap_v1B_TKZ SQT
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_middy_tap_v1B_TKZ N          &HRM_right_middy_tap_v1B_TKZ M  &HRM_right_middy_tap_v1B_TKZ COMMA      &HRM_right_middy_tap_v1B_TKZ DOT                                    &trans                              &trans
+ &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                                   &trans                              &trans                                &trans                                    &trans                              &trans
+            >;
+        };
+
+        layer_RightIndex {
+            bindings = <
+ &trans  &trans  &trans  &trans  &trans                                                                                           &HRM_right_index_tap_v1B_TKZ F6         &HRM_right_index_tap_v1B_TKZ F7       &HRM_right_index_tap_v1B_TKZ F8           &HRM_right_index_tap_v1B_TKZ F9    &HRM_right_index_tap_v1B_TKZ F10
+ &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_index_tap_v1B_TKZ N6  &HRM_right_index_tap_v1B_TKZ N7         &HRM_right_index_tap_v1B_TKZ N8       &HRM_right_index_tap_v1B_TKZ N9           &HRM_right_index_tap_v1B_TKZ N0  &HRM_right_index_tap_v1B_TKZ MINUS
+ &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_index_tap_v1B_TKZ Y   &HRM_right_index_tap_v1B_TKZ U          &HRM_right_index_tap_v1B_TKZ I        &HRM_right_index_tap_v1B_TKZ O            &HRM_right_index_tap_v1B_TKZ P   &HRM_right_index_tap_v1B_TKZ BSLH
+ &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_index_tap_v1B_TKZ H                            &none  &HRM_right_index_middy_v1B_TKZ RCTRL K  &HRM_right_index_ring_v1B_TKZ LALT L  &HRM_right_index_pinky_v1B_TKZ RGUI SEMI    &HRM_right_index_tap_v1B_TKZ SQT
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &HRM_right_index_tap_v1B_TKZ N   &HRM_right_index_tap_v1B_TKZ M      &HRM_right_index_tap_v1B_TKZ COMMA      &HRM_right_index_tap_v1B_TKZ DOT                                    &trans                              &trans
+ &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                                                            &trans                                  &trans                                &trans                                    &trans                              &trans
+            >;
+        };
+
+        layer_Cursor {
+            bindings = <
+     &none      &none                    &none                    &none      &none                                                                                                                                                                 &none          &none      &none      &none      &none
+     &none    &kp ESC                  &kp INS              &kp LS(TAB)    &kp DEL      &none                                                                                                                                         &none        &none          &none      &none      &none      &none
+     &none    &kp RET                &kp SPACE                  &kp TAB   &kp BSPC  &kp LC(X)                                                                                                                                     &kp LC(X)  &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)    &kp TAB      &none
+ &sk LSHFT   &kp LGUI                 &kp LALT                &kp LCTRL  &kp LSHFT  &kp LC(C)                                                                                                                                     &kp LC(C)     &kp LEFT         &kp UP   &kp DOWN  &kp RIGHT  &sk RSHFT
+ &kp LC(L)  &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ  &kp LC(F)  &kp LC(V)  &mod_tab_v2_TKZ LALT   &mod_tab_v2_TKZ LGUI  &kp PSCRN  &cur_SELECT_NONE_v1_TKZ  &cur_EXTEND_LINE_v1_TKZ  &cur_EXTEND_WORD_v1_TKZ  &kp LC(V)     &kp HOME      &kp PG_UP  &kp PG_DN    &kp END  &kp LC(L)
+ &kp LC(K)  &kp LC(Z)                &kp LC(Y)            &kp LC(LS(G))  &kp LC(G)                            &none  &mod_tab_v2_TKZ LCTRL  &kp LG(D)                &kp LC(A)  &cur_SELECT_LINE_v1_TKZ  &cur_SELECT_WORD_v1_TKZ               &kp LC(F)  &kp LC(LS(G))  &kp LC(G)  &kp LC(H)  &kp LC(K)
+            >;
+        };
+
+        layer_Symbol {
+            bindings = <
+               &none          &none         &none                 &none          &none                                                                                                        &none        &none      &none     &none   &none
+           &kp GRAVE      &kp COMMA    &kp LS(N9)            &kp LS(N0)       &kp SEMI       &kp DOT                                                                               &none      &none        &none      &none     &none   &none
+          &kp LS(N1)       &kp LBKT  &kp LS(LBKT)          &kp LS(RBKT)       &kp RBKT  &kp LS(FSLH)                                                                           &kp GRAVE    &kp DEL  &kp LS(TAB)    &kp INS   &kp ESC   &none
+          &kp LS(N3)     &kp LS(N6)     &kp EQUAL         &kp LS(MINUS)     &kp LS(N4)    &kp LS(N8)                                                                &kp LS(SINGLE_QUOTE)   &kp BSPC      &kp TAB  &kp SPACE   &kp RET   &none
+       &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)             &kp MINUS    &kp LS(DOT)      &kp FSLH    &kp BSLH       &kp DOT  &kp LS(N8)   &none   &none   &none               &kp SQT  &sk RSHFT    &sk RCTRL   &sk RALT  &sk RGUI   &none
+ &symb_dotdot_v1_TKZ     &kp LS(N7)       &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)                &kp LS(N5)  &kp LS(SEMI)  &kp LS(N2)   &none   &none   &none                            &none        &none      &none     &none   &none
+            >;
+        };
+
         layer_Mouse {
             bindings = <
-  &none           &none           &none           &none            &none                                                                                                                &none           &none            &none      &none      &none
-  &none           &none           &none           &none            &none           &none                                                                                &none           &none           &none            &none      &none      &none
-  &none           &none  &msc SCRL_LEFT    &mmv MOVE_UP  &msc SCRL_RIGHT           &none                                                                                &none       &sk RSHFT       &sk RCTRL         &sk RALT   &sk RGUI      &none
-  &none    &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT    &msc SCRL_UP                                                                         &msc SCRL_UP          &mo 17          &mo 18           &mo 16  &mkp LCLK   &mkp MB4
-  &none  &msc SCRL_DOWN          &mo 16          &mo 18           &mo 17  &msc SCRL_DOWN  &mkp MCLK  &kp K_APP  &mkp MB5  &kp LC(X)  &kp LC(C)  &kp LC(LC(V))  &msc SCRL_DOWN  &msc SCRL_LEFT    &mmv MOVE_UP  &msc SCRL_RIGHT  &mkp RCLK   &mkp MB5
-  &none           &none           &none           &none            &none                  &mkp LCLK  &mkp RCLK  &mkp MB4      &none      &none          &none                  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &kp K_APP
+  &none           &none                &none                &none                &none                                                                                                                     &none                &none                &none      &none      &none
+  &none           &none                &none                &none                &none           &none                                                                                &none                &none                &none                &none      &none      &none
+  &none           &none       &msc SCRL_LEFT         &mmv MOVE_UP      &msc SCRL_RIGHT           &none                                                                                &none            &sk RSHFT            &sk RCTRL             &sk RALT   &sk RGUI      &none
+  &none    &msc SCRL_UP       &mmv MOVE_LEFT       &mmv MOVE_DOWN      &mmv MOVE_RIGHT    &msc SCRL_UP                                                                         &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow  &mkp LCLK   &mkp MB4
+  &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &mkp MCLK  &kp K_APP  &mkp MB5  &kp LC(X)  &kp LC(C)  &kp LC(LC(V))  &msc SCRL_DOWN       &msc SCRL_LEFT         &mmv MOVE_UP      &msc SCRL_RIGHT  &mkp RCLK   &mkp MB5
+  &none           &none                &none                &none                &none                  &mkp LCLK  &mkp RCLK  &mkp MB4      &none      &none          &none                       &mmv MOVE_LEFT       &mmv MOVE_DOWN      &mmv MOVE_RIGHT  &mkp MCLK  &kp K_APP
             >;
         };
 
@@ -2106,25 +1593,36 @@
             >;
         };
 
-        layer_Magic {
+        layer_Gaming {
             bindings = <
- &mstr1_v1_TKZ    &mstr2_v1_TKZ            &none            &none            &none                                                                                  &none   &none   &none  &bt BT_CLR  &bt BT_CLR_ALL
-         &to 0            &none            &to 1            &none            &none            &to 2                                                         &none   &none   &none   &none       &none           &none
-         &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none       &none           &none
-   &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
-    &sys_reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
-         &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none       &none           &none
+ &kp ESC      &kp P   &kp O   &kp N  &kp BSPC                                                                                   &kp F1     &kp F2    &kp F3     &kp F4     &kp F5
+   &kp M     &kp N6  &kp N7  &kp N8    &kp N9  &kp N0                                                                &kp F6     &kp F7     &kp F8    &kp F9    &kp F10    &kp F11
+   &kp I     &kp N1  &kp N2  &kp N3    &kp N4  &kp N5                                                                 &kp Y      &kp U      &kp I     &kp O      &kp P    &kp F12
+   &kp T    &kp TAB   &kp Q   &kp W     &kp E   &kp R                                                                 &kp H      &kp J      &kp K     &kp L   &kp SEMI    &kp SQT
+   &kp G  &kp LSHFT   &kp A   &kp S     &kp D   &kp F  &kp LSHFT   &kp LALT    &kp V   &kp ESC    &kp UP    &kp RET   &kp N      &kp M  &kp COMMA   &kp DOT   &kp FSLH   &kp BSLH
+   &kp B  &kp LCTRL   &kp Z   &kp X     &kp C          &kp SPACE  &kp LCTRL  &kp RET  &kp LEFT  &kp DOWN  &kp RIGHT          &kp MINUS   &kp LBKT  &kp RBKT  &kp EQUAL  &kp GRAVE
             >;
         };
 
-        layer_Numbers {
+        layer_Lower {
             bindings = <
- &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT   &kp C_PP                                                                                    &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
-       &trans         &none       &none       &none      &none   &kp HOME                                                   &kp LEFT_PARENTHESIS  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
-       &trans         &none       &none       &none      &none    &kp END                                                  &kp RIGHT_PARENTHESIS      &kp N7        &kp N8        &kp N9     &kp KP_MINUS   &kp SCROLLLOCK
-       &trans      &kp LGUI    &kp LALT   &kp LCTRL  &kp LSHFT  &kp PG_UP                                                            &kp PERCENT      &kp N4        &kp N5        &kp N6      &kp KP_PLUS            &none
-       &trans     &kp K_APP       &none      &kp UP    &kp F12  &kp PG_DN  &trans  &trans   &none  &trans  &trans  &trans              &kp COMMA      &kp N1        &kp N2        &kp N3     &kp KP_ENTER           &trans
-        &none       &kp DEL    &kp LEFT    &kp DOWN  &kp RIGHT             &trans   &to 0  &trans  &trans  &trans  &trans                             &kp N0        &kp N0    &kp KP_DOT     &kp KP_ENTER           &trans
+         &kp C_BRI_DN  &kp C_BRI_UP      &kp C_PREV      &kp C_NEXT         &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
+               &trans         &none           &none           &none            &none   &kp HOME                                                  &kp LS(N9)  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
+               &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp LS(N0)   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
+               &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                  &kp LS(N5)   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
+               &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans   &to 0  &trans  &trans  &trans   &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
+ &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &trans  &trans  &trans  &trans  &trans  &trans               &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
+            >;
+        };
+
+        layer_Magic {
+            bindings = <
+ &mstr1_v1_TKZ            &none             &none            &none            &none                                                                                      &none   &none   &none  &bt BT_CLR  &bt BT_CLR_ALL
+         &to 0            &none  &to LAYER_Typing            &none            &none  &to LAYER_Autoshift                                                         &none   &none   &none   &none       &none           &none
+         &none  &rgb_ug RGB_SPI   &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI      &rgb_ug RGB_TOG                                                         &none   &none   &none   &none       &none           &none
+   &bootloader  &rgb_ug RGB_SPD   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD      &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
+    &sys_reset            &none             &none            &none            &none                &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
+         &none            &none             &none            &none            &none                        &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none       &none           &none
             >;
         };
 
