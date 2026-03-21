@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     glove80-zmk = {
-      url = "github:moergo-sc/zmk";
+      # PR#41 `can` → `python-can`
+      url = "github:moergo-sc/zmk/pull/41/merge";
       flake = false;
     };
     flake-parts = {
