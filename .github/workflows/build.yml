@@ -31,18 +31,18 @@ jobs:
           cat $GITHUB_OUTPUT
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup nix cache
-        uses: cachix/cachix-action@v16
+        uses: cachix/cachix-action@v17
         with:
           name: matt-sturgeon
           authToken: ${{ secrets.CACHIX_TOKEN }}
       - name: Build Glove80 firmware
         run: nix build
       - name: Upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: glove80${{ steps.data.outputs.name_suffix }}.uf2
           path: result/glove80.uf2

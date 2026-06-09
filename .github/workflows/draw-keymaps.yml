@@ -17,14 +17,14 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Set to 2 if amending, or 1 if creating a new commit
           fetch-depth: 1
           submodules: recursive
 
       - name: Install nix
-        uses: cachix/install-nix-action@v25
+        uses: cachix/install-nix-action@v31
       - name: Setup nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
 
@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit changes
         id: commit
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "[Draw] ${{ github.event.head_commit.message || '(Manually triggered)' }}"
           file_pattern: img/**
