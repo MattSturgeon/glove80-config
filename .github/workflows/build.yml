@@ -31,7 +31,7 @@ jobs:
           cat $GITHUB_OUTPUT
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup nix cache
