@@ -53,11 +53,28 @@
         "type": "github"
       }
     },
+    "nixpkgs-pr": {
+      "locked": {
+        "lastModified": 1760541192,
+        "narHash": "sha256-wAZKxLTvGIOzO+FOVpaJCdWX+YQzA+gIIunczHLPDbQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "56d4cd679b0f1159d01f5d9b866ebdd23869bb9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "pull/450602/merge",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
         "glove80-zmk": "glove80-zmk",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-pr": "nixpkgs-pr"
       }
     }
   },

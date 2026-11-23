@@ -20,7 +20,7 @@ let
 in
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, inputs', ... }:
     {
       packages = lib.pipe ./. [
         readDir
@@ -29,6 +29,11 @@ in
         (filterAttrs (name: pkg: hasSuffix ".nix" (toString pkg)))
         (filterAttrs (name: lib.pathIsRegularFile))
         (mapAttrs' (name: pkg: lib.nameValuePair (removeSuffix ".nix" name) (pkgs.callPackage pkg { })))
+        (packages: packages // {
+          draw = packages.draw.override {
+            keymap-drawer = inputs'.nixpkgs-pr.legacyPackages.keymap-drawer;
+          };
+        })
       ];
     };
 }
