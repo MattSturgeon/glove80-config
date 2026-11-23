@@ -21,6 +21,9 @@ writeShellApplication {
     # Enable nullglob so that non-matching globs have no output
     shopt -s nullglob
 
+    # Store a reference to the CLI args for use within functions
+    declare -a args=("$@")
+
     # Style
     export GUM_SPIN_SPINNER="minidot"
 
@@ -29,74 +32,109 @@ writeShellApplication {
       sed -e 's/^/    /'
     }
 
-    # Platform specific disk candidates
-    declare -a disks
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-      # Linux/GNU
-      # - /run/media/<user>/<disk>
-      disks+=(
-        /run/media/"$(whoami)"/GLV80*
-        /media/GLV80*
-        /mnt/*
-      )
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-      # Mac OSX
-      # - /Volumes/<disk>
-      disks=(/Volumes/GLV80*)
-    elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
-      # Cygwin or Msys2
-      # - /<drive letter>
-      disks=(/?)
-    elif (grep -sq Microsoft /proc/version); then
-      # WSL
-      # - /mnt/<drive letter>
-      disks=(/mnt/?)
-    else
-      echo "Error: Unable to detect platform!"
-      echo "OSTYPE=$OSTYPE"
-      echo "/proc/version"
-      indent < /proc/version
-      exit 1
-    fi
-
-    # Disks that have a matching INFO_UF2
-    declare -a matches
-    for disk in "''${disks[@]}"; do
-      if (grep -sq Glove80 "$disk"/INFO_UF2.TXT); then
-        matches+=("$disk")
+    # Prints a list of connected glove80s
+    list_keyboards() {
+      # Platform specific disk candidates
+      declare -a disks
+      if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # Linux/GNU
+        # - /run/media/<user>/<disk>
+        disks+=(
+          /run/media/"$(whoami)"/GLV80*
+          /media/GLV80*
+          /mnt/*
+        )
+      elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+        # - /Volumes/<disk>
+        disks=(/Volumes/GLV80*)
+      elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+        # Cygwin or Msys2
+        # - /<drive letter>
+        disks=(/?)
+      elif grep -sq Microsoft /proc/version; then
+        # WSL
+        # - /mnt/<drive letter>
+        disks=(/mnt/?)
+      else
+        echo "Error: Unable to detect platform!" >&2
+        echo "OSTYPE=$OSTYPE" >&2
+        echo "/proc/version" >&2
+        indent < /proc/version >&2
       fi
-    done
 
-    # Assert we found exactly one keyboard
-    count="''${#matches[@]}"
-    if (( count < 1 )); then
-      # No matches. Exit
-      echo "Error: No Glove80 connected!"
-      exit 1
-    elif (( count > 1 )); then
-      # Multiple matches. Print them and exit
-      echo "Error: $count Glove80s connected. Expected 1!"
+      # Check CLI args first
+      # Warn if any don't have a valid INFO_UF2
+      for disk in "''${args[@]}"; do
+        if grep -sq Glove80 "$disk"/INFO_UF2.TXT; then
+          echo "$disk"
+        else
+          echo "Not a Glove80 keyboard: $disk" >&2
+        fi
+      done
+
+      # Print disks that have a matching INFO_UF2
+      for disk in "''${disks[@]}"; do
+        if grep -sq Glove80 "$disk"/INFO_UF2.TXT; then
+          echo "$disk"
+        fi
+      done
+    }
+
+    # Flash all keyboards found by `list_keyboards`
+    flash_keyboards() {
+      declare -a matches
+      readarray -t matches < <(list_keyboards)
+      count="''${#matches[@]}"
+
+      # Print a summary of what `list_keyboards` has found
+      echo "Found $count keyboards connected."
       for i in "''${!matches[@]}"; do
         kb="''${matches[$i]}"
         # Print the relevant lines from INFO_UF2
         echo "$((i + 1)). $kb"
-        grep --no-filename --color=never Glove80 "$kb"/INFO_UF2.TXT | indent
+        indent < "$kb"/INFO_UF2.TXT
       done
-      exit 1
-    fi
+      echo # blankline
 
-    # We have a winner!
-    kb="''${matches[0]}"
-    echo "Found keyboard:"
-    echo "$kb"
-    indent < "$kb"/INFO_UF2.TXT
-    echo
+      for i in "''${!matches[@]}"; do
+        flash_keyboard "$((i + 1))" "''${matches[$i]}"
+      done
+    }
 
-    # Flash by copying the firmware package
-    if gum spin --title "Flashing firmware..." \
-      -- cp -Tfr ${firmware} "$kb"
-    then echo "Firmaware flashed!"
-    else echo "Error flashing firmware!"
-    fi
+    # Flash the given keyboard
+    flash_keyboard() {
+      i="$1"
+      kb="$2"
+
+      # Ask before flashing...
+      if gum confirm "$i. $kb" \
+          --default="yes" \
+          --affirmative="Flash" \
+          --negative="Cancel"
+      then
+        # Flash by copying the firmware package
+        if gum spin --title "Flashing $kb" \
+          -- cp -Tfr ${firmware} "$kb"
+        then echo "$i. Flashed $kb"
+        else echo "$i. Error flashing $kb!"
+        fi
+      else
+        echo "$i. Skipped $kb"
+      fi
+    }
+
+    # Run the script
+    flash_keyboards
+    while
+      gum confirm "Done" \
+        --default="no" \
+        --affirmative="Run again" \
+        --negative="Quit"
+    do
+      echo # blankline
+      echo "Running again"
+      flash_keyboards
+    done
   '';
 }
